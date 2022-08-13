@@ -125,24 +125,12 @@ class OptionsMenu extends MusicBeatState
                 }
                 #end
 
-                #if android
-		var UP_P = virtualPad.buttonUp.justPressed;
-		var DOWN_P = virtualPad.buttonDown.justPressed;
-		var accepted = virtualPad.buttonA.justPressed;
-		var BACK = virtualPad.buttonB.justPressed;
-		#elseif desktop
-		var UP_P = controls.UP_P;
-		var DOWN_P = controls.DOWN_P;
-		var accepted = controls.ACCEPT;
-		var BACK = controls.BACK;
-		#end
-
 		if(acceptInput)
 		{
 
-			if (BACK && !isCat)
+			if (#if android virtualPad.buttonB.justPressed || #end controls.BACK && !isCat)
 				FlxG.switchState(new MainMenuState());
-			else if (controls.BACK)
+			else if (#if android virtualPad.buttonB.justPressed || #end controls.BACK)
 			{
 				isCat = false;
 				grpControls.clear();
@@ -157,9 +145,9 @@ class OptionsMenu extends MusicBeatState
 					}
 				curSelected = 0;
 			}
-			if (UP_P)
+			if (#if android virtualPad.buttonUp.justPressed || #end controls.UP_P)
 				changeSelection(-1);
-			if (DOWN_P)
+			if (#if android virtualPad.buttonDown.justPressed || #end controls.DOWN_P)
 				changeSelection(1);
 			
 			if (isCat)
@@ -223,7 +211,7 @@ class OptionsMenu extends MusicBeatState
 			if (controls.RESET)
 					FlxG.save.data.offset = 0;
 
-			if (accepted)
+			if (#if android virtualPad.buttonA.justPressed || #end controls.ACCEPT)
 			{
 				if (isCat)
 				{
