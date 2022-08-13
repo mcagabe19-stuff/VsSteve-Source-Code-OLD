@@ -59,20 +59,12 @@ class GameOverSubstate extends MusicBeatSubstate
 	{
 		super.update(elapsed);
 
-                #if android
-		var accepted = virtualPad.buttonA.justPressed;
-		var BACK = virtualPad.buttonB.justPressed;
-		#elseif desktop
-		var accepted = controls.ACCEPT;
-		var BACK = controls.BACK;
-		#end
-
-		if (accepted)
+		if (#if android virtualPad.buttonA.justPressed || #end controls.ACCEPT)
 		{
 			endBullshit();
 		}
 
-		if (BACK)
+		if (#if android virtualPad.buttonB.justPressed || #end controls.BACK)
 		{
 			FlxG.sound.music.stop();
 
