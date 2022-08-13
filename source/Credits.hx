@@ -119,28 +119,16 @@ class Credits extends MusicBeatState
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 		}
 
-		#if android
-		var UP_P = virtualPad.buttonUp.justPressed;
-		var DOWN_P = virtualPad.buttonDown.justPressed;
-		var accepted = virtualPad.buttonA.justPressed;
-		var BACK = virtualPad.buttonB.justPressed;
-		#elseif desktop
-		var UP_P = controls.UP_P;
-		var DOWN_P = controls.DOWN_P;
-		var accepted = controls.ACCEPT;
-		var BACK = controls.BACK;
-		#end
-
-		if (UP_P)
+		if (#if android virtualPad.buttonUp.justPressed || #end controls.UP_P)
 		{
 			changeSelection(-1);
 		}
-		if (DOWN_P)
+		if (#if android virtualPad.buttonDown.justPressed || #end controls.DOWN_P)
 		{
 			changeSelection(1);
 		}
 
-		if (BACK)
+		if (#if android virtualPad.buttonB.justPressed || #end controls.BACK)
 		{
 			if(colorTween != null) {
 				colorTween.cancel();
@@ -148,7 +136,7 @@ class Credits extends MusicBeatState
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			FlxG.switchState(new MainMenuState());
 		}
-		if(accepted) {
+		if(#if android virtualPad.buttonA.justPressed || #end controls.ACCEPT) {
 			CoolUtil.browserLoad(creditsStuff[curSelected][3]);
 		}
 		super.update(elapsed);
