@@ -80,7 +80,9 @@ class InfoState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
+                #if android
                 for (touch in FlxG.touches.list)
+                #end
 		if (#if android touch.justPressed || #end controls.ACCEPT)
 		{
 			leftState = true;
