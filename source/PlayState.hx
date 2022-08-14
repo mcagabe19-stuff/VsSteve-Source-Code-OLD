@@ -1428,18 +1428,17 @@ class PlayState extends MusicBeatState
 			achievementBlock.antialiasing = false;
 			achievementBlock.alpha = 0;
 			achievementBlock.setGraphicSize(Std.int(achievementBlock.width * 2));
-
-			add(achievementBlock);
                         #elseif android
-                        achievementBlock = new FlxSprite(1100, 300);
+			achievementBlock = new FlxSprite(1100, 300);
 			achievementBlock.frames = Paths.getSparrowAtlas('achievement/BlockAndroid', 'shared');
 			achievementBlock.animation.addByPrefix('Block', 'ACHD', 24, false);
 			achievementBlock.antialiasing = false;
 			achievementBlock.alpha = 0;
 			achievementBlock.setGraphicSize(Std.int(achievementBlock.width * 2));
+			#end
 
 			add(achievementBlock);
-                        #end
+
 
 			blackStuff = new FlxSprite(-100, -100).makeGraphic(FlxG.width * 6, FlxG.height * 6, FlxColor.BLACK);
 			blackStuff.scrollFactor.set();
@@ -1510,7 +1509,7 @@ class PlayState extends MusicBeatState
 
 		add(camFollow);
 
-		FlxG.camera.follow(camFollow, LOCKON, 0.04 * (30 / (cast (Lib.current.getChildAt(0), Main)).getFPS() + 1));
+		FlxG.camera.follow(camFollow, LOCKON, 0.04 * (30 / (cast (Lib.current.getChildAt(0), Main)).getFPS()#if android + 1 #end));
 		// FlxG.camera.setScrollBounds(0, FlxG.width, 0, FlxG.height);
 		FlxG.camera.zoom = defaultCamZoom;
 		FlxG.camera.focusOn(camFollow.getPosition());
@@ -1713,9 +1712,9 @@ class PlayState extends MusicBeatState
 			rep = new Replay("na");
 
                 #if android
-		addVirtualPad(NONE, A_B_C);
+                addVirtualPad(NONE, A_B_C);
                 addPadCamera();
-		#end
+                #end
 
 		super.create();
 	}
@@ -1823,7 +1822,6 @@ class PlayState extends MusicBeatState
 
 		generateStaticArrows(0);
 		generateStaticArrows(1);
-
 
 		#if not html5
 		if (executeModchart)
@@ -3086,11 +3084,11 @@ class PlayState extends MusicBeatState
 			cpuStrums.visible = false;
 		}
 
-		if(#if android virtualPad.buttonA.justPressed || #end FlxG.keys.justPressed.E && FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.regenPotionBind)]) && oneTimeUseRegen == false)
+		if(#if android virtualPad.buttonA.justPressed || #end FlxG.keys.justPressed.E && oneTimeUseRegen == false || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.regenPotionBind)]) && oneTimeUseRegen == false)
 		{
 			Regen();
 		}
-		if(#if android virtualPad.buttonC.justPressed || #end FlxG.keys.justPressed.T && FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.strengthPotionBind)]) && oneTimeUseStrength == false)
+		if(#if android virtualPad.buttonC.justPressed || #end FlxG.keys.justPressed.T && oneTimeUseStrength == false || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.strengthPotionBind)]) && oneTimeUseStrength == false)
 		{
 			Strength();
 		}
@@ -3342,7 +3340,6 @@ class PlayState extends MusicBeatState
 		/* if (FlxG.keys.justPressed.NINE)
 			FlxG.switchState(new Charting()); */
 
-		#if debug
 		if (FlxG.keys.justPressed.EIGHT)
 		{
 			FlxG.switchState(new AnimationDebug(SONG.player2));
@@ -3366,8 +3363,6 @@ class PlayState extends MusicBeatState
 			}
 			#end
 		}
-
-		#end
 
 		if (startingSong)
 		{
@@ -3584,7 +3579,7 @@ class PlayState extends MusicBeatState
 			{
 				var offsetX = 0;
 				var offsetY = 0;
-				#if nit html5
+				#if not html5
 				if (luaModchart != null)
 				{
 					offsetX = luaModchart.getVar("followXOffset", "float");
@@ -4093,7 +4088,7 @@ class PlayState extends MusicBeatState
                 androidControls.visible = false;
                 #end
 
-                #if windows
+                #if desktop
 		if (!loadRep)
 			rep.SaveReplay(saveNotes);
 		else
