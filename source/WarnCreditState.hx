@@ -45,7 +45,7 @@ class WarnCreditState extends MusicBeatState
 			+ "Everything will be complete in the Full Release Update."
 			+ "If you want to still check the current Menu then Press Enter."
 			+ "Be aware that the text might be broken. Press Enter on an Icon to Visit their Social Media:"
-			+ "#if android Touch Your Screen #end or Press Enter to Proceed, Press Escape/Backspace to go Back."
+			+ "#if android Touch Your Screen or #end Press Enter to Proceed, Press Escape/Backspace to go Back."
 			);
 		
 		txt.setFormat("VCR OSD Mono", 32, FlxColor.fromRGB(200, 200, 200), CENTER);
@@ -80,7 +80,9 @@ class WarnCreditState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
+                #if android
                 for (touch in FlxG.touches.list)
+                #end
 		if (#if android touch.justPressed || #end controls.BACK)
 		{
 			leftStateWarn = true;
