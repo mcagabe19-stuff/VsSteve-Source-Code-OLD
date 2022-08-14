@@ -42,11 +42,19 @@ class InfoState extends MusicBeatState
 		kadeLogo.alpha = 0.8;
 		add(kadeLogo);
 		
-                var txt:FlxText = new FlxText(0, 0, FlxG.width,
+                #if desktop
+		var txt:FlxText = new FlxText(0, 0, FlxG.width,
 			"DISCLAIMER!"
-			+ "\n\nIf you're a Content Creator, then you should maybe skip Revenge since its Copyrighted!\nThere's a small WHITE FLASH on Suit Up but should'nt be too bad!\n\nThis Mod is still not Done!!\n\n#id android Touch Your Screen Or #end Press Enter to proceed"
+			+ "\n\nIf you're a Content Creator, then you should maybe skip Revenge since its Copyrighted!\nThere's a small WHITE FLASH on Suit Up but should'nt be too bad!\n\nThis Mod is still not Done!!\n\nPress Space or ESCAPE or ENTER to proceed"
 
 			);
+                #elseif android
+                var txt:FlxText = new FlxText(0, 0, FlxG.width,
+			"DISCLAIMER!"
+			+ "\n\nIf you're a Content Creator, then you should maybe skip Revenge since its Copyrighted!\nThere's a small WHITE FLASH on Suit Up but should'nt be too bad!\n\nThis Mod is still not Done!!\n\nTouch Your Screen to proceed"
+
+			);
+                #end
 		
 		txt.setFormat("VCR OSD Mono", 32, FlxColor.fromRGB(200, 200, 200), CENTER);
 		txt.borderColor = FlxColor.BLACK;
@@ -81,13 +89,19 @@ class InfoState extends MusicBeatState
 	override function update(elapsed:Float)
 	{
                 #if android
-                for (touch in FlxG.touches.list)
-                #end
-		if (#if android touch.justPressed || #end controls.ACCEPT)
+		for (touch in FlxG.touches.list)
+		if (touch.justPressed)
+		{
+			leftState = true;
+			FlxG.switchState(new MainMenuState());
+		} 
+		#else
+		if (controls.BACK || controls.ACCEPT)
 		{
 			leftState = true;
 			FlxG.switchState(new MainMenuState());
 		}
+                #end
 		super.update(elapsed);
 	}
 }
