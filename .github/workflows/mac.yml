@@ -55,4 +55,4 @@ jobs:
         uses: actions/upload-artifact@main
         with:
           name: build64
-          path: 'export/release/mac/bin'
+          path: 'export/release/macos/bin'
