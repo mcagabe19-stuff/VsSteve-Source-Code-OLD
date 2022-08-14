@@ -58,7 +58,7 @@ jobs:
         uses: actions/upload-artifact@main
         with:
           name: build32
-          path: export/release/android/bin/app/build/outputs/apk/debug
+          path: export/release/windows/bin
   build64:
     name: build64
     runs-on: windows-latest
@@ -109,4 +109,4 @@ jobs:
         uses: actions/upload-artifact@main
         with:
           name: build64
-          path: export/release/android/bin/app/build/outputs/apk/debug
+          path: export/release/windows/bin
