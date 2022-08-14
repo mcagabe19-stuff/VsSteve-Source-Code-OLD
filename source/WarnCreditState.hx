@@ -39,14 +39,25 @@ class WarnCreditState extends MusicBeatState
 		kadeLogo.alpha = 0.8;
 		add(kadeLogo);
 
+		#if desktop
 		var txt:FlxText = new FlxText(0, 0, FlxG.width,
 			"This is Credits Menu"
 			+ "Currently, this menu is uncomplete and Buggy, so please be patient."
 			+ "Everything will be complete in the Full Release Update."
 			+ "If you want to still check the current Menu then Press Enter."
 			+ "Be aware that the text might be broken. Press Enter on an Icon to Visit their Social Media:"
-			+ "#if android Touch Your Screen or #end Press Enter to Proceed, Press Escape/Backspace to go Back."
+			+ "Press Enter to Proceed, Press Escape/Backspace to go Back."
 			);
+                #elseif android
+                var txt:FlxText = new FlxText(0, 0, FlxG.width,
+			"This is Credits Menu"
+			+ "Currently, this menu is uncomplete and Buggy, so please be patient."
+			+ "Everything will be complete in the Full Release Update."
+			+ "If you want to still check the current Menu then Press Enter."
+			+ "Be aware that the text might be broken. Press Enter on an Icon to Visit their Social Media:"
+			+ "Touch to Proceed"
+			);
+                #end
 		
 		txt.setFormat("VCR OSD Mono", 32, FlxColor.fromRGB(200, 200, 200), CENTER);
 		txt.borderColor = FlxColor.BLACK;
@@ -80,19 +91,27 @@ class WarnCreditState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
-                #if android
-                for (touch in FlxG.touches.list)
-                #end
-		if (#if android touch.justPressed || #end controls.BACK)
+                #if desktop
+		if (controls.BACK)
 		{
 			leftStateWarn = true;
 			FlxG.switchState(new MainMenuState());
 		}
+                #elseif android
+                        for (touch in FlxG.touches.list)
+		        if (touch.justPressed)
+		        {
+		        leftStateWarn = true;
+		        FlxG.switchState(new Credits());
+		        }
+                #end
+                #if desktop
 		else if (controls.ACCEPT)
 		{
 			leftStateWarn = true;
 			FlxG.switchState(new Credits());
 		}
+                #end
 		super.update(elapsed);
 	}
 }
