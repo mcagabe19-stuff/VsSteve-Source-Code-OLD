@@ -1,6 +1,6 @@
 package;
 
-#if desktop
+#if windows
 import Discord.DiscordClient;
 #end
 import flixel.FlxG;
@@ -55,7 +55,7 @@ class Credits extends MusicBeatState
 
 	override function create()
 	{
-		#if desktop
+		#if windows
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);
 		#end
