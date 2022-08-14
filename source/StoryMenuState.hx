@@ -241,6 +241,10 @@ class StoryMenuState extends MusicBeatState
 
 		trace("Line 165");
 
+                #if android
+		addVirtualPad(LEFT_FULL, A_B);
+		#end
+
 		super.create();
 	}
 
@@ -267,12 +271,12 @@ class StoryMenuState extends MusicBeatState
 		{
 			if (!selectedWeek)
 			{
-				if (controls.RIGHT_P)
+				if (#if android virtualPad.buttonRight.justPressed || #end controls.RIGHT_P)
 				{
 					changeWeek(-1);
 				}
 
-				if (controls.LEFT_P)
+				if (#if android virtualPad.buttonLeft.justPressed || #end controls.LEFT_P)
 				{
 					changeWeek(1);
 				}
@@ -289,24 +293,24 @@ class StoryMenuState extends MusicBeatState
 				else
 					leftArrow.animation.play('idle');
 					
-				if (controls.UP_P)
+				if (#if android virtualPad.buttonUp.justPressed || #end controls.UP_P)
 					{
 					upArrow.animation.play('press'); 
 					FlxG.sound.play(Paths.sound('scrollMenu'));
 					}
-				if (controls.DOWN_P)
+				if (#if android virtualPad.buttonDown.justPressed || #end controls.DOWN_P)
 					{
 					downArrow.animation.play('press');
 					FlxG.sound.play(Paths.sound('scrollMenu'));
 					}
 					
-				if (controls.UP_P)
+				if (#if android virtualPad.buttonUp.justPressed || #end controls.UP_P)
 					changeDifficulty(1);
-				if (controls.DOWN_P)
+				if (#if android virtualPad.buttonDown.justPressed || #end controls.DOWN_P)
 					changeDifficulty(-1);
 			}
 
-			if (controls.ACCEPT)
+			if (#if android virtualPad.buttonA.justPressed || #end controls.ACCEPT)
 			{
 				selectWeek();
 			}
