@@ -642,14 +642,6 @@ class PlayState extends MusicBeatState
 					caveLeaves.setGraphicSize(Std.int(caveLeaves.width * daPixelZoom));
 					add(caveLeaves);
 
-					minijukebox = new FlxSprite(580, 540);
-				    minijukebox.frames = Paths.getSparrowAtlas('mine/minijukebox');
-					minijukebox.animation.addByPrefix('bop', 'minijukebox idle', 24, false);
-					minijukebox.scrollFactor.set(0.95, 0.95);
-					minijukebox.setGraphicSize(Std.int(minijukebox.width * 4.5));
-					minijukebox.updateHitbox();
-			 		add(minijukebox);
-
 
 					caveBG.updateHitbox();
 					caveFloor.updateHitbox();
