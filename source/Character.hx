@@ -343,6 +343,73 @@ class Character extends FlxSprite
 
 				antialiasing = false;
 
+                        case 'tiagoswag':
+				iconColor = 'FF800080';
+				frames = Paths.getSparrowAtlas('characters/TiagoSwag');
+				animation.addByPrefix('idle', 'TiagoSwag Idle', 24, false);
+				animation.addByPrefix('singUP', 'TiagoSwag UP NOTE', 24, false);
+				animation.addByPrefix('singLEFT', 'TiagoSwag LEFT NOTE', 24, false);
+				animation.addByPrefix('singRIGHT', 'TiagoSwag RIGHT NOTE', 24, false);
+				animation.addByPrefix('singDOWN', 'TiagoSwag DOWN NOTE', 24, false);
+		
+				addOffset('idle', -3, -3);
+				addOffset("singUP", -18, 14);
+				addOffset("singRIGHT", -4, -21);
+				addOffset("singLEFT", 19, -5);
+				addOffset("singDOWN", 12, -12);
+		
+				playAnim('idle');
+		
+				setGraphicSize(Std.int(width * 6));
+				updateHitbox();
+
+				antialiasing = false;
+
+                        case 'stevematt':
+				iconColor = 'FF2B5480';
+				frames = Paths.getSparrowAtlas('characters/stevematt');
+				animation.addByPrefix('idle', 'steve Idle', 24, false);
+				animation.addByPrefix('singUP', 'steve UP NOTE', 24, false);
+				animation.addByPrefix('singLEFT', 'steve LEFT NOTE', 24, false);
+				animation.addByPrefix('singRIGHT', 'steve RIGHT NOTE', 24, false);
+				animation.addByPrefix('singDOWN', 'steve DOWN NOTE', 24, false);
+	
+				addOffset('idle');
+				addOffset("singUP", 5, 37);
+				addOffset("singRIGHT");
+				addOffset("singLEFT", 40);
+				addOffset("singDOWN", 14);
+				playAnim('idle');
+	
+				setGraphicSize(Std.int(width * 6));
+				updateHitbox();
+	
+				antialiasing = false;
+
+
+                       case 'stevefnm':
+				iconColor = 'FF2B5480';
+				frames = Paths.getSparrowAtlas('characters/stevefnm');
+				animation.addByPrefix('idle', 'stevefnm Idle', 24, false);
+				animation.addByPrefix('singUP', 'stevefnm up', 24, false);
+				animation.addByPrefix('singLEFT', 'stevefnm left', 24, false);
+				animation.addByPrefix('singRIGHT', 'stevefnm right', 24, false);
+				animation.addByPrefix('singDOWN', 'stevefnm down', 24, false);
+
+
+				addOffset('idle', -250, -260);
+				addOffset("singUP", -260, -260);
+				addOffset("singRIGHT", -252, -260);
+				addOffset("singLEFT", -250, -260);
+				addOffset("singDOWN", -248, -267);
+
+				playAnim('idle');
+
+				setGraphicSize(Std.int(width * 6));
+				updateHitbox();
+
+				antialiasing = false;
+
 
 			case 'senpai-angry':
 				iconColor = 'FF264B73';
