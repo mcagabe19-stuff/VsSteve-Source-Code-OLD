@@ -633,7 +633,6 @@ class PlayState extends MusicBeatState
 					//lanterns.x -= 500;
 					//lanterns.setGraphicSize(Std.int(lanterns.width * 6.5));
 
-
 					var caveLeaves:FlxSprite = new FlxSprite(repositionShit, -40);
 					caveLeaves.frames = Paths.getSparrowAtlas('cave/leaves','week6');
 					caveLeaves.animation.addByPrefix('leaves', 'leaves', 24, true);
@@ -642,6 +641,13 @@ class PlayState extends MusicBeatState
 					caveLeaves.setGraphicSize(Std.int(caveLeaves.width * daPixelZoom));
 					add(caveLeaves);
 
+                                        minijukebox = new FlxSprite(580, 540);
+				        minijukebox.frames = Paths.getSparrowAtlas('mine/minijukebox');
+					minijukebox.animation.addByPrefix('bop', 'minijukebox idle', 24, false);
+					minijukebox.scrollFactor.set(0.95, 0.95);
+					minijukebox.setGraphicSize(Std.int(minijukebox.width * 4.5));
+					minijukebox.updateHitbox();
+			 		add(minijukebox);
 
 					caveBG.updateHitbox();
 					caveFloor.updateHitbox();
