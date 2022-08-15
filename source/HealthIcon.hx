@@ -38,9 +38,9 @@ class HealthIcon extends FlxSprite
 		animation.add('jaziel', [28, 28, 28], 0, false, isPlayer);
 		animation.add('bos', [29, 29, 29], 0, false, isPlayer);
 		animation.add('irfan', [30, 30, 30], 0, false, isPlayer);
-                animation.add('tiago', [31, 32, 32], 0, false, isPlayer);
-		animation.add('tiagoswag', [33, 34, 34], 0, false, isPlayer);
-                animation.add('gabo', [35, 36, 36], 0, false, isPlayer);
+                animation.add('tiago', [34, 35, 35], 0, false, isPlayer);
+		animation.add('tiagoswag', [36, 37, 37], 0, false, isPlayer);
+                animation.add('gabo', [38, 39, 39], 0, false, isPlayer);
 		animation.play(char);
 
 		scrollFactor.set();
