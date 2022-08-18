@@ -5538,7 +5538,7 @@ class PlayState extends MusicBeatState
 
 			// Dad doesnt interupt his own notes
 			if (SONG.notes[Math.floor(curStep / 16)].mustHitSection && dad.animation.curAnim.name != 'hit' && dad.animation.curAnim.name != 'bonk' && dad.animation.curAnim.name != 'prepare' && dad.animation.curAnim.name != 'unequipPickaxe' && dad.curCharacter != 'gf')
-				dad.dance();
+				dad.playAnim('idle');
 		}
 		// FlxG.log.add('change bpm' + SONG.notes[Std.int(curStep / 16)].changeBPM);
 		wiggleShit.update(Conductor.crochet);
