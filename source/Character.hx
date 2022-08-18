@@ -334,7 +334,7 @@ class Character extends FlxSprite
 				animation.addByPrefix('singRIGHT', 'Tiago RIGHT NOTE', 24, false);
 				animation.addByPrefix('singDOWN', 'Tiago DOWN NOTE', 24, false);
 			        
-                                addOffest('idle', -3, -3);
+                                addOffset('idle', -3, -3);
 				addOffset("hit", -3, -3);
                                 addOffset("prepare", -3, -3);
                                 addOffset("bonk", -3, -3);
