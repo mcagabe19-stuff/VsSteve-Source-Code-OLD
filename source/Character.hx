@@ -325,20 +325,12 @@ class Character extends FlxSprite
 				iconColor = 'FF800080';
 				frames = Paths.getSparrowAtlas('characters/Tiago');
 				animation.addByPrefix('idle', 'Tiago Idle', 24, false);
-                                animation.addByPrefix('hit', 'Tiago Idle', 24, false);
-                                animation.addByPrefix('prepare', 'Tiago Idle', 24, false);
-                                animation.addByPrefix('bonk', 'Tiago Idle', 24, false);
-                                animation.addByPrefix('unequipPickaxe', 'Tiago Idle', 24, false);
 				animation.addByPrefix('singUP', 'Tiago UP NOTE', 24, false);
 				animation.addByPrefix('singLEFT', 'Tiago LEFT NOTE', 24, false);
 				animation.addByPrefix('singRIGHT', 'Tiago RIGHT NOTE', 24, false);
 				animation.addByPrefix('singDOWN', 'Tiago DOWN NOTE', 24, false);
 			        
                                 addOffset('idle', -3, -3);
-				addOffset("hit", -3, -3);
-                                addOffset("prepare", -3, -3);
-                                addOffset("bonk", -3, -3);
-                                addOffset("unequipPickaxe", -3, -3);
 				addOffset("singUP", -18, 14);
 				addOffset("singRIGHT", -4, -21);
 				addOffset("singLEFT", 19, -5);
@@ -355,20 +347,12 @@ class Character extends FlxSprite
 				iconColor = 'FF800080';
 				frames = Paths.getSparrowAtlas('characters/TiagoSwag');
 				animation.addByPrefix('idle', 'TiagoSwag Idle', 24, false);
-                                animation.addByPrefix('hit', 'TiagoSwag Idle', 24, false);
-                                animation.addByPrefix('prepare', 'TiagoSwag Idle', 24, false);
-                                animation.addByPrefix('bonk', 'TiagoSwag Idle', 24, false);
-                                animation.addByPrefix('unequipPickaxe', 'TiagoSwag Idle', 24, false);
 				animation.addByPrefix('singUP', 'TiagoSwag UP NOTE', 24, false);
 				animation.addByPrefix('singLEFT', 'TiagoSwag LEFT NOTE', 24, false);
 				animation.addByPrefix('singRIGHT', 'TiagoSwag RIGHT NOTE', 24, false);
 				animation.addByPrefix('singDOWN', 'TiagoSwag DOWN NOTE', 24, false);
 		
 				addOffset('idle', -3, -3);
-                                addOffset("hit", -3, -3);
-                                addOffset("prepare", -3, -3);
-                                addOffset("bonk", -3, -3);
-                                addOffset("unequipPickaxe", -3, -3);
 				addOffset("singUP", -18, 14);
 				addOffset("singRIGHT", -4, -21);
 				addOffset("singLEFT", 19, -5);
