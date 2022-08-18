@@ -335,10 +335,10 @@ class Character extends FlxSprite
 				animation.addByPrefix('singDOWN', 'Tiago DOWN NOTE', 24, false);
 			        
                                 addOffest('idle', -3, -3);
-				addOffset('hit', -3, -3);
-                                addOffset('prepare', -3, -3);
-                                addOffset('bonk', -3, -3);
-                                addOffset('unequipPickaxe', -3, -3);
+				addOffset("hit", -3, -3);
+                                addOffset("prepare", -3, -3);
+                                addOffset("bonk", -3, -3);
+                                addOffset("unequipPickaxe", -3, -3);
 				addOffset("singUP", -18, 14);
 				addOffset("singRIGHT", -4, -21);
 				addOffset("singLEFT", 19, -5);
@@ -365,10 +365,10 @@ class Character extends FlxSprite
 				animation.addByPrefix('singDOWN', 'TiagoSwag DOWN NOTE', 24, false);
 		
 				addOffset('idle', -3, -3);
-                                addOffset('hit', -3, -3);
-                                addOffset('prepare', -3, -3);
-                                addOffset('bonk', -3, -3);
-                                addOffset('unequipPickaxe', -3, -3);
+                                addOffset("hit", -3, -3);
+                                addOffset("prepare", -3, -3);
+                                addOffset("bonk", -3, -3);
+                                addOffset("unequipPickaxe", -3, -3);
 				addOffset("singUP", -18, 14);
 				addOffset("singRIGHT", -4, -21);
 				addOffset("singLEFT", 19, -5);
