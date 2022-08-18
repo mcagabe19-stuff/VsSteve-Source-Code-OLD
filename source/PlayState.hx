@@ -3099,11 +3099,11 @@ class PlayState extends MusicBeatState
 			}
 		}
  
-		if (!SONG.song.toLowerCase() == 'dev battle' && dad.animation.curAnim.name == 'hit' || dad.animation.curAnim.name == 'prepare' || dad.animation.curAnim.name == 'bonk' || dad.animation.curAnim.name == 'unequipPickaxe')
+		if (dad.animation.curAnim.name == 'hit' || dad.animation.curAnim.name == 'prepare' || dad.animation.curAnim.name == 'bonk' || dad.animation.curAnim.name == 'unequipPickaxe')
 		{
 			if (dad.animation.finished)
 			{
-				dad.dance();
+				dad.playAnim('idle');
 			}
 		}
 
