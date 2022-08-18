@@ -4,20 +4,22 @@ package;
 import android.Hardware;
 import android.Permissions;
 import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
 import android.os.Environment;
 #end
 import flash.system.System;
 import flixel.FlxG;
-import flixel.util.FlxStringUtil;
 import haxe.CallStack.StackItem;
 import haxe.CallStack;
 import haxe.io.Path;
 import lime.app.Application;
-import openfl.events.UncaughtErrorEvent;
-import openfl.utils.Assets as OpenFlAssets;
 import openfl.Lib;
+import openfl.events.UncaughtErrorEvent;
+import openfl.utils.Assets;
 import sys.FileSystem;
 import sys.io.File;
+
+using StringTools;
 
 /**
  * ...
@@ -26,7 +28,6 @@ import sys.io.File;
  */
 class SUtil
 {
-
 	/**
 	 * Uncaught error handler, original made by: sqirra-rng
 	 */
@@ -41,26 +42,31 @@ class SUtil
 			{
 				switch (stackItem)
 				{
+					case CFunction:
+						errMsg += 'a C function\n';
+					case Module(m):
+						errMsg += 'module ' + m + '\n';
 					case FilePos(s, file, line, column):
 						errMsg += file + ' (line ' + line + ')\n';
-					default:
-						Sys.println(stackItem);
+					case Method(cname, meth):
+						errMsg += cname == null ? "<unknown>" : cname + '.' + meth + '\n';
+					case LocalFunction(n):
+						errMsg += 'local function ' + n + '\n';
 				}
 			}
 
 			errMsg += u.error;
 
-			Sys.println(errMsg);
-			Application.current.window.alert(errMsg, 'Error!');
-
 			try
 			{}
+			#if android
 			catch (e:Dynamic)
-                                #if android
-				Hardware.toast("Error!\nClouldn't save the crash dump because:\n" + e, 2);
-                                #end
+			Hardware.toast("Error!\nClouldn't save the crash dump because:\n" + e, ToastType.LENGTH_LONG);
+			#end
+
+			Sys.println(errMsg);
+			Application.current.window.alert(errMsg, 'Error!');
 
 			System.exit(1);
 		});
 	}
-}
