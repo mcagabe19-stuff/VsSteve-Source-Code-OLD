@@ -3098,8 +3098,8 @@ class PlayState extends MusicBeatState
 			   boyfriend.playAnim('block', true);
 			}
 		}
-
-		if (dad.animation.curAnim.name == 'hit' || dad.animation.curAnim.name == 'prepare' || dad.animation.curAnim.name == 'bonk' || dad.animation.curAnim.name == 'unequipPickaxe')
+ 
+		if (dad.animation.curAnim.name == 'hit' || dad.animation.curAnim.name == 'prepare' || dad.animation.curAnim.name == 'bonk' || dad.animation.curAnim.name == 'unequipPickaxe' && SONG.song.toLowerCase() != 'dev battle')
 		{
 			if (dad.animation.finished)
 			{
