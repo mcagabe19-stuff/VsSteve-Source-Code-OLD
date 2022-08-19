@@ -5,7 +5,7 @@ Overseen OLD:alexpickaxe:5
 Iron Picks OLD:alexpickaxe:5
 Underrated OLD:alex:5
 Tick Tock OLD:alexchill:5
-Dev Battle:tiagoswag:6
+Dev Battle:tiago:6
 Training:stevematt:6
 Fisticuffs:stevematt:6
 fast travel:stevehorse:6
@@ -14,4 +14,4 @@ little-man:smollalex:6
 mine diamonds:alex:6
 minecraft:alexpickaxe:6
 Endless:endless:6
-purple traces:idk:6
+purple traces:tiago:6
