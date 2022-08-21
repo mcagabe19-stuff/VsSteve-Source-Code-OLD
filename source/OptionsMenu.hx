@@ -128,7 +128,7 @@ class OptionsMenu extends MusicBeatState
 		if(acceptInput)
 		{
 
-			if (#if android virtualPad.buttonB.justPressed || #end controls.BACK && !isCat)
+			if (controls.BACK && !isCat)
 				FlxG.switchState(new MainMenuState());
 			else if (#if android virtualPad.buttonB.justPressed || #end controls.BACK)
 			{
