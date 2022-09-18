@@ -28,7 +28,7 @@ jobs:
           haxelib install lime-samples 6.2.0 --quiet
           haxelib git openfl https://github.com/mcagabe19/fastfl-9.0.2.git
           haxelib install openfl-samples 8.7.0 --quiet
-          haxelib git newgrounds https://github.com/Geokureli/Newgrounds.git
+          haxelib install newgrounds 1.1.5 --quiet
           haxelib install actuate 1.8.7 --quiet
           haxelib install box2d 1.2.2 --quiet
           haxelib install layout 1.2.0 --quiet
