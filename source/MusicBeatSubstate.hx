@@ -80,24 +80,6 @@ class MusicBeatSubstate extends FlxSubState
 		#end
 	}
 
-	override function destroy()
-	{
-		#if android
-		if (trackedinputsUI != [])
-			controls.removeFlxInput(trackedinputsUI);
-		#end
-
-		super.destroy();
-
-		#if android
-		if (virtualPad != null)
-		{
-			virtualPad = FlxDestroyUtil.destroy(virtualPad);
-			virtualPad = null;
-		}
-		#end
-	}
-
 	override function update(elapsed:Float)
 	{
 		//everyStep();
