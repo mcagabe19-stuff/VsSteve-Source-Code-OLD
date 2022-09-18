@@ -8,6 +8,78 @@ on: [workflow_dispatch]
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
+  buildarmv6:
+    name: buildarmv6
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+
+      - name: Setup Android NDK
+        uses: nttld/setup-ndk@v1.0.6
+        id: setup-ndk
+        with:
+          ndk-version: r11c
+
+      - name: Setup Java JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 8
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@main
+
+      - name: Setup Haxe
+        uses: krdlab/setup-haxe@master
+        with:
+          haxe-version: 4.1.5
+
+      - name: Install Haxelib
+        run: |
+          haxelib setup ~/haxelib
+          haxelib install hxcpp > /dev/null
+          haxelib install lime 7.8.0 --quiet
+          haxelib install lime-samples 6.2.0 --quiet
+          haxelib git openfl https://github.com/mcagabe19/fastfl-9.0.2.git
+          haxelib install openfl-samples 8.7.0 --quiet
+          haxelib install newgrounds 1.2.0 --quiet
+          haxelib install actuate 1.8.7 --quiet
+          haxelib install box2d 1.2.2 --quiet
+          haxelib install layout 1.2.0 --quiet
+          haxelib install systools 1.1.0 --quiet
+          haxelib --never install flixel 4.8.1 --quiet
+          haxelib install flixel-tools 1.5.0 --quiet
+          haxelib install flixel-ui 2.3.2 --quiet
+          haxelib install hscript 2.3.0 --quiet
+          haxelib install flixel-addons 2.8.0 --quiet
+          haxelib install flixel-demos 2.7.2 --quiet
+          haxelib install flixel-templates 2.6.4 --quiet
+          haxelib git faxe https://github.com/uhrobots/faxe.git
+          haxelib git linc_luajit https://github.com/91ebagacm/linc_luajit.git
+          haxelib git polymod https://github.com/MasterEric/polymod.git
+          haxelib git extension-androidtools https://github.com/91ebagacm/extension-androidtools.git
+
+      - name: Create Version Tag
+        run: echo "${{github.run_id}}" > VERSION
+
+      - name: Setup Lime
+        run: |
+          haxelib run lime setup -alias -y
+          haxelib run lime config ANDROID_SDK $ANDROID_HOME
+          haxelib run lime config ANDROID_NDK_ROOT $ANDROID_NDK_HOME
+          haxelib run lime config JAVA_HOME $JAVA_HOME
+          haxelib run lime config ANDROID_SETUP true
+        env:
+          ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
+
+      - name: Compile
+        run: haxelib run lime build android -D analyzer-optimize -armv6 --app-version="4.0.0-${{ github.run_id}}"
+
+      - name: Publish Artifact
+        uses: actions/upload-artifact@main
+        with:
+          name: buildarmv6
+          path: export/release/android/bin/app/build/outputs/apk/debug
   buildarmv7:
     name: buildarmv7
     runs-on: ubuntu-latest
