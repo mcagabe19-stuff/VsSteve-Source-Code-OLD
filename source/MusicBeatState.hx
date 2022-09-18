@@ -32,7 +32,7 @@ class MusicBeatState extends FlxUIState
 	inline function get_controls():Controls
 		return PlayerSettings.player1.controls;
 
-		#if android
+	#if android
 	var androidControls:AndroidControls;
 	var virtualPad:FlxVirtualPad;
 	var trackedinputsUI:Array<FlxActionInput> = [];
@@ -131,6 +131,7 @@ class MusicBeatState extends FlxUIState
 		}
 		#end
 	}
+
 	override function create()
 	{
 		(cast (Lib.current.getChildAt(0), Main)).setFPSCap(FlxG.save.data.fpsCap);
