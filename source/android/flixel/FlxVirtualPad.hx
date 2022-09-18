@@ -10,12 +10,37 @@ import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.graphics.FlxGraphic;
 import openfl.utils.Assets;
 
+enum FlxDPadMode
+{
+	UP_DOWN;
+	LEFT_RIGHT;
+	UP_LEFT_RIGHT;
+	LEFT_FULL;
+	RIGHT_FULL;
+	BOTH_FULL;
+	NONE;
+}
+
+enum FlxActionMode
+{
+	A;
+	B;
+	A_B;
+	A_B_C;
+	A_B_E;
+	A_B_X_Y;
+	A_B_C_X_Y;
+	A_B_C_X_Y_Z;
+	A_B_C_D_V_X_Y_Z;
+	NONE;
+}
+
 /**
  * A gamepad.
  * It's easy to customize the layout.
  *
- * @original author Ka Wing Chin
- * @modification's author: Saw (M.A. Jigsaw)
+ * @author Ka Wing Chin
+ * @author Mihai Alexandru (M.A. Jigsaw)
  */
 class FlxVirtualPad extends FlxSpriteGroup
 {
@@ -48,8 +73,6 @@ class FlxVirtualPad extends FlxSpriteGroup
 	public function new(DPad:FlxDPadMode, Action:FlxActionMode)
 	{
 		super();
-
-		scrollFactor.set();
 
 		switch (DPad)
 		{
@@ -131,6 +154,8 @@ class FlxVirtualPad extends FlxSpriteGroup
 				add(buttonA = createButton(FlxG.width - 132, FlxG.height - 135, 132, 127, 'a', 0xFF0000));
 			case NONE: // do nothing
 		}
+
+		scrollFactor.set();
 	}
 
 	/**
@@ -173,35 +198,10 @@ class FlxVirtualPad extends FlxSpriteGroup
 		button.immovable = true;
 		button.scrollFactor.set();
 		button.color = Color;
-		button.alpha = AndroidControls.getOpacity();
+		button.alpha = AndroidControls.getOpacity(false);
 		#if FLX_DEBUG
 		button.ignoreDrawDebug = true;
 		#end
 		return button;
 	}
-}
-
-enum FlxDPadMode
-{
-	UP_DOWN;
-	LEFT_RIGHT;
-	UP_LEFT_RIGHT;
-	LEFT_FULL;
-	RIGHT_FULL;
-	BOTH_FULL;
-	NONE;
-}
-
-enum FlxActionMode
-{
-	A;
-	B;
-	A_B;
-	A_B_C;
-	A_B_E;
-	A_B_X_Y;
-	A_B_C_X_Y;
-	A_B_C_X_Y_Z;
-	A_B_C_D_V_X_Y_Z;
-	NONE;
 }
