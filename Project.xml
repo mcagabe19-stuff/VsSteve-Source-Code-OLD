@@ -143,19 +143,19 @@
 	<haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
 
 	<!--Make's-the-Game-use-less-ram-->
-	<haxedef name="HXCPP_GC_BIG_BLOCKS"/>
+	<haxedef name="HXCPP_GC_BIG_BLOCKS" />
 
 	<!--Always-enable-Null-Object-Reference-check-->
 	<haxedef name="HXCPP_CHECK_POINTER" if="release" />
 	<haxedef name="HXCPP_STACK_LINE" if="release" />
 
-	<!--Android-stuff-->
-	<android permission="android.permission.ACCESS_NETWORK_STATE"/>
-        <android permission="android.permission.ACCESS_WIFI_STATE"/>
-	<android permission="android.permission.INTERNET"/>
-        <android target-sdk-version="29" />
-        <android gradle-version="5.4.1" />
-        <android gradle-plugin="3.5.0" />
+	<!--Android-Stuff-->
+	<config:android permission="android.permission.ACCESS_NETWORK_STATE" />
+	<config:android permission="android.permission.ACCESS_WIFI_STATE" />
+	<config:android permission="android.permission.INTERNET" />
+        <config:android target-sdk-version="29" />
+        <config:android gradle-version="5.4.1" />
+        <config:android gradle-plugin="3.5.0" />
 
 	<!-- _________________________________ Custom _______________________________ -->
 
