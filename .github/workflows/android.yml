@@ -152,8 +152,8 @@ jobs:
         with:
           name: buildarm64
           path: export/release/android/bin/app/build/outputs/apk/debug
-  buildx86:
-    name: buildx86
+  build86:
+    name: build86
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -222,5 +222,5 @@ jobs:
       - name: Publish Artifact
         uses: actions/upload-artifact@main
         with:
-          name: buildx86
+          name: build86
           path: export/release/android/bin/app/build/outputs/apk/debug
