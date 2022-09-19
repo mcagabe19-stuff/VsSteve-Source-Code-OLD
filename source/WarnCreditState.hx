@@ -48,7 +48,7 @@ class WarnCreditState extends MusicBeatState
 			+ "Be aware that the text might be broken. Press Enter on an Icon to Visit their Social Media:"
 			+ "Press Enter to Proceed, Press Escape/Backspace to go Back."
 			);
-                #elseif android
+                #elseif android || html5
                 var txt:FlxText = new FlxText(0, 0, FlxG.width,
 			"This is Credits Menu"
 			+ "Currently, this menu is uncomplete and Buggy, so please be patient."
