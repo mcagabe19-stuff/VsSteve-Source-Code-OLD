@@ -55,8 +55,10 @@ class SUtil
 
 			try
 			{}
+                        #if not html5
 			Sys.println(errMsg);
 			Lib.application.window.alert(errMsg, 'Error!');
+                        #end
 
 			System.exit(1);
 		});
