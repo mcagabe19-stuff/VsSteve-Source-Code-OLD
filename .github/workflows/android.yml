@@ -55,7 +55,7 @@ jobs:
           haxelib install flixel-demos 2.7.3 --quiet
           haxelib install flixel-templates 2.6.5 --quiet
           haxelib git faxe https://github.com/uhrobots/faxe.git
-          haxelib git linc_luajit https://github.com/91ebagacm/linc_luajit.git
+          haxelib git linc_luajit https://github.com/sirox228/linc_luajit.git
           haxelib git polymod https://github.com/mcagabe19/polymod-for-steve.git
           haxelib git extension-androidtools https://github.com/91ebagacm/extension-androidtools.git
 
@@ -73,7 +73,7 @@ jobs:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
 
       - name: Compile
-        run: haxelib run lime build android -D macro-times -D analyzer-optimize -armv7 --app-version="4.0.0-${{ github.run_id}}"
+        run: haxelib run lime build android -D luajit_static -D macro-times -D analyzer-optimize -armv7 --app-version="4.0.0-${{ github.run_id}}"
 
       - name: Publish Artifact
         uses: actions/upload-artifact@main
@@ -127,7 +127,7 @@ jobs:
           haxelib install flixel-demos 2.7.3 --quiet
           haxelib install flixel-templates 2.6.5 --quiet
           haxelib git faxe https://github.com/uhrobots/faxe.git
-          haxelib git linc_luajit https://github.com/91ebagacm/linc_luajit.git
+          haxelib git linc_luajit https://github.com/sirox228/linc_luajit.git
           haxelib git polymod https://github.com/mcagabe19/polymod-for-steve.git
           haxelib git extension-androidtools https://github.com/91ebagacm/extension-androidtools.git
 
@@ -145,7 +145,7 @@ jobs:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
 
       - name: Compile
-        run: haxelib run lime build android -D macro-times -D analyzer-optimize -arm64 --app-version="4.0.0-${{ github.run_id}}"
+        run: haxelib run lime build android -D luajit_static -D macro-times -D analyzer-optimize -arm64 --app-version="4.0.0-${{ github.run_id}}"
 
       - name: Publish Artifact
         uses: actions/upload-artifact@main
@@ -199,7 +199,7 @@ jobs:
           haxelib install flixel-demos 2.7.3 --quiet
           haxelib install flixel-templates 2.6.5 --quiet
           haxelib git faxe https://github.com/uhrobots/faxe.git
-          haxelib git linc_luajit https://github.com/91ebagacm/linc_luajit.git
+          haxelib git linc_luajit https://github.com/sirox228/linc_luajit.git
           haxelib git polymod https://github.com/mcagabe19/polymod-for-steve.git
           haxelib git extension-androidtools https://github.com/91ebagacm/extension-androidtools.git
 
@@ -217,7 +217,7 @@ jobs:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
 
       - name: Compile
-        run: haxelib run lime build android -D macro-times -D analyzer-optimize -32 --app-version="4.0.0-${{ github.run_id}}"
+        run: haxelib run lime build android -D luajit_static -D macro-times -D analyzer-optimize -32 --app-version="4.0.0-${{ github.run_id}}"
 
       - name: Publish Artifact
         uses: actions/upload-artifact@main
