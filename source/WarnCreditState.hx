@@ -48,7 +48,7 @@ class WarnCreditState extends MusicBeatState
 			+ "Be aware that the text might be broken. Press Enter on an Icon to Visit their Social Media:"
 			+ "Press Enter to Proceed, Press Escape/Backspace to go Back."
 			);
-                #elseif android && html5
+                #elseif android
                 var txt:FlxText = new FlxText(0, 0, FlxG.width,
 			"This is Credits Menu"
 			+ "Currently, this menu is uncomplete and Buggy, so please be patient."
@@ -97,7 +97,7 @@ class WarnCreditState extends MusicBeatState
 			leftStateWarn = true;
 			FlxG.switchState(new MainMenuState());
 		}
-                #elseif android && html5
+                #elseif android
                         for (touch in FlxG.touches.list)
 		        if (touch.justPressed)
 		        {
