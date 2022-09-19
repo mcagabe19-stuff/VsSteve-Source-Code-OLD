@@ -96,6 +96,25 @@ class DFJKOption extends Option
 	}
 }
 
+class MiddleScroll extends Option
+{
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+	}
+	public override function press():Bool
+	{
+		FlxG.save.data.middleScroll = !FlxG.save.data.middleScroll;
+		display = updateDisplay();
+		return true;
+	}
+
+	private override function updateDisplay():String
+	{
+		return "MiddleScroll " + (!FlxG.save.data.middleScroll ? "off" : "on");
+	}
+}
 
 class DownscrollOption extends Option
 {
