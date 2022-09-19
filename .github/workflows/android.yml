@@ -19,12 +19,12 @@ jobs:
         uses: nttld/setup-ndk@v1.0.6
         id: setup-ndk
         with:
-          ndk-version: r20b
+          ndk-version: r21e
 
       - name: Setup Java JDK
         uses: actions/setup-java@v1
         with:
-          java-version: 8
+          java-version: 11
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@main
@@ -91,12 +91,12 @@ jobs:
         uses: nttld/setup-ndk@v1.0.6
         id: setup-ndk
         with:
-          ndk-version: r20b
+          ndk-version: r21e
 
       - name: Setup Java JDK
         uses: actions/setup-java@v1
         with:
-          java-version: 8
+          java-version: 11
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@main
@@ -163,12 +163,12 @@ jobs:
         uses: nttld/setup-ndk@v1.0.6
         id: setup-ndk
         with:
-          ndk-version: r20b
+          ndk-version: r21e
 
       - name: Setup Java JDK
         uses: actions/setup-java@v1
         with:
-          java-version: 8
+          java-version: 11
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@main
