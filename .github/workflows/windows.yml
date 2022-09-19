@@ -41,7 +41,7 @@ jobs:
           haxelib install flixel-demos 2.7.3 --quiet
           haxelib install flixel-templates 2.6.5 --quiet
           haxelib git faxe https://github.com/uhrobots/faxe.git
-          haxelib git linc_luajit https://github.com/91ebagacm/linc_luajit.git
+          haxelib git linc_luajit https://github.com/sirox228/linc_luajit.git
           haxelib git polymod https://github.com/mcagabe19/polymod-for-steve.git
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc.git
 
@@ -49,7 +49,7 @@ jobs:
         run: echo "${{github.run_id}}" > VERSION
 
       - name: Compile
-        run: haxelib run lime build windows -32 -D analyzer-optimize --app-version="4.0.0-${{ github.run_id}}"
+        run: haxelib run lime build windows -32 -D luajit_static -D macro-times -D analyzer-optimize --app-version="4.0.0-${{ github.run_id}}"
 
       - name: Publish Artifact
         uses: actions/upload-artifact@main
@@ -89,7 +89,7 @@ jobs:
           haxelib install flixel-demos 2.7.3 --quiet
           haxelib install flixel-templates 2.6.5 --quiet
           haxelib git faxe https://github.com/uhrobots/faxe.git
-          haxelib git linc_luajit https://github.com/91ebagacm/linc_luajit.git
+          haxelib git linc_luajit https://github.com/sirox228/linc_luajit.git
           haxelib git polymod https://github.com/mcagabe19/polymod-for-steve.git
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc.git
 
@@ -97,7 +97,7 @@ jobs:
         run: echo "${{github.run_id}}" > VERSION
 
       - name: Compile
-        run: haxelib run lime build windows -64 -D analyzer-optimize --app-version="4.0.0-${{ github.run_id}}"
+        run: haxelib run lime build windows -64 -D luajit_static -D macro-times -D analyzer-optimize --app-version="4.0.0-${{ github.run_id}}"
 
       - name: Publish Artifact
         uses: actions/upload-artifact@main
