@@ -2978,6 +2978,13 @@ class PlayState extends MusicBeatState
 			babyArrow.x += 50;
 			babyArrow.x += ((FlxG.width / 2) * player);
 
+                        if (FlxG.save.data.middleScroll) {
+				babyArrow.x -= 275;
+				if (player != 1) {
+					babyArrow.visible = false;
+				}
+			}
+
 			cpuStrums.forEach(function(spr:FlxSprite)
 			{					
 				spr.centerOffsets(); //CPU arrows start out slightly off-center
