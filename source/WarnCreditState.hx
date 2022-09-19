@@ -97,7 +97,7 @@ class WarnCreditState extends MusicBeatState
 			leftStateWarn = true;
 			FlxG.switchState(new MainMenuState());
 		}
-                #elseif android
+                #elseif android || html5
                         for (touch in FlxG.touches.list)
 		        if (touch.justPressed)
 		        {
