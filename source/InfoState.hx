@@ -88,7 +88,7 @@ class InfoState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
-                #if android
+                #if android || html5
 		for (touch in FlxG.touches.list)
 		if (touch.justPressed)
 		{
