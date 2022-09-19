@@ -14,8 +14,6 @@ import haxe.io.Path;
 import openfl.Lib;
 import openfl.events.UncaughtErrorEvent;
 import openfl.utils.Assets;
-import sys.FileSystem;
-import sys.io.File;
 
 using StringTools;
 
