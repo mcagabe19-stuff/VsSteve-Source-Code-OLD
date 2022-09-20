@@ -1,17 +1,21 @@
 package android.flixel;
 
 import android.flixel.FlxButton;
-import flash.display.Shape;
-import flash.display.BitmapData;
 import flixel.FlxG;
+import flixel.FlxSprite;
 import flixel.util.FlxDestroyUtil;
+import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.graphics.FlxGraphic;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
 import flixel.group.FlxSpriteGroup;
+import openfl.utils.Assets;
 
 /**
- * A zone with 4 hint's (A hitbox).
- * It's really easy to customize the layout.
+ * A zone with 4 buttons (A hitbox).
+ * It's easy to customize the layout.
  *
- * @author Mihai Alexandru (M.A. Jigsaw)
+ * @author: Saw (M.A. Jigsaw)
  */
 class FlxHitbox extends FlxSpriteGroup
 {
@@ -27,12 +31,12 @@ class FlxHitbox extends FlxSpriteGroup
 	{
 		super();
 
-		add(buttonLeft = createHint(0, 0, Std.int(FlxG.width / 4), FlxG.height, 0xFF00FF));
-		add(buttonDown = createHint(FlxG.width / 4, 0, Std.int(FlxG.width / 4), FlxG.height, 0x00FFFF));
-		add(buttonUp = createHint(FlxG.width / 2, 0, Std.int(FlxG.width / 4), FlxG.height, 0x00FF00));
-		add(buttonRight = createHint((FlxG.width / 2) + (FlxG.width / 4), 0, Std.int(FlxG.width / 4), FlxG.height, 0xFF0000));
-
 		scrollFactor.set();
+
+		add(buttonLeft = createHint(0, 0, 'left', 0xFF00FF));
+		add(buttonDown = createHint(FlxG.width / 4, 0, 'down', 0x00FFFF));
+		add(buttonUp = createHint(FlxG.width / 2, 0, 'up', 0x00FF00));
+		add(buttonRight = createHint((FlxG.width / 2) + (FlxG.width / 4), 0, 'right', 0xFF0000));
 	}
 
 	/**
@@ -48,39 +52,42 @@ class FlxHitbox extends FlxSpriteGroup
 		buttonRight = null;
 	}
 
-	private function createHintGraphic(Width:Int, Height:Int, Color:Int = 0xFFFFFF):BitmapData
+	private function createHint(X:Float, Y:Float, Graphic:String, Color:Int = 0xFFFFFF):FlxButton
 	{
-		var shape:Shape = new Shape();
-		shape.graphics.beginFill(Color);
-		shape.graphics.lineStyle(10, Color, 1);
-		shape.graphics.drawRect(0, 0, Width, Height);
-		shape.graphics.endFill();
-
-		var bitmap:BitmapData = new BitmapData(Width, Height, true, 0);
-		bitmap.draw(shape);
-		return bitmap;
-	}
-
-	private function createHint(X:Float, Y:Float, Width:Int, Height:Int, Color:Int = 0xFFFFFF):FlxButton
-	{
+		var hintTween:FlxTween = null;
 		var hint:FlxButton = new FlxButton(X, Y);
-		hint.loadGraphic(createHintGraphic(Width, Height, Color));
+		hint.loadGraphic(FlxGraphic.fromFrame(FlxAtlasFrames.fromSparrow(Assets.getBitmapData('assets/android/hitbox.png'),
+			Assets.getText('assets/android/hitbox.xml'))
+			.getByName(Graphic)));
+		hint.setGraphicSize(Std.int(FlxG.width / 4), FlxG.height);
+		hint.updateHitbox();
 		hint.solid = false;
 		hint.immovable = true;
 		hint.scrollFactor.set();
+		hint.color = Color;
 		hint.alpha = 0.00001;
 		hint.onDown.callback = function()
 		{
-			if (hint.alpha != AndroidControls.getOpacity(true))
-				hint.alpha = AndroidControls.getOpacity(true);
+			if (hintTween != null)
+				hintTween.cancel();
+
+			hintTween = FlxTween.tween(hint, {alpha: AndroidControls.getOpacity()}, 0.01, {ease: FlxEase.circInOut, onComplete: function(twn:FlxTween)
+			{
+				hintTween = null;
+			}});
 		}
 		hint.onUp.callback = function()
 		{
-			if (hint.alpha != 0.00001)
-				hint.alpha = 0.00001;
+			if (hintTween != null)
+				hintTween.cancel();
+
+			hintTween = FlxTween.tween(hint, {alpha: 0.00001}, 0.1, {ease: FlxEase.circInOut,	onComplete: function(twn:FlxTween)
+			{
+				hintTween = null;
+			}});
 		}
-		hint.onOut.callback = hint.onUp.callback;
 		hint.onOver.callback = hint.onDown.callback;
+		hint.onOut.callback = hint.onUp.callback;
 		#if FLX_DEBUG
 		hint.ignoreDrawDebug = true;
 		#end
