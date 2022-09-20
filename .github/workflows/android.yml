@@ -79,7 +79,7 @@ jobs:
         uses: actions/upload-artifact@main
         with:
           name: buildarmv7
-          path: export/release/android/bin/app/build/outputs/apk/debug/*.apk
+          path: export/release/android/bin/app/build/outputs/apk/debug
 
   buildarm64:
     name: buildarm64
