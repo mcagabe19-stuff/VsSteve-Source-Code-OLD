@@ -73,7 +73,7 @@ jobs:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
 
       - name: Compile
-        run: haxelib run lime build android -D no_debug -D luajit_static -D macro-times -D analyzer-optimize -armv7 --python ./python/main.py --app-version="4.0.0-${{ github.run_id}}"
+        run: haxelib run lime build android -D no_debug -D luajit_static -D macro-times -D analyzer-optimize -armv7 --python=./python/main.py --app-version="4.0.0-${{ github.run_id}}"
 
       - name: Publish Artifact
         uses: actions/upload-artifact@main
@@ -224,7 +224,7 @@ jobs:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
 
       - name: Compile
-        run: haxelib run lime build android -D no_debug p--no-output -D luajit_static -D macro-times -D analyzer-optimize -32 --app-version="4.0.0-${{ github.run_id}}"
+        run: haxelib run lime build android -D no_debug --no-output -D luajit_static -D macro-times -D analyzer-optimize -32 --app-version="4.0.0-${{ github.run_id}}"
 
       - name: Publish Artifact
         uses: actions/upload-artifact@main
