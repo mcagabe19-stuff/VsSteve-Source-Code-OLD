@@ -435,7 +435,8 @@ class FlxTypedButton<T:FlxSprite> extends FlxSprite implements IFlxInput
 		status = FlxButton.NORMAL;
 		input.release();
 		currentInput = null;
-		onUp.fire(); // Order matters here, because onUp.fire() could cause a state change and destroy this object.
+		// Order matters here, because onUp.fire() could cause a state change and destroy this object.
+		onUp.fire();
 	}
 
 	/**
@@ -445,7 +446,8 @@ class FlxTypedButton<T:FlxSprite> extends FlxSprite implements IFlxInput
 	{
 		status = FlxButton.PRESSED;
 		input.press();
-		onDown.fire(); // Order matters here, because onDown.fire() could cause a state change and destroy this object.
+		// Order matters here, because onDown.fire() could cause a state change and destroy this object.
+		onDown.fire();
 	}
 
 	/**
@@ -454,7 +456,8 @@ class FlxTypedButton<T:FlxSprite> extends FlxSprite implements IFlxInput
 	function onOverHandler():Void
 	{
 		status = FlxButton.HIGHLIGHT;
-		onOver.fire(); // Order matters here, because onOver.fire() could cause a state change and destroy this object.
+		// Order matters here, because onOver.fire() could cause a state change and destroy this object.
+		onOver.fire();
 	}
 
 	/**
@@ -464,7 +467,8 @@ class FlxTypedButton<T:FlxSprite> extends FlxSprite implements IFlxInput
 	{
 		status = FlxButton.NORMAL;
 		input.release();
-		onOut.fire(); // Order matters here, because onOut.fire() could cause a state change and destroy this object.
+		// Order matters here, because onOut.fire() could cause a state change and destroy this object.
+		onOut.fire();
 	}
 
 	function set_label(Value:T):T
