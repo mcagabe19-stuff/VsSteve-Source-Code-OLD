@@ -35,14 +35,11 @@ class AndroidControlsSubState extends FlxSubState
 
 	override function create()
 	{
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image("menuBGSM")); // TIAGO THIS HERE INCASE yOUR FORGET LOL -- written by tiago
-
-		bg.setGraphicSize(Std.int(bg.width * 1.1));
-		bg.updateHitbox();
-		bg.screenCenter();
-		bg.antialiasing = false;
-		bg.scale.set(1.3, 1.3);
-		bg.y -= 50;
+		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height,
+			FlxColor.fromHSB(FlxG.random.int(0, 359), FlxG.random.float(0, 0.8), FlxG.random.float(0.3, 1)));
+		bg.alpha = 0.6;
+		bg.scrollFactor.set();
+		add(bg);
 
 		resetButton = new FlxButton(FlxG.width - 200, 50, 'Reset', function()
 		{
@@ -146,8 +143,8 @@ class AndroidControlsSubState extends FlxSubState
 			if (controlsItems[Math.floor(curSelected)] == 'Pad-Custom')
 				AndroidControls.setCustomMode(virtualPad);
 
-			FlxTransitionableState.skipNextTransOut = false;
-			FlxG.switchState(new OptionsMenu());
+			FlxTransitionableState.skipNextTransOut = true;
+			FlxG.resetState();
 		}
 
 		super.update(elapsed);
