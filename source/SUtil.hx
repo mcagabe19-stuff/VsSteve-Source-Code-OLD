@@ -41,7 +41,9 @@ class SUtil
 				/**
 				 * Basically for now i can't force the app to stop while its requesting a android permission, so this makes the app to stop while its requesting the specific permission
 				 */
-				Lib.application.window.alert('You needed grant storage permission for save crash logs' + 'Press Ok to contiune', 'Permissions?');
+				Lib.application.window.alert('You needed grant storage permission for save crash logs'
+					+ 'Press Ok to contiune',
+					'Permissions?');
 			}
 			else
 			{
