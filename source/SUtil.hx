@@ -196,5 +196,5 @@ class SUtil
 		catch (e:Dynamic)
 		Hardware.toast("Error!\nClouldn't copy the file because:\n" + e, ToastType.LENGTH_LONG);
 		#end
-	}
-}*/
+	}*/
+}
