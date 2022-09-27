@@ -83,22 +83,18 @@ class SUtil
 			{
 				switch (stackItem)
 				{
-					case CFunction:
-						errMsg += 'a C function\n';
-					case Module(m):
-						errMsg += 'module ' + m + '\n';
 					case FilePos(s, file, line, column):
 						errMsg += file + ' (line ' + line + ')\n';
-					case Method(cname, meth):
-						errMsg += cname == null ? "<unknown>" : cname + '.' + meth + '\n';
-					case LocalFunction(n):
-						errMsg += 'local function ' + n + '\n';
+					default:
+						Sys.println(stackItem);
 				}
 			}
 
 			errMsg += u.error;
 
-			#if (sys && !ios)
+			println(errMsg);
+			Lib.application.window.alert(errMsg, 'Error!');
+
 			try
 			{
 				if (!FileSystem.exists(SUtil.getPath() + 'logs'))
@@ -113,19 +109,16 @@ class SUtil
 					errMsg
 					+ '\n');
 			}
-			#if android
 			catch (e:Dynamic)
+                        #if android
 			Hardware.toast("Error!\nClouldn't save the crash dump because:\n" + e, ToastType.LENGTH_LONG);
-			#end
-			#end
+                        #end
 
-			println(errMsg);
-			Lib.application.window.alert(errMsg, 'Error!');
 			System.exit(1);
 		});
 	}
 
-	#if (sys && !ios)
+        #if (sys && !ios)
 	public static function saveContent(fileName:String = 'file', fileExtension:String = '.json',
 			fileData:String = 'you forgot to add something in your code lol')
 	{
