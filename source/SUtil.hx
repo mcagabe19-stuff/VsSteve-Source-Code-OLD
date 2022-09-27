@@ -86,7 +86,7 @@ class SUtil
 					case FilePos(s, file, line, column):
 						errMsg += file + ' (line ' + line + ')\n';
 					default:
-						Sys.println(stackItem);
+						println(stackItem);
 				}
 			}
 
