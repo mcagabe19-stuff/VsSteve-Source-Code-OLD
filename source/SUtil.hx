@@ -83,17 +83,20 @@ class SUtil
 			{
 				switch (stackItem)
 				{
+					case CFunction:
+						errMsg += 'a C function\n';
+					case Module(m):
+						errMsg += 'module ' + m + '\n';
 					case FilePos(s, file, line, column):
 						errMsg += file + ' (line ' + line + ')\n';
-					default:
-						Sys.println(stackItem);
+					case Method(cname, meth):
+						errMsg += cname == null ? "<unknown>" : cname + '.' + meth + '\n';
+					case LocalFunction(n):
+						errMsg += 'local function ' + n + '\n';
 				}
 			}
 
 			errMsg += u.error;
-
-			println(errMsg);
-			Lib.application.window.alert(errMsg, 'Error!');
 
 			try
 			{
@@ -102,17 +105,20 @@ class SUtil
 
 				File.saveContent(SUtil.getPath()
 					+ 'logs/'
-					+ Lib.application.meta.get('file')
+					+ Application.current.meta.get('file')
 					+ '-'
 					+ Date.now().toString().replace(' ', '-').replace(':', "'")
 					+ '.log',
 					errMsg
 					+ '\n');
 			}
+			#if android
 			catch (e:Dynamic)
-                        #if android
 			Hardware.toast("Error!\nClouldn't save the crash dump because:\n" + e, ToastType.LENGTH_LONG);
-                        #end
+			#end
+
+			Sys.println(errMsg);
+			Application.current.window.alert(errMsg, 'Error!');
 
 			System.exit(1);
 		});
@@ -151,14 +157,4 @@ class SUtil
 		#end
 	}
 	#end
-
-	private static function println(msg:String):Void
-	{
-		#if sys
-		Sys.println(msg);
-		#else
-		// Pass null to exclude the position.
-		haxe.Log.trace(msg, null);
-		#end
-	}
 }
