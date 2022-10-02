@@ -153,7 +153,7 @@
 	<android permission="android.permission.ACCESS_NETWORK_STATE" />
 	<android permission="android.permission.ACCESS_WIFI_STATE" />
 	<android permission="android.permission.INTERNET" />
-        <android target-sdk-version="28" />
+        <android target-sdk-version="29" />
 
 	<!-- _________________________________ Custom _______________________________ -->
 
