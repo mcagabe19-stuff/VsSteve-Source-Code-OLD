@@ -35,12 +35,11 @@ class SUtil
 	{
 		#if android
 		if (!Permissions.getGrantedPermissions().contains(Permissions.WRITE_EXTERNAL_STORAGE)
-		       && !Permissions.getGrantedPermissions().contains(Permissions.READ_EXTERNAL_STORAGE)
-                          && !Permissions.getGrantedPermissions().contains(Permissions.MANAGE_EXTERNAL_STORAGE))
+		       && !Permissions.getGrantedPermissions().contains(Permissions.READ_EXTERNAL_STORAGE))
 		{
 			if (VERSION.SDK_INT >= VERSION_CODES.M)
 			{
-				Permissions.requestPermissions([Permissions.MANAGE_EXTERNAL_STORAGE, Permissions.WRITE_EXTERNAL_STORAGE, Permissions.READ_EXTERNAL_STORAGE]);
+				Permissions.requestPermissions([Permissions.WRITE_EXTERNAL_STORAGE, Permissions.READ_EXTERNAL_STORAGE]);
 
 				/**
 				 * Basically for now i can't force the app to stop while its requesting a android permission, so this makes the app to stop while its requesting the specific permission
@@ -119,7 +118,7 @@ class SUtil
 			Hardware.toast("Error!\nClouldn't save the crash dump because:\n" + e, ToastType.LENGTH_LONG);
 			#end
 
-			Sys.println(errMsg);
+			haxe.Log.trace(errMsg, null);
 			Application.current.window.alert(errMsg, 'Error!');
 
 			System.exit(1);
