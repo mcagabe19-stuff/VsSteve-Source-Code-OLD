@@ -15,11 +15,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@main
 
-      - name: Setup Java JRE
+      - name: Setup Java JDK
         uses: actions/setup-java@v3.5.1
         with:
           distribution: zulu
-          java-package: jre
           java-version: 11
 
       - name: Setup Haxe
