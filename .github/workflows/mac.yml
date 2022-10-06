@@ -16,10 +16,9 @@ jobs:
         uses: actions/checkout@main
 
       - name: Setup Java JDK
-        uses: actions/setup-java@v3.5.1
-        with:
-          distribution: zulu
-          java-version: 11
+        run: |
+          brew install openjdk
+          sudo ln -sfn /usr/local/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 
       - name: Setup Haxe
         uses: krdlab/setup-haxe@master
