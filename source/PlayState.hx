@@ -3098,7 +3098,7 @@ class PlayState extends MusicBeatState
 			Strength();
 		}
 		if (#if android virtualPad.buttonB.justPressed || #end FlxG.keys.justPressed.SPACE)
-		}
+		{
 		         boyfriend.playAnim('block', true);
                 } 
 		if (dad.animation.curAnim.name == 'hit' || dad.animation.curAnim.name == 'prepare' || dad.animation.curAnim.name == 'bonk' || dad.animation.curAnim.name == 'unequipPickaxe')
