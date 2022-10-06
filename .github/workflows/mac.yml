@@ -17,7 +17,7 @@ jobs:
 
       - name: Setup Java JDK
         run: |
-          brew install openjdk
+          brew reinstall openjdk
           sudo ln -sfn /usr/local/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 
       - name: Setup Haxe
