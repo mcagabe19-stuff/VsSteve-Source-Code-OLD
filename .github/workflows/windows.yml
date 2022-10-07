@@ -152,7 +152,7 @@ jobs:
         with:
           name: build22-32
           path: export/release/windows/bin
-build22-64:
+  build22-64:
     name: Windows Server 2022 (64)
     runs-on: windows-2022
     steps:
