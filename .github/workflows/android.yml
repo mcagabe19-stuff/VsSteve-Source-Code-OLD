@@ -10,7 +10,7 @@ jobs:
   # This workflow contains a single job called "build"
   buildarmv7:
     name: Armv7
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout
         uses: actions/checkout@main
@@ -85,7 +85,7 @@ jobs:
 
   buildarm64:
     name: Arm64
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout
         uses: actions/checkout@main
@@ -159,7 +159,7 @@ jobs:
           path: export/release/android/bin/app/build/outputs/apk/debug
   build86:
     name: x86
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout
         uses: actions/checkout@main
