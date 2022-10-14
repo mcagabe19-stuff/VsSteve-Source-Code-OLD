@@ -8,55 +8,6 @@ on: [workflow_dispatch]
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build1015-64:
-    name: Mac OS 10.15 (64)
-    runs-on: macos-10.15
-    steps:
-      - name: Checkout
-        uses: actions/checkout@main
-
-      - name: Setup Haxe
-        uses: krdlab/setup-haxe@master
-        with:
-          haxe-version: 4.1.5
-
-      - name: Install Haxelib
-        run: |
-          haxelib setup ~/haxelib
-          haxelib install hxcpp 4.2.1 > /dev/null
-          haxelib install lime 7.9.0 --quiet
-          haxelib install lime-samples 7.0.0 --quiet
-          haxelib install openfl 9.1.0 --quiet
-          haxelib install openfl-samples 8.7.0 --quiet
-          haxelib install newgrounds 1.1.4 --quiet
-          haxelib install actuate 1.8.9 --quiet
-          haxelib install box2d 1.2.3 --quiet
-          haxelib install layout 1.2.1 --quiet
-          haxelib install systools 1.1.0 --quiet
-          haxelib --never install flixel 4.9.0 --quiet
-          haxelib install flixel-tools 1.4.4 --quiet
-          haxelib install flixel-ui 2.3.3 --quiet
-          haxelib install hscript 2.4.0 --quiet
-          haxelib install flixel-addons 2.10.0 --quiet
-          haxelib install flixel-demos 2.7.3 --quiet
-          haxelib install flixel-templates 2.6.5 --quiet
-          haxelib git faxe https://github.com/uhrobots/faxe.git
-          haxelib git linc_luajit https://github.com/sirox228/linc_luajit.git
-          haxelib git polymod https://github.com/mcagabe19/polymod-for-steve.git
-          haxelib set openfl 9.1.0
-          haxelib set lime 7.9.0
-
-      - name: Create Version Tag
-        run: echo "${{github.run_id}}" > VERSION
-
-      - name: Compile
-        run: haxelib run lime build mac -64 -D no-compilation -D luajit_static -D macro-times -D analyzer-optimize --app-version="4.0.0-${{ github.run_id}}"
-
-      - name: Publish Artifact
-        uses: actions/upload-artifact@main
-        with:
-          name: build1015-64
-          path: 'export/release/macos/bin'
   build11-64:
     name: Mac OS 11 (64)
     runs-on: macos-11
