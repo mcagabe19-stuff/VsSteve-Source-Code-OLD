@@ -44,6 +44,8 @@ jobs:
           haxelib git linc_luajit https://github.com/sirox228/linc_luajit.git
           haxelib git polymod https://github.com/mcagabe19/polymod-for-steve.git
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc.git
+          haxelib set openfl 9.1.0
+          haxelib set lime 7.9.0
 
       - name: Create Version Tag
         run: echo "${{github.run_id}}" > VERSION
@@ -92,6 +94,8 @@ jobs:
           haxelib git linc_luajit https://github.com/sirox228/linc_luajit.git
           haxelib git polymod https://github.com/mcagabe19/polymod-for-steve.git
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc.git
+          haxelib set openfl 9.1.0
+          haxelib set lime 7.9.0
 
       - name: Create Version Tag
         run: echo "${{github.run_id}}" > VERSION
@@ -140,6 +144,8 @@ jobs:
           haxelib git linc_luajit https://github.com/sirox228/linc_luajit.git
           haxelib git polymod https://github.com/mcagabe19/polymod-for-steve.git
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc.git
+          haxelib set openfl 9.1.0
+          haxelib set lime 7.9.0
 
       - name: Create Version Tag
         run: echo "${{github.run_id}}" > VERSION
@@ -188,6 +194,8 @@ jobs:
           haxelib git linc_luajit https://github.com/sirox228/linc_luajit.git
           haxelib git polymod https://github.com/mcagabe19/polymod-for-steve.git
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc.git
+          haxelib set openfl 9.1.0
+          haxelib set lime 7.9.0
 
       - name: Create Version Tag
         run: echo "${{github.run_id}}" > VERSION
