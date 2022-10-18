@@ -121,7 +121,7 @@ class OptionsMenu extends MusicBeatState
                 if (virtualPad.buttonC.justPressed)
                 {
                 removeVirtualPad();
-		openSubState(new android.AndroidControlsSubState());
+		openSubState(new mobile.MobileControlsSubState());
                 }
                 #end
 
