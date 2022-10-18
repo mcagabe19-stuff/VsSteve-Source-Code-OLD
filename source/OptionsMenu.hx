@@ -27,7 +27,7 @@ class OptionsMenu extends MusicBeatState
 			new DFJKOption(controls),
 			new SpectatorMode("Disables all the HUD Elements and serves for a good Cinematic Gamplay. PRESS 1 to view the HUD In-Game when Enabled."),
 			new DownscrollOption("Change the layout of the strumline."),
-                        new MiddleScroll("toggle the middlescroll"),
+                        new MiddleScroll("Toggle the middlescroll"),
 			new GhostTapOption("Ghost Tapping is when you tap a direction and it doesn't give you a miss."),
 			new Judgement("Customize your Hit Timings (LEFT or RIGHT)"),
 			new FPSCapOption("Cap your FPS"),
