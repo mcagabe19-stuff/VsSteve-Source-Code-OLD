@@ -27,7 +27,7 @@
 	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" vsync="false"/>
 
 	<!--Mobile-specific-->
-	<window if="mobile" orientation="landscape" fullscreen="true" width="1280" height="720" resizable="false" allow-shaders="true" require-shaders="true" />
+	<window if="mobile" orientation="landscape" fullscreen="true" width="1280" height="720" resizable="false" allow-shaders="true" require-shaders="true" allow-high-dpi="true" />
 
 	<!--Switch-specific-->
 	<window if="switch" orientation="landscape" fullscreen="true" width="0" height="0" resizable="true" />
@@ -61,7 +61,7 @@
 		<library name="week6"   preload="false" />
 	</section>
 
-        <assets path="assets/android" if="android"/>
+        <assets path="mobile" rename="assets/mobile" if="mobile" />
 	
 	<assets path="assets/songs"    library="songs"    exclude="*.ogg" if="web"/>
 	<assets path="assets/songs"    library="songs"    exclude="*.mp3" unless="web"/>
@@ -99,7 +99,7 @@
 	<haxelib name="discord_rpc" if="windows"/>
 	<haxelib name="linc_luajit" unless="web"/>
 	<haxelib name="actuate" />
-        <haxelib name="extension-androidtools" if="android"/>
+        <haxelib name="extension-androidtools" if="android" />
 	<!-- <haxelib name="extension-webm" if="desktop" /> -->
 
 	<!-- <haxelib name="hxcpp-debug-server" if="desktop"/> -->
@@ -150,11 +150,11 @@
 	<haxedef name="HXCPP_STACK_LINE" if="release" />
 
 	<!--Android-Stuff-->
-	<android permission="android.permission.ACCESS_NETWORK_STATE" />
-	<android permission="android.permission.ACCESS_WIFI_STATE" />
-	<android permission="android.permission.INTERNET" />
-        <android permission="android.permission.MANAGE_EXTERNAL_STORAGE" />
-        <android target-sdk-version="29" />
+	<config:android permission="android.permission.ACCESS_NETWORK_STATE" />
+	<config:android permission="android.permission.ACCESS_WIFI_STATE" />
+	<config:android permission="android.permission.INTERNET" />
+        <config:android permission="android.permission.MANAGE_EXTERNAL_STORAGE" />
+        <config:android target-sdk-version="29" />
 
 	<!-- _________________________________ Custom _______________________________ -->
 
