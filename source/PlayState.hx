@@ -1419,24 +1419,14 @@ class PlayState extends MusicBeatState
 
 		if (SONG.song.toLowerCase() == 'suit up')
 		{
-                        #if desktop
 			achievementBlock = new FlxSprite(1100, 300);
-			achievementBlock.frames = Paths.getSparrowAtlas('achievement/Block', 'shared');
+			achievementBlock.frames = Paths.getSparrowAtlas(#if mobile 'achievement/BlockAndroid' #else 'achievement/Block' #end, 'shared');//lazy to change Android to Mobile lmfao
 			achievementBlock.animation.addByPrefix('Block', 'ACHD', 24, false);
 			achievementBlock.antialiasing = false;
 			achievementBlock.alpha = 0;
 			achievementBlock.setGraphicSize(Std.int(achievementBlock.width * 2));
-                        #elseif android
-			achievementBlock = new FlxSprite(1100, 300);
-			achievementBlock.frames = Paths.getSparrowAtlas('achievement/BlockAndroid', 'shared');
-			achievementBlock.animation.addByPrefix('Block', 'ACHD', 24, false);
-			achievementBlock.antialiasing = false;
-			achievementBlock.alpha = 0;
-			achievementBlock.setGraphicSize(Std.int(achievementBlock.width * 2));
-			#end
 
 			add(achievementBlock);
-
 
 			blackStuff = new FlxSprite(-100, -100).makeGraphic(FlxG.width * 6, FlxG.height * 6, FlxColor.BLACK);
 			blackStuff.scrollFactor.set();
@@ -1456,9 +1446,6 @@ class PlayState extends MusicBeatState
 			dad.alpha = 0;
 			camHUD.alpha = 0;
 		}
-			
-
-
 
 		if (loadRep)
 		{
@@ -1507,7 +1494,7 @@ class PlayState extends MusicBeatState
 
 		add(camFollow);
 
-		FlxG.camera.follow(camFollow, LOCKON, 0.04 * (30 / (cast (Lib.current.getChildAt(0), Main)).getFPS()#if android + 1 #end));
+		FlxG.camera.follow(camFollow, LOCKON, 0.04 * (30 / (cast (Lib.current.getChildAt(0), Main)).getFPS()#if mobile + 1 #else + 1.5 #end));
 		// FlxG.camera.setScrollBounds(0, FlxG.width, 0, FlxG.height);
 		FlxG.camera.zoom = defaultCamZoom;
 		FlxG.camera.focusOn(camFollow.getPosition());
@@ -1648,10 +1635,6 @@ class PlayState extends MusicBeatState
 		scoreTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
 
-                #if android
-                addAndroidControls();
-                #end
-
 		if (FlxG.save.data.songPosition)
 		{
 			songPosBG.cameras = [camHUD];
@@ -1661,6 +1644,10 @@ class PlayState extends MusicBeatState
 		kadeEngineWatermark.cameras = [camHUD];
 		if (loadRep)
 			replayTxt.cameras = [camHUD];
+
+                #if mobile
+                addMobileControls();
+                #end
 
 		// if (SONG.song == 'South')
 		// FlxG.camera.alpha = 0.7;
@@ -1814,8 +1801,8 @@ class PlayState extends MusicBeatState
 	{
 		inCutscene = false;
 
-                #if android
-                androidControls.visible = true;
+                #if mobile
+                mobileControls.visible = true;
                 #end
 
 		generateStaticArrows(0);
@@ -4084,8 +4071,8 @@ class PlayState extends MusicBeatState
 
 	function endSong():Void
 	{
-                #if android
-                androidControls.visible = false;
+                #if mobile
+                mobileControls.visible = false;
                 #end
 
                 #if desktop
