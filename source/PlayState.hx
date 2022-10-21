@@ -3077,11 +3077,11 @@ class PlayState extends MusicBeatState
 		}
 		if(#if android virtualPad.buttonA.justPressed || #end FlxG.keys.justPressed.E || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.regenPotionBind)]) && oneTimeUseRegen == false)
 		{
-			     Regen();
+           Regen();
 		}
 		if(#if android virtualPad.buttonC.justPressed || #end FlxG.keys.justPressed.T || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.strengthPotionBind)]) && oneTimeUseStrength == false)
 		{
-			     Strength();
+          Strength();
 		}
 		if (#if android virtualPad.buttonB.justPressed || #end FlxG.keys.justPressed.SPACE)
 		{
@@ -5112,7 +5112,7 @@ class PlayState extends MusicBeatState
 			});
 		}
 
-            var oneTimeUseStrength: Bool = false;
+      var oneTimeUseStrength: Bool = false;
 			var strengthActive:Bool = false;
 
 			function Strength()
