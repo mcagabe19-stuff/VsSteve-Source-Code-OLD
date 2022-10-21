@@ -17,4 +17,4 @@ minecraft:alexpickaxe:6
 Endless:endless:6
 purple traces:tiago:6
 _jeb:jeb:6
-fast craft:tuxsteveuoh:6
+last craft:tuxsteveuoh:6
