@@ -21,6 +21,7 @@ class HealthIcon extends FlxSprite
 		animation.add('bfminecraft', [25, 27, 26, 32], 0, false, isPlayer);
 		animation.add('gf-pixel', [6, 8, 7], 0, false, isPlayer);
 		animation.add('gf-christmas', [6, 8, 7], 0, false, isPlayer);
+                animation.add('stevefnm', [9, 10, 11], 0, false, isPlayer);
 		animation.add('tuxsteveuoh', [9, 10, 11], 0, false, isPlayer);
                 animation.add('stevehorse', [9, 10, 11], 0, false, isPlayer);
 		animation.add('tuxsteve', [12, 10, 13], 0, false, isPlayer);
