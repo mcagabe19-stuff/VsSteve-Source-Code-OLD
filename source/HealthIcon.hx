@@ -44,6 +44,7 @@ class HealthIcon extends FlxSprite
 		animation.add('tiagoswag', [36, 37, 37], 0, false, isPlayer);
                 animation.add('gabo', [38, 39, 39], 0, false, isPlayer);
                 animation.add('endless', [40, 41, 42], 0, false, isPlayer);
+                animation.add('jeb', [43, 44, 45], 0, false, isPlayer);
 		animation.play(char);
 
 		scrollFactor.set();
