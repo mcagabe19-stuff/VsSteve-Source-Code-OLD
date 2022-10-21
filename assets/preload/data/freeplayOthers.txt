@@ -18,3 +18,5 @@ Endless:endless:6
 purple traces:tiago:6
 _jeb:jeb:6
 last craft:tuxsteveuoh:6
+slash fnm:stevefnm:6
+stal:tuxsteve:6
