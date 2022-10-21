@@ -3075,19 +3075,18 @@ class PlayState extends MusicBeatState
 		{
 			cpuStrums.visible = false;
 		}
-
-		if(#if android virtualPad.buttonA.justPressed || #end FlxG.keys.justPressed.E && oneTimeUseRegen == false || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.regenPotionBind)]) && oneTimeUseRegen == false)
+		if(#if android virtualPad.buttonA.justPressed || #end FlxG.keys.justPressed.E || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.regenPotionBind)]) && oneTimeUseRegen == false)
 		{
-			Regen();
+			     Regen();
 		}
-		if(#if android virtualPad.buttonC.justPressed || #end FlxG.keys.justPressed.T && oneTimeUseStrength == false || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.strengthPotionBind)]) && oneTimeUseStrength == false)
+		if(#if android virtualPad.buttonC.justPressed || #end FlxG.keys.justPressed.T || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.strengthPotionBind)]) && oneTimeUseStrength == false)
 		{
-			Strength();
+			     Strength();
 		}
 		if (#if android virtualPad.buttonB.justPressed || #end FlxG.keys.justPressed.SPACE)
 		{
 		         boyfriend.playAnim('block', true);
-                } 
+        } 
 		if (dad.animation.curAnim.name == 'hit' || dad.animation.curAnim.name == 'prepare' || dad.animation.curAnim.name == 'bonk' || dad.animation.curAnim.name == 'unequipPickaxe')
 		{
 			if (dad.animation.finished)
@@ -5089,7 +5088,7 @@ class PlayState extends MusicBeatState
 			});
 		}
 
-		var oneTimeUseRegen:Bool = false;
+		var oneTimeUseRegen: Bool = false;
 		var healthGain:Float = 0;
 
 		function Regen():Void
@@ -5113,8 +5112,8 @@ class PlayState extends MusicBeatState
 			});
 		}
 
+            var oneTimeUseStrength: Bool = false;
 			var strengthActive:Bool = false;
-                        var oneTimeUseStrength:Bool = false;
 
 			function Strength()
 			{
