@@ -8,9 +8,9 @@ on: [workflow_dispatch]
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build19:
-    name: Windows Server 2019
-    runs-on: windows-2019
+  build20:
+    name: Ubuntu 20
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout
         uses: actions/checkout@main
@@ -22,8 +22,8 @@ jobs:
 
       - name: Install Haxelib
         run: |
-          haxelib setup C:/haxelib
-          haxelib install hxcpp 4.2.1 > nul
+          haxelib setup ~/haxelib
+          haxelib install hxcpp 4.2.1 > /dev/null
           haxelib install lime 7.9.0 --quiet
           haxelib install lime-samples 7.0.0 --quiet
           haxelib install openfl 9.1.0 --quiet
@@ -33,9 +33,9 @@ jobs:
           haxelib install box2d 1.2.3 --quiet
           haxelib install layout 1.2.1 --quiet
           haxelib install systools 1.1.0 --quiet
-          haxelib --never install flixel 4.10.0 --quiet
+          haxelib --never install flixel 4.9.0 --quiet
           haxelib install flixel-tools 1.4.4 --quiet
-          haxelib install flixel-ui 2.4.0 --quiet
+          haxelib install flixel-ui 2.3.3 --quiet
           haxelib install hscript 2.4.0 --quiet
           haxelib install flixel-addons 2.10.0 --quiet
           haxelib install flixel-demos 2.7.3 --quiet
@@ -56,11 +56,11 @@ jobs:
       - name: Publish Artifact
         uses: actions/upload-artifact@main
         with:
-          name: build19
+          name: build20
           path: export/release/html5/bin
   build22:
-    name: Windows Server 2022
-    runs-on: windows-2022
+    name: Ubuntu 22
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@main
@@ -72,8 +72,8 @@ jobs:
 
       - name: Install Haxelib
         run: |
-          haxelib setup C:/haxelib
-          haxelib install hxcpp 4.2.1 > nul
+          haxelib setup ~/haxelib
+          haxelib install hxcpp 4.2.1 > /dev/null
           haxelib install lime 7.9.0 --quiet
           haxelib install lime-samples 7.0.0 --quiet
           haxelib install openfl 9.1.0 --quiet
@@ -83,9 +83,9 @@ jobs:
           haxelib install box2d 1.2.3 --quiet
           haxelib install layout 1.2.1 --quiet
           haxelib install systools 1.1.0 --quiet
-          haxelib --never install flixel 4.10.0 --quiet
+          haxelib --never install flixel 4.9.0 --quiet
           haxelib install flixel-tools 1.4.4 --quiet
-          haxelib install flixel-ui 2.4.0 --quiet
+          haxelib install flixel-ui 2.3.3 --quiet
           haxelib install hscript 2.4.0 --quiet
           haxelib install flixel-addons 2.10.0 --quiet
           haxelib install flixel-demos 2.7.3 --quiet
