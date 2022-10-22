@@ -42,7 +42,7 @@ jobs:
           haxelib install flixel-templates 2.6.5 --quiet
           haxelib git faxe https://github.com/uhrobots/faxe.git
           haxelib git linc_luajit https://github.com/nebulazorua/linc_luajit.git
-          haxelib git hxvm-luajit https://github.com/nebulazorua/hxvm_luajit.git
+          haxelib git hxvm-luajit https://github.com/nebulazorua/hxvm-luajit.git
           haxelib git polymod https://github.com/mcagabe19/polymod-for-steve.git
           haxelib set openfl 9.1.0
           haxelib set lime 7.9.0
@@ -51,7 +51,7 @@ jobs:
         run: echo "${{github.run_id}}" > VERSION
 
       - name: Compile
-        run: haxelib run lime build html5 --app-version="4.0.0-${{ github.run_id}}"
+        run: haxelib run lime build html5 -D no-compilation -D macro-times -D analyzer-optimize --app-version="4.0.0-${{ github.run_id}}"
 
       - name: Publish Artifact
         uses: actions/upload-artifact@main
@@ -92,7 +92,7 @@ jobs:
           haxelib install flixel-templates 2.6.5 --quiet
           haxelib git faxe https://github.com/uhrobots/faxe.git
           haxelib git linc_luajit https://github.com/nebulazorua/linc_luajit.git
-          haxelib git hxvm-luajit https://github.com/nebulazorua/hxvm_luajit.git
+          haxelib git hxvm-luajit https://github.com/nebulazorua/hxvm-luajit.git
           haxelib git polymod https://github.com/mcagabe19/polymod-for-steve.git
           haxelib set openfl 9.1.0
           haxelib set lime 7.9.0
@@ -101,7 +101,7 @@ jobs:
         run: echo "${{github.run_id}}" > VERSION
 
       - name: Compile
-        run: haxelib run lime build html5 --app-version="4.0.0-${{ github.run_id}}"
+        run: haxelib run lime build html5 -D no-compilation -D macro-times -D analyzer-optimize --app-version="4.0.0-${{ github.run_id}}"
 
       - name: Publish Artifact
         uses: actions/upload-artifact@main
