@@ -60,7 +60,7 @@ class MobileControls extends FlxSpriteGroup
 		}
 	}
 
-	private function get_mode():String
+	private static function get_mode():String
 	{
 		if (FlxG.save.data.controlsMode == null)
 		{
@@ -71,7 +71,7 @@ class MobileControls extends FlxSpriteGroup
 		return FlxG.save.data.controlsMode;
 	}
 
-	private function set_mode(mode:String = 'Pad-Right'):Void
+	private static function set_mode(mode:String = 'Pad-Right'):Void
 	{
 		FlxG.save.data.controlsMode = mode;
 		FlxG.save.flush();
@@ -96,7 +96,7 @@ class MobileControls extends FlxSpriteGroup
 		return virtualPad;
 	}
 
-	private function set_customVirtualPad(virtualPad:FlxVirtualPad):FlxVirtualPad
+	private static function set_customVirtualPad(virtualPad:FlxVirtualPad):FlxVirtualPad
 	{
 		if (FlxG.save.data.buttons == null)
 		{
