@@ -39,16 +39,7 @@ class WarnCreditState extends MusicBeatState
 		kadeLogo.alpha = 0.8;
 		add(kadeLogo);
 
-		#if desktop
-		var txt:FlxText = new FlxText(0, 0, FlxG.width,
-			"This is Credits Menu"
-			+ "Currently, this menu is uncomplete and Buggy, so please be patient."
-			+ "Everything will be complete in the Full Release Update."
-			+ "If you want to still check the current Menu then Press Enter."
-			+ "Be aware that the text might be broken. Press Enter on an Icon to Visit their Social Media:"
-			+ "Press Enter to Proceed, Press Escape/Backspace to go Back."
-			);
-                #elseif android
+		#if mobile
                 var txt:FlxText = new FlxText(0, 0, FlxG.width,
 			"This is Credits Menu"
 			+ "Currently, this menu is uncomplete and Buggy, so please be patient."
@@ -56,6 +47,15 @@ class WarnCreditState extends MusicBeatState
 			+ "If you want to still check the current Menu then Press Enter."
 			+ "Be aware that the text might be broken. Press Enter on an Icon to Visit their Social Media:"
 			+ "Touch to Proceed"
+			);
+                #else
+                var txt:FlxText = new FlxText(0, 0, FlxG.width,
+			"This is Credits Menu"
+			+ "Currently, this menu is uncomplete and Buggy, so please be patient."
+			+ "Everything will be complete in the Full Release Update."
+			+ "If you want to still check the current Menu then Press Enter."
+			+ "Be aware that the text might be broken. Press Enter on an Icon to Visit their Social Media:"
+			+ "Press Enter to Proceed, Press Escape/Backspace to go Back."
 			);
                 #end
 		
