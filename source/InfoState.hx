@@ -42,16 +42,16 @@ class InfoState extends MusicBeatState
 		kadeLogo.alpha = 0.8;
 		add(kadeLogo);
 		
-                #if desktop
+                #if mobile
 		var txt:FlxText = new FlxText(0, 0, FlxG.width,
 			"DISCLAIMER!"
-			+ "\n\nIf you're a Content Creator, then you should maybe skip Revenge since its Copyrighted!\nThere's a small WHITE FLASH on Suit Up but should'nt be too bad!\n\nThis Mod is still not Done!!\n\nPress Space or ESCAPE or ENTER to proceed"
+			+ "\n\nIf you're a Content Creator, then you should maybe skip Revenge since its Copyrighted!\nThere's a small WHITE FLASH on Suit Up but should'nt be too bad!\n\nThis Mod is still not Done!!\n\nTouch Your Screen to proceed"
 
 			);
-                #elseif android
+                #else
                 var txt:FlxText = new FlxText(0, 0, FlxG.width,
 			"DISCLAIMER!"
-			+ "\n\nIf you're a Content Creator, then you should maybe skip Revenge since its Copyrighted!\nThere's a small WHITE FLASH on Suit Up but should'nt be too bad!\n\nThis Mod is still not Done!!\n\nTouch Your Screen to proceed"
+			+ "\n\nIf you're a Content Creator, then you should maybe skip Revenge since its Copyrighted!\nThere's a small WHITE FLASH on Suit Up but should'nt be too bad!\n\nThis Mod is still not Done!!\n\nPress Space or ESCAPE or ENTER to proceed"
 
 			);
                 #end
