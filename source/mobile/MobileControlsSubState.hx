@@ -1,8 +1,5 @@
 package mobile;
 
-import mobile.flixel.FlxButton;
-import mobile.flixel.FlxHitbox;
-import mobile.flixel.FlxVirtualPad;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxSubState;
@@ -13,6 +10,9 @@ import flixel.input.touch.FlxTouch;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.util.FlxSave;
+import mobile.flixel.FlxButton;
+import mobile.flixel.FlxHitbox;
+import mobile.flixel.FlxVirtualPad;
 import openfl.utils.Assets;
 
 class MobileControlsSubState extends FlxSubState
@@ -36,7 +36,7 @@ class MobileControlsSubState extends FlxSubState
 	override function create()
 	{
 		for (i in 0...controlsItems.length)
-			if (controlsItems[i] == MobileControls.getMode())
+			if (controlsItems[i] == MobileControls.mode)
 				curSelected = i;
 
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height,
@@ -45,19 +45,25 @@ class MobileControlsSubState extends FlxSubState
 		bg.scrollFactor.set();
 		add(bg);
 
-		resetButton = new FlxButton(FlxG.width - 200, 50, 'Reset', function()
+		var exitButton:FlxButton = new FlxButton(FlxG.width - 200, 50, 'Exit', function()
 		{
-			if (resetButton.visible && virtualPad != null) // being sure about something
-			{
-				virtualPad.buttonUp.x = FlxG.width - 258;
-				virtualPad.buttonUp.y = FlxG.height - 408;
-				virtualPad.buttonDown.x = FlxG.width - 258;
-				virtualPad.buttonDown.y = FlxG.height - 201;
-				virtualPad.buttonRight.x = FlxG.width - 132;
-				virtualPad.buttonRight.y = FlxG.height - 309;
-				virtualPad.buttonLeft.x = FlxG.width - 384;
-				virtualPad.buttonLeft.y = FlxG.height - 309;
-			}
+			MobileControls.mode = controlsItems[Math.floor(curSelected)];
+
+			if (controlsItems[Math.floor(curSelected)] == 'Pad-Custom')
+				MobileControls.customVirtualPad = virtualPad;
+
+			FlxTransitionableState.skipNextTransOut = true;
+			FlxG.resetState();
+		});
+		exitButton.setGraphicSize(Std.int(exitButton.width) * 3);
+		exitButton.label.setFormat(Assets.getFont('assets/mobile/menu/Comic Sans MS.ttf').fontName, 16, FlxColor.WHITE, CENTER, true);
+		exitButton.color = FlxColor.YELLOW;
+		add(exitButton);
+
+		resetButton = new FlxButton(exitButton.x, exitButton.y + 100, 'Reset', function()
+		{
+			if (controlsItems[Math.floor(curSelected)] ==  && resetButton.visible) // being sure about something
+				MobileControls.customVirtualPad = new FlxVirtualPad(RIGHT_FULL, NONE);
 		});
 		resetButton.setGraphicSize(Std.int(resetButton.width) * 3);
 		resetButton.label.setFormat(Assets.getFont('assets/mobile/menu/Comic Sans MS.ttf').fontName, 16, FlxColor.WHITE, CENTER, true);
@@ -89,45 +95,36 @@ class MobileControlsSubState extends FlxSubState
 		add(inputvari);
 
 		leftArrow = new FlxSprite(inputvari.x - 60, inputvari.y - 25);
-		leftArrow.frames = FlxAtlasFrames.fromSparrow(Assets.getBitmapData('assets/mobile/menu/arrows.png'),
-			Assets.getText('assets/mobile/menu/arrows.xml'));
+		leftArrow.frames = FlxAtlasFrames.fromSparrow(Assets.getBitmapData('assets/mobile/menu/arrows.png'), Assets.getText('assets/mobile/menu/arrows.xml'));
 		leftArrow.animation.addByPrefix('idle', 'arrow left');
 		leftArrow.animation.play('idle');
 		add(leftArrow);
 
 		rightArrow = new FlxSprite(inputvari.x + inputvari.width + 10, inputvari.y - 25);
-		rightArrow.frames = FlxAtlasFrames.fromSparrow(Assets.getBitmapData('assets/mobile/menu/arrows.png'),
-			Assets.getText('assets/mobile/menu/arrows.xml'));
+		rightArrow.frames = FlxAtlasFrames.fromSparrow(Assets.getBitmapData('assets/mobile/menu/arrows.png'), Assets.getText('assets/mobile/menu/arrows.xml'));
 		rightArrow.animation.addByPrefix('idle', 'arrow right');
 		rightArrow.animation.play('idle');
 		add(rightArrow);
 
-		var tipText:FlxText = new FlxText(10, FlxG.height - 24, 0, 'Press BACK on your phone to get back to the options menu', 16);
-		tipText.setFormat(Assets.getFont('assets/mobile/menu/Comic Sans MS.ttf').fontName, 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE,
-			FlxColor.BLACK, true);
-		tipText.borderSize = 2.4;
-		tipText.scrollFactor.set();
-		add(tipText);
-
-		rightPozition = new FlxText(10, FlxG.height - 44, 0, '', 16);
+		rightPozition = new FlxText(10, FlxG.height - 24, 0, '', 16);
 		rightPozition.setFormat(Assets.getFont('assets/mobile/menu/Comic Sans MS.ttf').fontName, 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE,
 			FlxColor.BLACK, true);
 		rightPozition.borderSize = 2.4;
 		add(rightPozition);
 
-		leftPozition = new FlxText(10, FlxG.height - 64, 0, '', 16);
+		leftPozition = new FlxText(10, FlxG.height - 44, 0, '', 16);
 		leftPozition.setFormat(Assets.getFont('assets/mobile/menu/Comic Sans MS.ttf').fontName, 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE,
 			FlxColor.BLACK, true);
 		leftPozition.borderSize = 2.4;
 		add(leftPozition);
 
-		downPozition = new FlxText(10, FlxG.height - 84, 0, '', 16);
+		downPozition = new FlxText(10, FlxG.height - 64, 0, '', 16);
 		downPozition.setFormat(Assets.getFont('assets/mobile/menu/Comic Sans MS.ttf').fontName, 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE,
 			FlxColor.BLACK, true);
 		downPozition.borderSize = 2.4;
 		add(downPozition);
 
-		upPozition = new FlxText(10, FlxG.height - 104, 0, '', 16);
+		upPozition = new FlxText(10, FlxG.height - 84, 0, '', 16);
 		upPozition.setFormat(Assets.getFont('assets/mobile/menu/Comic Sans MS.ttf').fontName, 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE,
 			FlxColor.BLACK, true);
 		upPozition.borderSize = 2.4;
@@ -140,17 +137,6 @@ class MobileControlsSubState extends FlxSubState
 
 	override function update(elapsed:Float)
 	{
-		if (FlxG.android.justPressed.BACK || FlxG.android.justReleased.BACK)
-		{
-			MobileControls.setMode(controlsItems[Math.floor(curSelected)]);
-
-			if (controlsItems[Math.floor(curSelected)] == 'Pad-Custom')
-				MobileControls.setCustomMode(virtualPad);
-
-			FlxTransitionableState.skipNextTransOut = true;
-			FlxG.resetState();
-		}
-
 		super.update(elapsed);
 
 		inputvari.text = controlsItems[curSelected];
@@ -236,7 +222,7 @@ class MobileControlsSubState extends FlxSubState
 			case 'Pad-Custom':
 				hitbox.visible = false;
 				remove(virtualPad);
-				virtualPad = MobileControls.getCustomMode(new FlxVirtualPad(RIGHT_FULL, NONE));
+				virtualPad = MobileControls.customVirtualPad;
 				add(virtualPad);
 			case 'Pad-Duo':
 				hitbox.visible = false;
