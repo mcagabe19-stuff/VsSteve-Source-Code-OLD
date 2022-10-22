@@ -1,13 +1,12 @@
 package mobile.flixel;
 
-import mobile.flixel.FlxButton;
 import flixel.FlxG;
+import flixel.graphics.FlxGraphic;
+import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.graphics.frames.FlxTileFrames;
 import flixel.group.FlxSpriteGroup;
 import flixel.math.FlxPoint;
-import flixel.util.FlxDestroyUtil;
-import flixel.graphics.frames.FlxAtlasFrames;
-import flixel.graphics.FlxGraphic;
+import mobile.flixel.FlxButton;
 import openfl.utils.Assets;
 
 enum FlxDPadMode
@@ -198,7 +197,7 @@ class FlxVirtualPad extends FlxSpriteGroup
 		button.immovable = true;
 		button.scrollFactor.set();
 		button.color = Color;
-		button.alpha = MobileControls.getOpacity(false);
+		button.alpha = 0.6;
 		#if FLX_DEBUG
 		button.ignoreDrawDebug = true;
 		#end

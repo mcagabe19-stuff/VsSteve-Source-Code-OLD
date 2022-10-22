@@ -2,15 +2,15 @@ package mobile.flixel;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.graphics.FlxGraphic;
+import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxSpriteGroup;
 import flixel.input.touch.FlxTouch;
 import flixel.math.FlxAngle;
 import flixel.math.FlxMath;
 import flixel.math.FlxPoint;
 import flixel.math.FlxRect;
-import flixel.graphics.FlxGraphic;
 import flixel.util.FlxDestroyUtil;
-import flixel.graphics.frames.FlxAtlasFrames;
 import openfl.utils.Assets;
 
 /**
@@ -143,7 +143,7 @@ class FlxJoyStick extends FlxSpriteGroup
 		base.scrollFactor.set();
 		base.solid = false;
 		base.immovable = true;
-		base.alpha = MobileControls.getOpacity();
+		base.alpha = 0.6;
 		#if FLX_DEBUG
 		base.ignoreDrawDebug = true;
 		#end
@@ -165,7 +165,7 @@ class FlxJoyStick extends FlxSpriteGroup
 		thumb.scrollFactor.set();
 		thumb.solid = false;
 		thumb.immovable = true;
-		thumb.alpha = MobileControls.getOpacity();
+		thumb.alpha = 0.6;
 		#if FLX_DEBUG
 		thumb.ignoreDrawDebug = true;
 		#end
