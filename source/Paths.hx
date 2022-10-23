@@ -8,7 +8,11 @@ import flixel.graphics.FlxGraphic;
 import openfl.display3D.textures.Texture;
 import openfl.media.Sound;
 import openfl.system.System;
-
+import lime.utils.Assets;
+#if sys
+import sys.FileSystem;
+import sys.io.File;
+#end
 
 class Paths
 {
