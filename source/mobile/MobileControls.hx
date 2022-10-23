@@ -71,7 +71,7 @@ class MobileControls extends FlxSpriteGroup
 		return FlxG.save.data.controlsMode;
 	}
 
-	private static function set_mode(mode:Void = 'Pad-Right'):String
+	private static function set_mode(mode:String = 'Pad-Right'):Void
 	{
 		FlxG.save.data.controlsMode = mode;
 		FlxG.save.flush();
