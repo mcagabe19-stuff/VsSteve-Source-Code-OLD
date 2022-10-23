@@ -9,6 +9,7 @@ import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import lime.utils.Assets;
+import flixel.system.FlxSound;
 #if windows
 import Discord.DiscordClient;
 #end
@@ -139,8 +140,22 @@ class FreeplayStateOthers extends MusicBeatState
 			trace(md);
 		 */
 
+                #if PRELOAD_ALL
+		#if android
+		var leText:String = "Press C to listen to the Song.";
+		var size:Int = 16;
+		#else
+		var leText:String = "Press SPACE to listen to the Song.";
+		var size:Int = 16;
+		#end
+		var text:FlxText = new FlxText(textBG.x, textBG.y + 4, FlxG.width, leText, size);
+		text.setFormat(Paths.font("vcr.ttf"), size, FlxColor.WHITE, RIGHT);
+		text.scrollFactor.set();
+		add(text);
+                #end
+
                 #if android
-		addVirtualPad(LEFT_FULL, A_B);
+		addVirtualPad(LEFT_FULL, A_B_C);
 		#end
 
 		super.create();
@@ -242,6 +257,7 @@ class FreeplayStateOthers extends MusicBeatState
 		}
 	}
 
+        private static var vocals:FlxSound = null;
 	function changeSelection(change:Int = 0)
 	{
 		#if !switch
@@ -265,9 +281,29 @@ class FreeplayStateOthers extends MusicBeatState
 		// lerpScore = 0;
 		#end
 
-		#if PRELOAD_ALL
-		FlxG.sound.playMusic(Paths.inst(songs[curSelected].songName), 0);
+		if(instPlaying != curSelected) {
+                if (#if mobile virtualPad.buttonC.justPressed || #end FlxG.keys.justPressed.SPACE) {
+                #if PRELOAD_ALL
+		FreeplayState.destroyFreeplayVocals();
+		FlxG.sound.music.volume = 0;
+		Paths.currentModDirectory = songs[curSelected].folder;
+		var poop:String = Highscore.formatSong(songs[curSelected].songName.toLowerCase(), curDifficulty);
+		PlayState.SONG = Song.loadFromJson(poop, songs[curSelected].songName.toLowerCase());
+		if (PlayState.SONG.needsVoices)
+			vocals = new FlxSound().loadEmbedded(Paths.voices(PlayState.SONG.song));
+		else
+		        vocals = new FlxSound();
+
+		FlxG.sound.list.add(vocals);
+		FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song), 0.7);
+		vocals.play();
+		vocals.persist = true;
+		vocals.looped = true;
+		vocals.volume = 0.7;
+		instPlaying = curSelected;
 		#end
+                }
+                }
 
 		var bullShit:Int = 0;
 
