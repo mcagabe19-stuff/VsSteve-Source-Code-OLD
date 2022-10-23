@@ -234,6 +234,29 @@ class FreeplayState extends MusicBeatState
 			trace('CUR WEEK' + PlayState.storyWeek);
 			LoadingState.loadAndSwitchState(new PlayState());
 		}
+
+                if(#if mobile virtualPad.buttonC.justPressed || #end FlxG.keys.justPressed.SPACE) {
+                if(instPlaying != curSelected) {
+                #if PRELOAD_ALL
+		destroyFreeplayVocals();
+		FlxG.sound.music.volume = 0;
+		var poop:String = Highscore.formatSong(songs[curSelected].songName.toLowerCase(), curDifficulty);
+		PlayState.SONG = Song.loadFromJson(poop, songs[curSelected].songName.toLowerCase());
+		if (PlayState.SONG.needsVoices)
+			vocals = new FlxSound().loadEmbedded(Paths.voices(PlayState.SONG.song));
+		else
+		        vocals = new FlxSound();
+
+		FlxG.sound.list.add(vocals);
+		FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song), 0.7);
+		vocals.play();
+		vocals.persist = true;
+		vocals.looped = true;
+		vocals.volume = 0.7;
+		instPlaying = curSelected;
+		#end
+                }
+                }
 	}
 
 	function changeDiff(change:Int = 0)
@@ -286,29 +309,6 @@ class FreeplayState extends MusicBeatState
 		intendedScore = Highscore.getScore(songs[curSelected].songName, curDifficulty);
 		// lerpScore = 0;
 		#end
-
-                if(#if mobile virtualPad.buttonC.justPressed || #end FlxG.keys.justPressed.SPACE) {
-                if(instPlaying != curSelected) {
-                #if PRELOAD_ALL
-		destroyFreeplayVocals();
-		FlxG.sound.music.volume = 0;
-		var poop:String = Highscore.formatSong(songs[curSelected].songName.toLowerCase(), curDifficulty);
-		PlayState.SONG = Song.loadFromJson(poop, songs[curSelected].songName.toLowerCase());
-		if (PlayState.SONG.needsVoices)
-			vocals = new FlxSound().loadEmbedded(Paths.voices(PlayState.SONG.song));
-		else
-		        vocals = new FlxSound();
-
-		FlxG.sound.list.add(vocals);
-		FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song), 0.7);
-		vocals.play();
-		vocals.persist = true;
-		vocals.looped = true;
-		vocals.volume = 0.7;
-		instPlaying = curSelected;
-		#end
-                }
-                }
 
 		var bullShit:Int = 0;
 
