@@ -9,8 +9,6 @@ import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import lime.utils.Assets;
-
-
 #if windows
 import Discord.DiscordClient;
 #end
@@ -37,6 +35,9 @@ class FreeplayStateBonus extends MusicBeatState
 
 	override function create()
 	{
+                Paths.clearUnusedMemory();
+                Paths.clearStoredMemory();
+
 		var initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplayBonus'));
 
 		for (i in 0...initSonglist.length)
