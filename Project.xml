@@ -156,11 +156,9 @@
         <config:android permission="android.permission.MANAGE_EXTERNAL_STORAGE" />
         <config:android target-sdk-version="29" />
 
-        <!-- ______________________________ Haxe Flags _____________________________ -->
+        <!-- ______________________________ Flags _____________________________ -->
 
-        <haxeflag name="-O2" if="mobile"/>
-
-        <haxeflag name="-O3" unless="mobile"/>
+        <flag value="-O4" tag="release" />
 
 	<!-- _________________________________ Custom _______________________________ -->
 
