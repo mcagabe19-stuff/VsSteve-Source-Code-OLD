@@ -141,6 +141,10 @@ class FreeplayState extends MusicBeatState
 			trace(md);
 		 */
 
+                var textBG:FlxSprite = new FlxSprite(0, FlxG.height - 26).makeGraphic(FlxG.width, 26, 0xFF000000);
+		textBG.alpha = 0.6;
+		add(textBG);
+
                 #if PRELOAD_ALL
 		#if android
 		var leText:String = "Press C to listen to the Song.";
@@ -288,7 +292,6 @@ class FreeplayState extends MusicBeatState
                 #if PRELOAD_ALL
 		destroyFreeplayVocals();
 		FlxG.sound.music.volume = 0;
-		Paths.currentModDirectory = songs[curSelected].folder;
 		var poop:String = Highscore.formatSong(songs[curSelected].songName.toLowerCase(), curDifficulty);
 		PlayState.SONG = Song.loadFromJson(poop, songs[curSelected].songName.toLowerCase());
 		if (PlayState.SONG.needsVoices)
