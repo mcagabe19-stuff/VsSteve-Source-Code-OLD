@@ -273,7 +273,7 @@ class FreeplayStateBonus extends MusicBeatState
 		if(instPlaying != curSelected) {
                 if (#if mobile virtualPad.buttonC.justPressed || #end FlxG.keys.justPressed.SPACE) {
                 #if PRELOAD_ALL
-		destroyFreeplayVocals();
+		FreeplayState.destroyFreeplayVocals();
 		FlxG.sound.music.volume = 0;
 		Paths.currentModDirectory = songs[curSelected].folder;
 		var poop:String = Highscore.formatSong(songs[curSelected].songName.toLowerCase(), curDifficulty);
