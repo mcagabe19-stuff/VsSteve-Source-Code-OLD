@@ -156,10 +156,6 @@
         <config:android permission="android.permission.MANAGE_EXTERNAL_STORAGE" />
         <config:android target-sdk-version="29" />
 
-        <!-- ______________________________ Flags _____________________________ -->
-
-        <flag value="-O4" tag="release" />
-
 	<!-- _________________________________ Custom _______________________________ -->
 
 	<!--Place custom nodes like icons here (higher priority to override the HaxeFlixel icon)-->
