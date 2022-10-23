@@ -145,6 +145,8 @@
 	<!--Make's-the-Game-use-less-ram-->
 	<haxedef name="HXCPP_GC_BIG_BLOCKS" />
 
+        <haxedef name="HXCPP_OPTIMIZE_FOR_FAST" />
+
 	<!--Always-enable-Null-Object-Reference-check-->
 	<haxedef name="HXCPP_CHECK_POINTER" if="release" />
 	<haxedef name="HXCPP_STACK_LINE" if="release" />
