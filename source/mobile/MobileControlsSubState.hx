@@ -62,8 +62,11 @@ class MobileControlsSubState extends FlxSubState
 
 		resetButton = new FlxButton(exitButton.x, exitButton.y + 100, 'Reset', function()
 		{
-			if (controlsItems[Math.floor(curSelected)] ==  && resetButton.visible) // being sure about something
+			if (controlsItems[Math.floor(curSelected)] == 'Pad-Custom' && resetButton.visible) // being sure about something
+			{
 				MobileControls.customVirtualPad = new FlxVirtualPad(RIGHT_FULL, NONE);
+				reloadMobileControls('Pad-Custom');
+			}
 		});
 		resetButton.setGraphicSize(Std.int(resetButton.width) * 3);
 		resetButton.label.setFormat(Assets.getFont('assets/mobile/menu/Comic Sans MS.ttf').fontName, 16, FlxColor.WHITE, CENTER, true);
@@ -205,8 +208,26 @@ class MobileControlsSubState extends FlxSubState
 		if (curSelected >= controlsItems.length)
 			curSelected = 0;
 
-		var daChoice:String = controlsItems[Math.floor(curSelected)];
+		reloadMobileControls(controlsItems[Math.floor(curSelected)]);
 
+		funitext.visible = daChoice == 'Keyboard';
+		resetButton.visible = daChoice == 'Pad-Custom';
+		upPozition.visible = daChoice == 'Pad-Custom';
+		downPozition.visible = daChoice == 'Pad-Custom';
+		leftPozition.visible = daChoice == 'Pad-Custom';
+		rightPozition.visible = daChoice == 'Pad-Custom';
+	}
+
+	function moveButton(touch:FlxTouch, button:FlxButton):Void
+	{
+		bindButton = button;
+		bindButton.x = touch.x - Std.int(bindButton.width / 2);
+		bindButton.y = touch.y - Std.int(bindButton.height / 2);
+		buttonBinded = true;
+	}
+
+	function reloadMobileControls(daChoice:String):Void
+	{
 		switch (daChoice)
 		{
 			case 'Pad-Right':
@@ -236,20 +257,5 @@ class MobileControlsSubState extends FlxSubState
 				hitbox.visible = false;
 				virtualPad.visible = false;
 		}
-
-		funitext.visible = daChoice == 'Keyboard';
-		resetButton.visible = daChoice == 'Pad-Custom';
-		upPozition.visible = daChoice == 'Pad-Custom';
-		downPozition.visible = daChoice == 'Pad-Custom';
-		leftPozition.visible = daChoice == 'Pad-Custom';
-		rightPozition.visible = daChoice == 'Pad-Custom';
-	}
-
-	function moveButton(touch:FlxTouch, button:FlxButton):Void
-	{
-		bindButton = button;
-		bindButton.x = touch.x - Std.int(bindButton.width / 2);
-		bindButton.y = touch.y - Std.int(bindButton.height / 2);
-		buttonBinded = true;
 	}
 }
