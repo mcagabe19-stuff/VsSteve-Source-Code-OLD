@@ -287,8 +287,8 @@ class FreeplayState extends MusicBeatState
 		// lerpScore = 0;
 		#end
 
+                if(#if mobile virtualPad.buttonC.justPressed || #end FlxG.keys.justPressed.SPACE) {
                 if(instPlaying != curSelected) {
-                if (#if mobile virtualPad.buttonC.justPressed || #end FlxG.keys.justPressed.SPACE) {
                 #if PRELOAD_ALL
 		destroyFreeplayVocals();
 		FlxG.sound.music.volume = 0;
