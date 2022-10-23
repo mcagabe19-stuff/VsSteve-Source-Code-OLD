@@ -1,11 +1,11 @@
 package mobile;
 
+import mobile.flixel.FlxHitbox;
+import mobile.flixel.FlxVirtualPad;
 import flixel.FlxG;
 import flixel.group.FlxSpriteGroup;
 import flixel.math.FlxPoint;
 import flixel.util.FlxDestroyUtil;
-import mobile.flixel.FlxHitbox;
-import mobile.flixel.FlxVirtualPad;
 
 /**
  * @author Mihai Alexandru (M.A. Jigsaw)
@@ -133,9 +133,8 @@ class MobileControls extends FlxSpriteGroup
 		FlxG.save.flush();
 	}
 
-	public static function getCustomMode():FlxVirtualPad
+	public static function getCustomMode(virtualPad:FlxVirtualPad):FlxVirtualPad
 	{
-		var virtualPad:FlxVirtualPad = new FlxVirtualPad(RIGHT_FULL, NONE);
 		if (FlxG.save.data.buttons == null)
 			return virtualPad;
 
