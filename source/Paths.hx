@@ -21,6 +21,11 @@ class Paths
 	public static var currentTrackedTextures:Map<String, Texture> = [];
 	public static var currentTrackedSounds:Map<String, Sound> = [];
 
+        public static var dumpExclusions:Array<String> = [
+		'assets/music/freakyMenu.$SOUND_EXT',
+		'assets/music/breakfast.$SOUND_EXT',
+	];
+
         /// haya I love you for the base cache dump I took to the max
 	public static function clearUnusedMemory()
 	{
