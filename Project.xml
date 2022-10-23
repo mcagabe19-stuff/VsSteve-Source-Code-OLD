@@ -158,9 +158,9 @@
 
         <!-- ______________________________ Haxe Flags _____________________________ -->
 
-        <haxeflag name="-O2" unless="mobile"/>
+        <haxeflag name="-O2" if="mobile"/>
 
-        <haxeflag name="-O3" if="android"/>
+        <haxeflag name="-O3" unless="mobile"/>
 
 	<!-- _________________________________ Custom _______________________________ -->
 
