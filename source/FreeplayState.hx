@@ -259,6 +259,7 @@ class FreeplayState extends MusicBeatState
 	}
 
 	private static var vocals:FlxSound = null;
+        var instPlaying:Int = -1;
 	function changeSelection(change:Int = 0)
 	{
 		#if !switch
