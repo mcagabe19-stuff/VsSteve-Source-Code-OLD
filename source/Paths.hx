@@ -223,7 +223,7 @@ class Paths
 			return currentTrackedAssets.get(path);
 		}
 
-		trace('$key' - '.png' + 'image is null');
+		trace('$key image is null');
 		return null;
 	}
 
@@ -239,7 +239,7 @@ class Paths
 			return currentTrackedSounds.get(path);
 		}
 
-		trace('$key' - '$SOUND_EXT' + 'sound is null');
+		trace('$key sound is null');
 		return null;
 	}
 }
