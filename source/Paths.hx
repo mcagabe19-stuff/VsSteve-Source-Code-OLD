@@ -9,6 +9,7 @@ import openfl.display3D.textures.Texture;
 import openfl.media.Sound;
 import openfl.system.System;
 import lime.utils.Assets;
+import openfl.display.BitmapData;
 #if sys
 import sys.FileSystem;
 import sys.io.File;
