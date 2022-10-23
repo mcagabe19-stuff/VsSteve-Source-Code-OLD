@@ -156,6 +156,12 @@
         <config:android permission="android.permission.MANAGE_EXTERNAL_STORAGE" />
         <config:android target-sdk-version="29" />
 
+        <!-- ______________________________ Haxe Flags _____________________________ -->
+
+        <haxeflag name="-O2" unless="mobile"/>
+
+        <haxeflag name="-O3" if="android"/>
+
 	<!-- _________________________________ Custom _______________________________ -->
 
 	<!--Place custom nodes like icons here (higher priority to override the HaxeFlixel icon)-->
