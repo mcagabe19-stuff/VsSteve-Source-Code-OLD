@@ -35,8 +35,8 @@ class MusicBeatState extends FlxUIState
 	#if mobile
 	var mobileControls:MobileControls;
 	var virtualPad:FlxVirtualPad;
-	var trackedinputsUI:Array<FlxActionInput> = [];
-	var trackedinputsNOTES:Array<FlxActionInput> = [];
+	var trackedinputsMobileControls:Array<FlxActionInput> = [];
+	var trackedinputsVirtualPad:Array<FlxActionInput> = [];
 
 	public function addVirtualPad(DPad:FlxDPadMode, Action:FlxActionMode)
 	{
@@ -44,14 +44,14 @@ class MusicBeatState extends FlxUIState
 		add(virtualPad);
 
 		controls.setVirtualPadUI(virtualPad, DPad, Action);
-		trackedinputsUI = controls.trackedinputsUI;
+		trackedinputsVirtualPad = controls.trackedinputsUI;
 		controls.trackedinputsUI = [];
 	}
 
 	public function removeVirtualPad()
 	{
-		if (trackedinputsUI != [])
-			controls.removeControlsInput(trackedinputsUI);
+		if (trackedinputsVirtualPad != [])
+			controls.removeControlsInput(trackedinputsVirtualPad);
 
 		if (virtualPad != null)
 			remove(virtualPad);
@@ -61,7 +61,7 @@ class MusicBeatState extends FlxUIState
 	{
 		mobileControls = new MobileControls();
 
-		switch (MobileControls.getMode())
+		switch (MobileControls.mode)
 		{
 			case 'Pad-Right' | 'Pad-Left' | 'Pad-Custom':
 				controls.setVirtualPadNOTES(mobileControls.virtualPad, RIGHT_FULL, NONE);
@@ -72,7 +72,7 @@ class MusicBeatState extends FlxUIState
 			case 'Keyboard': // do nothing
 		}
 
-		trackedinputsNOTES = controls.trackedinputsNOTES;
+		trackedinputsMobileControls = controls.trackedinputsNOTES;
 		controls.trackedinputsNOTES = [];
 
 		var camControls:FlxCamera = new FlxCamera();
@@ -86,14 +86,14 @@ class MusicBeatState extends FlxUIState
 
 	public function removeMobileControls()
 	{
-		if (trackedinputsNOTES != [])
-			controls.removeControlsInput(trackedinputsNOTES);
+		if (trackedinputsMobileControls != [])
+			controls.removeControlsInput(trackedinputsMobileControls);
 
 		if (mobileControls != null)
 			remove(mobileControls);
 	}
 
-	public function addPadCamera(DefaultDrawTarget:Bool = true)
+	public function addVirtualPadCamera(DefaultDrawTarget:Bool = true)
 	{
 		if (virtualPad != null)
 		{
@@ -108,11 +108,11 @@ class MusicBeatState extends FlxUIState
 	override function destroy()
 	{
 		#if mobile
-		if (trackedinputsNOTES != [])
-			controls.removeControlsInput(trackedinputsNOTES);
+		if (trackedinputsMobileControls != [])
+			controls.removeControlsInput(trackedinputsMobileControls);
 
-		if (trackedinputsUI != [])
-			controls.removeControlsInput(trackedinputsUI);
+		if (trackedinputsVirtualPad != [])
+			controls.removeControlsInput(trackedinputsVirtualPad);
 		#end
 
 		super.destroy();
