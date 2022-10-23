@@ -12,9 +12,6 @@ import mobile.flixel.FlxVirtualPad;
  */
 class MobileControls extends FlxSpriteGroup
 {
-	public static var customVirtualPad(get, set):FlxVirtualPad;
-	public static var mode(get, set):String;
-
 	public var virtualPad:FlxVirtualPad;
 	public var hitbox:FlxHitbox;
 
@@ -31,7 +28,7 @@ class MobileControls extends FlxSpriteGroup
 				virtualPad = new FlxVirtualPad(LEFT_FULL, NONE);
 				add(virtualPad);
 			case 'Pad-Custom':
-				virtualPad = MobileControls.customVirtualPad;
+				virtualPad = MobileControls.getCustomMode(new FlxVirtualPad(RIGHT_FULL, NONE));
 				add(virtualPad);
 			case 'Pad-Duo':
 				virtualPad = new FlxVirtualPad(BOTH_FULL, NONE);
@@ -60,7 +57,51 @@ class MobileControls extends FlxSpriteGroup
 		}
 	}
 
-	private static function get_mode():String
+	public static function setOpacity(opacity:Float, isHitbox:Bool = false):Void
+	{
+		if (!isHitbox)
+		{
+			FlxG.save.data.virtualPadOpacity = opacity;
+			FlxG.save.flush();
+		}
+		else
+		{
+			FlxG.save.data.hitboxOpacity = opacity;
+			FlxG.save.flush();
+		}
+	}
+
+	public static function getOpacity(isHitbox:Bool = false):Float
+	{
+		if (!isHitbox)
+		{
+			if (FlxG.save.data.virtualPadOpacity == null)
+			{
+				FlxG.save.data.virtualPadOpacity = 0.6;
+				FlxG.save.flush();
+			}
+
+			return FlxG.save.data.virtualPadOpacity;
+		}
+		else
+		{
+			if (FlxG.save.data.hitboxOpacity == null)
+			{
+				FlxG.save.data.hitboxOpacity = 0.2;
+				FlxG.save.flush();
+			}
+
+			return FlxG.save.data.hitboxOpacity;
+		}
+	}
+
+	public static function setMode(mode:String = 'Pad-Right'):Void
+	{
+		FlxG.save.data.controlsMode = mode;
+		FlxG.save.flush();
+	}
+
+	public static function getMode():String
 	{
 		if (FlxG.save.data.controlsMode == null)
 		{
@@ -71,15 +112,28 @@ class MobileControls extends FlxSpriteGroup
 		return FlxG.save.data.controlsMode;
 	}
 
-	private static function set_mode(mode:String = 'Pad-Right'):Void
+	public static function setCustomMode(virtualPad:FlxVirtualPad):Void
 	{
-		FlxG.save.data.controlsMode = mode;
-		FlxG.save.flush();
+		if (FlxG.save.data.buttons == null)
+		{
+			FlxG.save.data.buttons = new Array();
+			for (buttons in virtualPad)
+				FlxG.save.data.buttons.push(FlxPoint.get(buttons.x, buttons.y));
+		}
+		else
+		{
+			var tempCount:Int = 0;
+			for (buttons in virtualPad)
+			{
+				FlxG.save.data.buttons[tempCount] = FlxPoint.get(buttons.x, buttons.y);
+				tempCount++;
+			}
+		}
 
-		return mode;
+		FlxG.save.flush();
 	}
 
-	private static function get_customVirtualPad():FlxVirtualPad
+	public static function getCustomMode():FlxVirtualPad
 	{
 		var virtualPad:FlxVirtualPad = new FlxVirtualPad(RIGHT_FULL, NONE);
 		if (FlxG.save.data.buttons == null)
@@ -91,31 +145,6 @@ class MobileControls extends FlxSpriteGroup
 			buttons.x = FlxG.save.data.buttons[tempCount].x;
 			buttons.y = FlxG.save.data.buttons[tempCount].y;
 			tempCount++;
-		}
-
-		return virtualPad;
-	}
-
-	private static function set_customVirtualPad(virtualPad:FlxVirtualPad):FlxVirtualPad
-	{
-		if (FlxG.save.data.buttons == null)
-		{
-			FlxG.save.data.buttons = new Array();
-			for (buttons in virtualPad)
-			{
-				FlxG.save.data.buttons.push(FlxPoint.get(buttons.x, buttons.y));
-				FlxG.save.flush();
-			}
-		}
-		else
-		{
-			var tempCount:Int = 0;
-			for (buttons in virtualPad)
-			{
-				FlxG.save.data.buttons[tempCount] = FlxPoint.get(buttons.x, buttons.y);
-				FlxG.save.flush();
-				tempCount++;
-			}
 		}
 
 		return virtualPad;
