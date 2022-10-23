@@ -141,6 +141,20 @@ class FreeplayState extends MusicBeatState
 			trace(md);
 		 */
 
+                #if PRELOAD_ALL
+		#if android
+		var leText:String = "Press C to listen to the Song.";
+		var size:Int = 16;
+		#else
+		var leText:String = "Press SPACE to listen to the Song.";
+		var size:Int = 16;
+		#end
+		var text:FlxText = new FlxText(textBG.x, textBG.y + 4, FlxG.width, leText, size);
+		text.setFormat(Paths.font("vcr.ttf"), size, FlxColor.WHITE, RIGHT);
+		text.scrollFactor.set();
+		add(text);
+                #end
+
                 #if android
 		addVirtualPad(LEFT_FULL, A_B_C);
 		#end
