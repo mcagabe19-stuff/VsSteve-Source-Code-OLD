@@ -9,6 +9,7 @@ import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import lime.utils.Assets;
+import flixel.system.FlxSound;
 
 #if windows
 import Discord.DiscordClient;
@@ -141,7 +142,7 @@ class FreeplayState extends MusicBeatState
 		 */
 
                 #if android
-		addVirtualPad(LEFT_FULL, A_B);
+		addVirtualPad(LEFT_FULL, A_B_C);
 		#end
 
 		super.create();
@@ -243,6 +244,7 @@ class FreeplayState extends MusicBeatState
 		}
 	}
 
+	private static var vocals:FlxSound = null;
 	function changeSelection(change:Int = 0)
 	{
 		#if !switch
@@ -266,9 +268,19 @@ class FreeplayState extends MusicBeatState
 		// lerpScore = 0;
 		#end
 
-		#if PRELOAD_ALL
+                if(instPlaying != curSelected) {
+                if (#if mobile virtualPad.buttonC.justPressed || #end FlxG.keys.justPressed.SPACE) {
+                destroyFreeplayVocals();
+                vocals = new FlxSound().loadEmbedded(Paths.voices(songs[curSelected].songName), 0);
+                FlxG.sound.list.add(vocals);
 		FlxG.sound.playMusic(Paths.inst(songs[curSelected].songName), 0);
-		#end
+                vocals.play();
+		vocals.persist = true;
+		vocals.looped = true;
+		vocals.volume = 0.7;
+                instPlaying = curSelected;
+                }
+                }
 
 		var bullShit:Int = 0;
 
@@ -294,6 +306,15 @@ class FreeplayState extends MusicBeatState
 			}
 		}
 	}
+
+        public static function destroyFreeplayVocals() {
+		if(vocals != null) {
+			vocals.stop();
+			vocals.destroy();
+		}
+		vocals = null;
+	}
+
 }
 
 class SongMetadata
