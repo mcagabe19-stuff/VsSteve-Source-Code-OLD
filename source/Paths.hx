@@ -7,6 +7,9 @@ import openfl.media.Sound;
 import openfl.utils.Assets;
 import openfl.utils.AssetType;
 import openfl.utils.Assets as OpenFlAssets;
+import openfl.display.BitmapData;
+import openfl.Lib;
+import openfl.display3D.textures.Texture;
 
 class Paths
 {
@@ -210,13 +213,37 @@ class Paths
         public static function returnGraphic(key:String, ?cache:Bool = true):FlxGraphic
 	{
 		var path:String = 'assets/$key.png';
-		if (Assets.exists(path, IMAGE))
+		if (OpenFlAssets.exists(path, IMAGE))
 		{
 			if (!currentTrackedAssets.exists(path))
 			{
-				var graphic:FlxGraphic = FlxGraphic.fromBitmapData(Assets.getBitmapData(path), false, path, cache);
-				graphic.persist = true;
-				currentTrackedAssets.set(path, graphic);
+				var newGraphic:FlxGraphic = null;
+				var bitmap:BitmapData = OpenFlAssets.getBitmapData(path);
+
+				switch (ClientPrefs.render)
+				{
+					case 1:
+						var texture = FlxG.stage.context3D.createTexture(bitmap.width, bitmap.height, BGRA, true);
+						texture.uploadFromBitmapData(bitmap);
+						currentTrackedTextures.set(path, texture);
+						bitmap.dispose();
+						bitmap.disposeImage();
+						bitmap = null;
+						newGraphic = FlxGraphic.fromBitmapData(BitmapData.fromTexture(texture), false, path);
+					case 2:
+						var texture = Lib.current.stage.context3D.createTexture(bitmap.width, bitmap.height, BGRA, true);
+						texture.uploadFromBitmapData(bitmap);
+						currentTrackedTextures.set(path, texture);
+						bitmap.dispose();
+						bitmap.disposeImage();
+						bitmap = null;
+						newGraphic = FlxGraphic.fromBitmapData(BitmapData.fromTexture(texture), false, path);
+					default:
+						newGraphic = FlxGraphic.fromBitmapData(bitmap, false, path);
+				}
+
+				newGraphic.persist = true;
+				currentTrackedAssets.set(path, newGraphic);
 			}
 
 			localTrackedAssets.push(path);
