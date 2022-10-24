@@ -10,6 +10,7 @@ import openfl.utils.Assets as OpenFlAssets;
 import openfl.display.BitmapData;
 import openfl.Lib;
 import openfl.display3D.textures.Texture;
+import openfl.system.System;
 
 class Paths
 {
@@ -18,6 +19,7 @@ class Paths
 	static var currentLevel:String;
 
         public static var currentTrackedAssets:Map<String, FlxGraphic> = [];
+        public static var currentTrackedTextures:Map<String, Texture> = [];
 	public static var currentTrackedSounds:Map<String, Sound> = [];
 	public static var localTrackedAssets:Array<String> = [];
 
@@ -31,6 +33,14 @@ class Paths
 				@:privateAccess
 				if (obj != null)
 				{
+                                        var isTexture:Bool = currentTrackedTextures.exists(key);
+					if (isTexture)
+					{
+						var texture = currentTrackedTextures.get(key);
+						texture.dispose();
+						texture = null;
+						currentTrackedTextures.remove(key);
+					}
 					Assets.cache.removeBitmapData(key);
 					Assets.cache.clearBitmapData(key);
 					Assets.cache.clear(key);
@@ -55,6 +65,10 @@ class Paths
 				}
 			}
 		}
+                System.gc();
+                #if cpp
+		cpp.NativeGc.run(true);
+		#end
 	}
 
 	public static function clearStoredMemory()
