@@ -234,7 +234,7 @@ class Paths
 				var newGraphic:FlxGraphic = null;
 				var bitmap:BitmapData = OpenFlAssets.getBitmapData(path);
 
-				switch (ClientPrefs.render)
+				switch (FlxG.save.data.render)
 				{
 					case 1:
 						var texture = FlxG.stage.context3D.createTexture(bitmap.width, bitmap.height, BGRA, true);
