@@ -7,6 +7,10 @@ import openfl.media.Sound;
 import openfl.utils.Assets;
 import openfl.utils.AssetType;
 import openfl.utils.Assets as OpenFlAssets;
+import openfl.display.BitmapData;
+import openfl.Lib;
+import openfl.display3D.textures.Texture;
+import openfl.system.System;
 
 class Paths
 {
@@ -15,6 +19,7 @@ class Paths
 	static var currentLevel:String;
 
         public static var currentTrackedAssets:Map<String, FlxGraphic> = [];
+        public static var currentTrackedTextures:Map<String, Texture> = [];
 	public static var currentTrackedSounds:Map<String, Sound> = [];
 	public static var localTrackedAssets:Array<String> = [];
 
@@ -28,6 +33,14 @@ class Paths
 				@:privateAccess
 				if (obj != null)
 				{
+                                        var isTexture:Bool = currentTrackedTextures.exists(key);
+					if (isTexture)
+					{
+						var texture = currentTrackedTextures.get(key);
+						texture.dispose();
+						texture = null;
+						currentTrackedTextures.remove(key);
+					}
 					Assets.cache.removeBitmapData(key);
 					Assets.cache.clearBitmapData(key);
 					Assets.cache.clear(key);
@@ -52,6 +65,10 @@ class Paths
 				}
 			}
 		}
+                System.gc();
+                #if cpp
+		cpp.NativeGc.run(true);
+		#end
 	}
 
 	public static function clearStoredMemory()
@@ -210,13 +227,37 @@ class Paths
         public static function returnGraphic(key:String, ?cache:Bool = true):FlxGraphic
 	{
 		var path:String = 'assets/$key.png';
-		if (Assets.exists(path, IMAGE))
+		if (OpenFlAssets.exists(path, IMAGE))
 		{
 			if (!currentTrackedAssets.exists(path))
 			{
-				var graphic:FlxGraphic = FlxGraphic.fromBitmapData(Assets.getBitmapData(path), false, path, cache);
-				graphic.persist = true;
-				currentTrackedAssets.set(path, graphic);
+				var newGraphic:FlxGraphic = null;
+				var bitmap:BitmapData = OpenFlAssets.getBitmapData(path);
+
+				switch (FlxG.save.data.render)
+				{
+					case 1:
+						var texture = FlxG.stage.context3D.createTexture(bitmap.width, bitmap.height, BGRA, true);
+						texture.uploadFromBitmapData(bitmap);
+						currentTrackedTextures.set(path, texture);
+						bitmap.dispose();
+						bitmap.disposeImage();
+						bitmap = null;
+						newGraphic = FlxGraphic.fromBitmapData(BitmapData.fromTexture(texture), false, path);
+					case 2:
+						var texture = Lib.current.stage.context3D.createTexture(bitmap.width, bitmap.height, BGRA, true);
+						texture.uploadFromBitmapData(bitmap);
+						currentTrackedTextures.set(path, texture);
+						bitmap.dispose();
+						bitmap.disposeImage();
+						bitmap = null;
+						newGraphic = FlxGraphic.fromBitmapData(BitmapData.fromTexture(texture), false, path);
+					default:
+						newGraphic = FlxGraphic.fromBitmapData(bitmap, false, path);
+				}
+
+				newGraphic.persist = true;
+				currentTrackedAssets.set(path, newGraphic);
 			}
 
 			localTrackedAssets.push(path);
