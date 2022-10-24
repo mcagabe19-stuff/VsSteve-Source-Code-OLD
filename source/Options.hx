@@ -76,7 +76,7 @@ class Option
 
 class RenderOption extends Option
 {
-	private var controls:Controls;
+	private var rstr:String = "";
 
 	public function new(desc:String)
 	{
@@ -91,12 +91,13 @@ class RenderOption extends Option
                     FlxG.save.data.render = 0;
                 }
 		display = updateDisplay();
+                if(FlxG.save.data.render==0){rstr="ram";}elseif(FlxG.save.data.render==1){rstr="gpu flash";}elseif(FlxG.save.data.render==2){rstr="gpu openfl";}
 		return true;
 	}
 
 	private override function updateDisplay():String
 	{
-		return "render: " + if (FlxG.save.data.render == 0) "ram" else if (FlxG.save.data.render == 1) "gpu flash" else if (FlxG.save.data.render == 2) "gpu openfl";
+		return "render: " + ;
 	}
 }
 
