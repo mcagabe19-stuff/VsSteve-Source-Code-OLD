@@ -74,6 +74,32 @@ class Option
 
 
 
+class RenderOption extends Option
+{
+	private var controls:Controls;
+
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+	}
+
+	public override function press():Bool
+	{
+		FlxG.save.data.render += 1;
+                if (FlxG.save.data.render > 2) {
+                    FlxG.save.data.render = 0;
+                }
+		display = updateDisplay();
+		return true;
+	}
+
+	private override function updateDisplay():String
+	{
+		return "render: " + if (FlxG.save.data.render == 0) "ram" else if (FlxG.save.data.render == 1) "gpu flash" else if (FlxG.save.data.render == 2) "gpu openfl";
+	}
+}
+
 class DFJKOption extends Option
 {
 	private var controls:Controls;
