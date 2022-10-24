@@ -335,7 +335,7 @@ class FreeplayState extends MusicBeatState
 		}
 	}
 
-        private static function destroyFreeplayVocals() {
+        static function destroyFreeplayVocals() {
 		if(vocals != null) {
 			vocals.stop();
 			vocals.destroy();
