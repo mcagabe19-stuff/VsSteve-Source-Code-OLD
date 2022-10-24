@@ -237,7 +237,7 @@ class FreeplayStateOthers extends MusicBeatState
                 if(#if mobile virtualPad.buttonC.justPressed || #end FlxG.keys.justPressed.SPACE) {
                 if(instPlaying != curSelected) {
                 #if PRELOAD_ALL
-		FreeplayState.destroyFreeplayVocals();
+		destroyFreeplayVocals();
 		FlxG.sound.music.volume = 0;
 		var poop:String = Highscore.formatSong(songs[curSelected].songName.toLowerCase(), curDifficulty);
 		PlayState.SONG = Song.loadFromJson(poop, songs[curSelected].songName.toLowerCase());
@@ -356,6 +356,15 @@ class FreeplayStateOthers extends MusicBeatState
 			}
 		}
 	}
+
+        private static function destroyFreeplayVocals() {
+		if(vocals != null) {
+			vocals.stop();
+			vocals.destroy();
+		}
+		vocals = null;
+	}
+
 }
 
 class SongMetadata3
