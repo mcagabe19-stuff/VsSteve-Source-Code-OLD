@@ -80,9 +80,9 @@ class RenderOption extends Option
 
 	public function new(desc:String)
 	{
+                if(FlxG.save.data.render==0){rstr="ram";}elseif(FlxG.save.data.render==1){rstr="gpu flash";}elseif(FlxG.save.data.render==2){rstr="gpu openfl";}
 		super();
 		description = desc;
-                if(FlxG.save.data.render==0){rstr="ram";}elseif(FlxG.save.data.render==1){rstr="gpu flash";}elseif(FlxG.save.data.render==2){rstr="gpu openfl";}
 	}
 
 	public override function press():Bool
