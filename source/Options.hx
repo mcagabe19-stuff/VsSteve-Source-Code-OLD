@@ -97,7 +97,6 @@ class RenderOption extends Option
                 if (FlxG.save.data.render > 2) {
                     FlxG.save.data.render = 0;
                 }
-		display = updateDisplay();
                 if (FlxG.save.data.render == 0) { 
                     rstr = "ram";
                 } else if (FlxG.save.data.render == 1) { 
@@ -105,6 +104,7 @@ class RenderOption extends Option
                 } else if (FlxG.save.data.render == 2) {
                     rstr = "gpu openfl";
                 }
+                display = updateDisplay();
 		return true;
 	}
 
