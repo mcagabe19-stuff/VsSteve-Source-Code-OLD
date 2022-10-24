@@ -31,7 +31,7 @@ jobs:
         uses: android-actions/setup-android@main
 
       - name: Setup Haxe
-        uses: krdlab/setup-haxe@master
+        uses: krdlab/setup-haxe@master-node16
         with:
           haxe-version: 4.1.5
 
@@ -107,7 +107,7 @@ jobs:
         uses: android-actions/setup-android@main
 
       - name: Setup Haxe
-        uses: krdlab/setup-haxe@master
+        uses: krdlab/setup-haxe@master-node16
         with:
           haxe-version: 4.1.5
 
@@ -182,7 +182,7 @@ jobs:
         uses: android-actions/setup-android@main
 
       - name: Setup Haxe
-        uses: krdlab/setup-haxe@master
+        uses: krdlab/setup-haxe@master-node16
         with:
           haxe-version: 4.1.5
 
