@@ -50,8 +50,11 @@ class OptionsMenu extends MusicBeatState
 			new FPSOption("Toggle the FPS Counter"),
 			new FlashingLightsOption("Toggle flashing lights that can cause epileptic seizures and strain."),
 			new WatermarkOption("Enable and disable all watermarks from the engine.")
-		])
-		
+		]),
+
+		new OptionCategory("Graphic", [
+                    new RenderOption("change rendering method"),
+                ])
 	];
 
 	public var acceptInput:Bool = true;
