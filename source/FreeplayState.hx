@@ -19,6 +19,8 @@ using StringTools;
 
 class FreeplayState extends MusicBeatState
 {
+        public var initSonglist = null;
+
 	var songs:Array<SongMetadata> = [];
 
 	var selector:FlxText;
@@ -40,7 +42,12 @@ class FreeplayState extends MusicBeatState
                 Paths.clearUnusedMemory();
                 Paths.clearStoredMemory();
 
-		var initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplaySonglist'));
+                if (ExtrasState.selectedOthers == true) {
+		initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplayOthers')); }
+                if (ExtrasState.selectedBonus == true) {
+                initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplayBonus')); }
+                if (ExtrasState.selectedOthers == false && ExtrasState.selectedBonus == false) {
+                initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplaySonglist')); }
 
 		for (i in 0...initSonglist.length)
 		{
@@ -160,7 +167,10 @@ class FreeplayState extends MusicBeatState
                 #end
 
                 #if android
-		addVirtualPad(LEFT_FULL, A_B_C);
+                if (ExtrasState.selectedBonus == true) {
+		addVirtualPad(UP_DOWN, A_B_C); }
+                if (ExtrasState.selectedBonus == false) {
+                addVirtualPad(LEFT_FULL, A_B_C); }
 		#end
 
 		super.create();
@@ -223,6 +233,9 @@ class FreeplayState extends MusicBeatState
 
 		if (#if android virtualPad.buttonA.justPressed || #end controls.ACCEPT)
 		{
+                        FlxG.sound.music.volume = 0;	
+			destroyFreeplayVocals();
+
 			var poop:String = Highscore.formatSong(songs[curSelected].songName.toLowerCase(), curDifficulty);
 
 			trace(poop);
@@ -335,7 +348,7 @@ class FreeplayState extends MusicBeatState
 		}
 	}
 
-        static function destroyFreeplayVocals() {
+        public static function destroyFreeplayVocals() {
 		if(vocals != null) {
 			vocals.stop();
 			vocals.destroy();

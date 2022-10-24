@@ -25,6 +25,9 @@ using StringTools;
 
 class ExtrasState extends MusicBeatState
 {
+        public static var selectedBonus:Bool;
+        public static var selectedOthers:Bool;
+
 	var curSelected:Int = 0;
 	var menuItems:FlxTypedGroup<FlxSprite>;
 
@@ -232,11 +235,15 @@ class ExtrasState extends MusicBeatState
 		switch (daChoice)
 		{
 			case 'bonus songs':
-				FlxG.switchState(new FreeplayStateBonus());
-				trace("bonus songs!");
+                                selectedBonus = true;
+                                selectedOthers = false;
+				FlxG.switchState(new FreeplayState());
+				trace("Bonus Songs!");
 
 			case 'other songs':
-				FlxG.switchState(new FreeplayStateOthers());
+                                selectedOthers = true;
+                                selectedBonus = false;
+				FlxG.switchState(new FreeplayState());
 				trace("Other Songs");
 		}
 	}
