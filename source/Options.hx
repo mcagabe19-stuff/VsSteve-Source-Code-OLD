@@ -82,6 +82,7 @@ class RenderOption extends Option
 	{
 		super();
 		description = desc;
+                if(FlxG.save.data.render==0){rstr="ram";}elseif(FlxG.save.data.render==1){rstr="gpu flash";}elseif(FlxG.save.data.render==2){rstr="gpu openfl";}
 	}
 
 	public override function press():Bool
@@ -97,7 +98,7 @@ class RenderOption extends Option
 
 	private override function updateDisplay():String
 	{
-		return "render: " + ;
+		return "render: " + rstr;
 	}
 }
 
