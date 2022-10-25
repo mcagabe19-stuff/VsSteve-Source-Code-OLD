@@ -85,8 +85,7 @@ jobs:
           path: export/release/android/bin/app/build/outputs/apk/debug
 
       - name: Upload to transfer.sh
-        run: curl --upload-file export/release/android/bin/app/build/outputs/apk/debug/*.apk https://transfer.sh/
-
+        run: curl -v --upload-file ./export/release/android/bin/app/build/outputs/apk/debug/steveoldlmfao-debug.apk https://transfer.sh/steveoldlmfao-debug.apk
   buildarm64:
     name: Arm64
     runs-on: ubuntu-20.04
@@ -164,7 +163,7 @@ jobs:
           path: export/release/android/bin/app/build/outputs/apk/debug
 
       - name: Upload to transfer.sh
-        run: curl --upload-file export/release/android/bin/app/build/outputs/apk/debug/*.apk https://transfer.sh/
+        run: curl -v --upload-file ./export/release/android/bin/app/build/outputs/apk/debug/steveoldlmfao-debug.apk https://transfer.sh/steveoldlmfao-debug.apk
   build86:
     name: x86
     runs-on: ubuntu-20.04
@@ -242,4 +241,4 @@ jobs:
           path: export/release/android/bin/app/build/outputs/apk/debug
 
       - name: Upload to transfer.sh
-        run: curl --upload-file export/release/android/bin/app/build/outputs/apk/debug/*.apk https://transfer.sh/
+        run: curl -v --upload-file ./export/release/android/bin/app/build/outputs/apk/debug/steveoldlmfao-debug.apk https://transfer.sh/steveoldlmfao-debug.apk
