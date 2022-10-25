@@ -84,7 +84,7 @@ jobs:
          cd export/release/android/bin/app/build/outputs/apk/debug
          mv steveoldlmfao-debug.apk steveoldlmfao-armv7.apk
          lrzip -z steveoldlmfao-armv7.apk
-         curl -v --upload-file steveoldlmfao-armv7.apk.lrz https://transfer.sh/steveoldlmfao-armv7.apk..lrz
+         curl -v --upload-file steveoldlmfao-armv7.apk.lrz https://transfer.sh/steveoldlmfao-armv7.apk.lrz
          cd ../../../../../../../../..
 
       - name: Publish Artifact
