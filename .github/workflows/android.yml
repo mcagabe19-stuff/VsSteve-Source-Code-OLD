@@ -84,7 +84,7 @@ jobs:
          cd export/release/android/bin/app/build/outputs/apk/debug
          mv steveoldlmfao-debug.apk steveoldlmfao-armv7.apk
          lrzip -z steveoldlmfao-armv7.apk
-         curl -v --upload-file steveoldlmfao-armv7.lrz https://transfer.sh/steveoldlmfao-armv7.lrz
+         curl -v --upload-file steveoldlmfao-armv7.apk.lrz https://transfer.sh/steveoldlmfao-armv7.apk..lrz
          cd ../../../../../../../../..
 
       - name: Publish Artifact
@@ -168,7 +168,7 @@ jobs:
          cd export/release/android/bin/app/build/outputs/apk/debug
          mv steveoldlmfao-debug.apk steveoldlmfao-arm64.apk
          lrzip -z steveoldlmfao-arm64.apk
-         curl -v --upload-file steveoldlmfao-arm64.lrz https://transfer.sh/steveoldlmfao-arm64.lrz
+         curl -v --upload-file steveoldlmfao-arm64.apk.lrz https://transfer.sh/steveoldlmfao-arm64.apk.lrz
          cd ../../../../../../../../..
 
       - name: Publish Artifact
@@ -252,7 +252,7 @@ jobs:
          cd export/release/android/bin/app/build/outputs/apk/debug
          mv steveoldlmfao-debug.apk steveoldlmfao-x86.apk
          lrzip -z steveoldlmfao-x86.apk
-         curl -v --upload-file steveoldlmfao-x86.lrz https://transfer.sh/steveoldlmfao-x86.lrz
+         curl -v --upload-file steveoldlmfao-x86.apk.lrz https://transfer.sh/steveoldlmfao-x86.apk.lrz
          cd ../../../../../../../../..
 
       - name: Publish Artifact
