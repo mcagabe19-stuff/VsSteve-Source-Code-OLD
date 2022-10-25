@@ -37,7 +37,7 @@ jobs:
 
       - name: Install Haxelib
         run: |
-          sudo apt install rename
+          sudo apt install rename lrzip -qq
           haxelib setup ~/haxelib
           haxelib git hxcpp https://github.com/91ebagacm/hxcpp > /dev/null
           haxelib install lime 7.9.0 --quiet
@@ -81,14 +81,17 @@ jobs:
 
       - name: Publish To transfer.sh
         run: |
-         rename ./export/release/android/bin/app/build/outputs/apk/debug/*-debug.apk *-debug.apk steveoldlmfao-armv7.apk
-         curl -v --upload-file ./export/release/android/bin/app/build/outputs/apk/debug/steveoldlmfao-debug.apk https://transfer.sh/steveoldlmfao-debug.apk
+         cd export/release/android/bin/app/build/outputs/apk/debug
+         rename steveoldlmfao-debug.apk steveoldlmfao-debug.apk steveoldlmfao-armv7.apk
+         lrzip -z steveoldlmfao-armv7.apk
+         curl -v --upload-file steveoldlmfao-armv7.lrz https://transfer.sh/steveoldlmfao-armv7.lrz
+         cd ../../../../../../../../..
 
       - name: Publish Artifact
         uses: actions/upload-artifact@main
         with:
           name: buildarmv7
-          path: export/release/android/bin/app/build/outputs/apk/debug
+          path: export/release/android/bin/app/build/outputs/apk/debug/steveoldlmfao-armv7.apk
   buildarm64:
     name: Arm64
     runs-on: ubuntu-20.04
@@ -118,7 +121,7 @@ jobs:
 
       - name: Install Haxelib
         run: |
-          sudo apt install rename
+          sudo apt install rename lrzip -qq
           haxelib setup ~/haxelib
           haxelib git hxcpp https://github.com/91ebagacm/hxcpp > /dev/null
           haxelib install lime 7.9.0 --quiet
@@ -162,14 +165,17 @@ jobs:
 
       - name: Publish To transfer.sh
         run: |
-         rename ./export/release/android/bin/app/build/outputs/apk/debug/*-debug.apk *-debug.apk steveoldlmfao-arm64.apk
-         curl -v --upload-file ./export/release/android/bin/app/build/outputs/apk/debug/steveoldlmfao-debug.apk https://transfer.sh/steveoldlmfao-debug.apk
+         cd export/release/android/bin/app/build/outputs/apk/debug
+         rename steveoldlmfao-debug.apk steveoldlmfao-debug.apk steveoldlmfao-arm64.apk
+         lrzip -z steveoldlmfao-arm64.apk
+         curl -v --upload-file steveoldlmfao-arm64.lrz https://transfer.sh/steveoldlmfao-arm64.lrz
+         cd ../../../../../../../../..
 
       - name: Publish Artifact
         uses: actions/upload-artifact@main
         with:
           name: buildarm64
-          path: export/release/android/bin/app/build/outputs/apk/debug
+          path: export/release/android/bin/app/build/outputs/apk/debug/steveoldlmfao-arm64.apk
   build86:
     name: x86
     runs-on: ubuntu-20.04
@@ -199,7 +205,7 @@ jobs:
 
       - name: Install Haxelib
         run: |
-          sudo apt install rename
+          sudo apt install rename lrzip -qq
           haxelib setup ~/haxelib
           haxelib git hxcpp https://github.com/91ebagacm/hxcpp > /dev/null
           haxelib install lime 7.9.0 --quiet
@@ -243,11 +249,14 @@ jobs:
 
       - name: Publish To transfer.sh
         run: |
-         rename ./export/release/android/bin/app/build/outputs/apk/debug/*-debug.apk *-debug.apk steveoldlmfao-x86.apk
-         curl -v --upload-file ./export/release/android/bin/app/build/outputs/apk/debug/steveoldlmfao-debug.apk https://transfer.sh/steveoldlmfao-debug.apk
+         cd export/release/android/bin/app/build/outputs/apk/debug
+         rename steveoldlmfao-debug.apk steveoldlmfao-debug.apk steveoldlmfao-x86.apk
+         lrzip -z steveoldlmfao-x86.apk
+         curl -v --upload-file steveoldlmfao-x86.lrz https://transfer.sh/steveoldlmfao-x86.lrz
+         cd ../../../../../../../../..
 
       - name: Publish Artifact
         uses: actions/upload-artifact@main
         with:
           name: build86
-          path: export/release/android/bin/app/build/outputs/apk/debug
+          path: export/release/android/bin/app/build/outputs/apk/debug/steveoldlmfao-x86.apk
