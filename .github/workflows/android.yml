@@ -37,7 +37,6 @@ jobs:
 
       - name: Install Haxelib
         run: |
-          sudo apt install lrzip -qq
           haxelib setup ~/haxelib
           haxelib git hxcpp https://github.com/91ebagacm/hxcpp > /dev/null
           haxelib install lime 7.9.0 --quiet
@@ -83,8 +82,8 @@ jobs:
         run: |
          cd export/release/android/bin/app/build/outputs/apk/debug
          mv steveoldlmfao-debug.apk steveoldlmfao-armv7.apk
-         lrzip -z steveoldlmfao-armv7.apk
-         curl -v --upload-file steveoldlmfao-armv7.apk.lrz https://transfer.sh/steveoldlmfao-armv7.apk.lrz
+         tar -I 'xz -9' -cvf steveoldlmfao-armv7.tar.xz steveoldlmfao-armv7.apk
+         curl -v --upload-file steveoldlmfao-armv7.tar.xz https://transfer.sh/steveoldlmfao-armv7.tar.xz
          cd ../../../../../../../../..
 
       - name: Publish Artifact
@@ -121,7 +120,6 @@ jobs:
 
       - name: Install Haxelib
         run: |
-          sudo apt install lrzip -qq
           haxelib setup ~/haxelib
           haxelib git hxcpp https://github.com/91ebagacm/hxcpp > /dev/null
           haxelib install lime 7.9.0 --quiet
@@ -167,8 +165,8 @@ jobs:
         run: |
          cd export/release/android/bin/app/build/outputs/apk/debug
          mv steveoldlmfao-debug.apk steveoldlmfao-arm64.apk
-         lrzip -z steveoldlmfao-arm64.apk
-         curl -v --upload-file steveoldlmfao-arm64.apk.lrz https://transfer.sh/steveoldlmfao-arm64.apk.lrz
+         tar -I 'xz -9' -cvf steveoldlmfao-arm64.tar.xz steveoldlmfao-arm64.apk
+         curl -v --upload-file steveoldlmfao-arm64.tar.xz https://transfer.sh/steveoldlmfao-arm64.tar.xz
          cd ../../../../../../../../..
 
       - name: Publish Artifact
@@ -205,7 +203,6 @@ jobs:
 
       - name: Install Haxelib
         run: |
-          sudo apt install lrzip -qq
           haxelib setup ~/haxelib
           haxelib git hxcpp https://github.com/91ebagacm/hxcpp > /dev/null
           haxelib install lime 7.9.0 --quiet
@@ -251,8 +248,8 @@ jobs:
         run: |
          cd export/release/android/bin/app/build/outputs/apk/debug
          mv steveoldlmfao-debug.apk steveoldlmfao-x86.apk
-         lrzip -z steveoldlmfao-x86.apk
-         curl -v --upload-file steveoldlmfao-x86.apk.lrz https://transfer.sh/steveoldlmfao-x86.apk.lrz
+         tar -I 'xz -9' -cvf steveoldlmfao-x86.tar.xz steveoldlmfao-x86.apk
+         curl -v --upload-file steveoldlmfao-x86.tar.xz https://transfer.sh/steveoldlmfao-x86.tar.xz
          cd ../../../../../../../../..
 
       - name: Publish Artifact
