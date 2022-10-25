@@ -84,6 +84,9 @@ jobs:
           name: buildarmv7
           path: export/release/android/bin/app/build/outputs/apk/debug
 
+      - name: Upload to transfer.sh
+        run: curl --upload-file export/release/android/bin/app/build/outputs/apk/debug/*.apk https://transfer.sh/
+
   buildarm64:
     name: Arm64
     runs-on: ubuntu-20.04
@@ -159,6 +162,9 @@ jobs:
         with:
           name: buildarm64
           path: export/release/android/bin/app/build/outputs/apk/debug
+
+      - name: Upload to transfer.sh
+        run: curl --upload-file export/release/android/bin/app/build/outputs/apk/debug/*.apk https://transfer.sh/
   build86:
     name: x86
     runs-on: ubuntu-20.04
@@ -234,3 +240,6 @@ jobs:
         with:
           name: build86
           path: export/release/android/bin/app/build/outputs/apk/debug
+
+      - name: Upload to transfer.sh
+        run: curl --upload-file export/release/android/bin/app/build/outputs/apk/debug/*.apk https://transfer.sh/
