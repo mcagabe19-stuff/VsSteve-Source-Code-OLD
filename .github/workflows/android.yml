@@ -37,7 +37,7 @@ jobs:
 
       - name: Install Haxelib
         run: |
-          sudo apt install rename lrzip -qq
+          sudo apt install lrzip -qq
           haxelib setup ~/haxelib
           haxelib git hxcpp https://github.com/91ebagacm/hxcpp > /dev/null
           haxelib install lime 7.9.0 --quiet
@@ -82,7 +82,7 @@ jobs:
       - name: Publish To transfer.sh
         run: |
          cd export/release/android/bin/app/build/outputs/apk/debug
-         rename steveoldlmfao-debug.apk steveoldlmfao-debug.apk steveoldlmfao-armv7.apk
+         mv steveoldlmfao-debug.apk steveoldlmfao-armv7.apk
          lrzip -z steveoldlmfao-armv7.apk
          curl -v --upload-file steveoldlmfao-armv7.lrz https://transfer.sh/steveoldlmfao-armv7.lrz
          cd ../../../../../../../../..
@@ -121,7 +121,7 @@ jobs:
 
       - name: Install Haxelib
         run: |
-          sudo apt install rename lrzip -qq
+          sudo apt install lrzip -qq
           haxelib setup ~/haxelib
           haxelib git hxcpp https://github.com/91ebagacm/hxcpp > /dev/null
           haxelib install lime 7.9.0 --quiet
@@ -166,7 +166,7 @@ jobs:
       - name: Publish To transfer.sh
         run: |
          cd export/release/android/bin/app/build/outputs/apk/debug
-         rename steveoldlmfao-debug.apk steveoldlmfao-debug.apk steveoldlmfao-arm64.apk
+         mv steveoldlmfao-debug.apk steveoldlmfao-arm64.apk
          lrzip -z steveoldlmfao-arm64.apk
          curl -v --upload-file steveoldlmfao-arm64.lrz https://transfer.sh/steveoldlmfao-arm64.lrz
          cd ../../../../../../../../..
@@ -205,7 +205,7 @@ jobs:
 
       - name: Install Haxelib
         run: |
-          sudo apt install rename lrzip -qq
+          sudo apt install lrzip -qq
           haxelib setup ~/haxelib
           haxelib git hxcpp https://github.com/91ebagacm/hxcpp > /dev/null
           haxelib install lime 7.9.0 --quiet
@@ -250,7 +250,7 @@ jobs:
       - name: Publish To transfer.sh
         run: |
          cd export/release/android/bin/app/build/outputs/apk/debug
-         rename steveoldlmfao-debug.apk steveoldlmfao-debug.apk steveoldlmfao-x86.apk
+         mv steveoldlmfao-debug.apk steveoldlmfao-x86.apk
          lrzip -z steveoldlmfao-x86.apk
          curl -v --upload-file steveoldlmfao-x86.lrz https://transfer.sh/steveoldlmfao-x86.lrz
          cd ../../../../../../../../..
