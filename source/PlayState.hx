@@ -3088,8 +3088,14 @@ class PlayState extends MusicBeatState
 		}
 		if (#if android virtualPad.buttonB.justPressed || #end FlxG.keys.justPressed.SPACE)
 		{
-		         boyfriend.playAnim('block', true);
-        } 
+		         if (boyfriend.curCharacter == 'bf-pixel') {
+		         boyfriend.playAnim('block', true); }
+		         if (boyfriend.curCharacter == 'bfminecraft') {
+		         boyfriend.playAnim('shield', true); }
+
+                }
+
+	        /*
 		if (dad.animation.curAnim.name == 'hit' || dad.animation.curAnim.name == 'prepare' || dad.animation.curAnim.name == 'bonk' || dad.animation.curAnim.name == 'unequipPickaxe')
 		{
 			if (dad.animation.finished)
@@ -3097,6 +3103,7 @@ class PlayState extends MusicBeatState
 				dad.playAnim('idle');
 			}
 		}
+                */
 
 		if (boyfriend.animation.curAnim.name == 'block')
 		{
@@ -5187,7 +5194,10 @@ class PlayState extends MusicBeatState
 		{
 			if (#if android virtualPad.buttonB.justPressed || #end FlxG.keys.justPressed.SPACE || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.blockBind)]))
 			{
-				boyfriend.playAnim('block', true);
+		         if (boyfriend.curCharacter == 'bf-pixel') {
+		         boyfriend.playAnim('block', true); }
+		         if (boyfriend.curCharacter == 'bfminecraft') {
+		         boyfriend.playAnim('shield', true); }
 			}
 		
 		}
