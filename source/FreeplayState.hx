@@ -231,7 +231,7 @@ class FreeplayState extends MusicBeatState
 			FlxG.switchState(new MainMenuState());
 		}
 
-		if (#if android virtualPad.buttonA.justPressed || #end controls.ACCEPT)
+		if (#if android virtualPad.buttonA.justPressed || #end FlxG.keys.justPressed.ENTER)
 		{
                         FlxG.sound.music.volume = 0;	
 			destroyFreeplayVocals();
