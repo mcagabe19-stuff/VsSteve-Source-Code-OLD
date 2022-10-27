@@ -5318,6 +5318,8 @@ class PlayState extends MusicBeatState
 
 		function bonkEvent()
 		{
+			pressedSpace = false;
+			detectAttack = true;
 			iconP1.animation.curAnim.curFrame = 3;
 			FlxG.camera.shake(0.025, 0.025);
 			new FlxTimer().start(0.5, function(tmr:FlxTimer)
