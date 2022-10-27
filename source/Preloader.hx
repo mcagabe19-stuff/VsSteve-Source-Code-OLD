@@ -1,4 +1,4 @@
-package ;
+package;
  
 import flixel.util.FlxTimer;
 import flixel.util.FlxColor;
@@ -19,7 +19,7 @@ import flash.display.BlendMode;
  
 @:bitmap("assets/preload/images/titleBG.png") class balls extends BitmapData { }
 @:bitmap("assets/preload/images/titleBG.png") class balls2 extends BitmapData { }
-@:bitmap("assets/preload/images/logo.png") class balls3 extends BitmapData { }
+@:bitmap("assets/preload/images/logoBumpin.png") class balls3 extends BitmapData { }
 @:font("assets/fonts/vcr.ttf") class CustomFont extends Font {}
  
 class Preloader extends FlxBasePreloader
