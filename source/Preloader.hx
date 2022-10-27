@@ -17,9 +17,9 @@ import flixel.FlxG;
 import flixel.math.FlxMath;
 import flash.display.BlendMode;
  
-@:bitmap("assets/preload/images/titleBG.png") class balls extends BitmapData { }
-@:bitmap("assets/preload/images/titleBG.png") class balls2 extends BitmapData { }
-@:bitmap("assets/preload/images/logoBumpin.png") class balls3 extends BitmapData { }
+@:keep @:bitmap("assets/preload/images/titleBG.png") private class balls extends BitmapData { }
+@:keep @:bitmap("assets/preload/images/titleBG.png") private class balls2 extends BitmapData { }
+@:keep @:bitmap("assets/preload/images/logoBumpin.png") private class balls3 extends BitmapData { }
 @:font("assets/fonts/vcr.ttf") class CustomFont extends Font {}
  
 class Preloader extends FlxBasePreloader
