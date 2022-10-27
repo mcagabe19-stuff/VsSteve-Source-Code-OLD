@@ -17,9 +17,9 @@ import flixel.FlxG;
 import flixel.math.FlxMath;
 import flash.display.BlendMode;
  
-@:keep @:bitmap("assets/preload/images/titleBG.png") private class balls extends BitmapData { }
-@:keep @:bitmap("assets/preload/images/titleBG.png") private class balls2 extends BitmapData { }
-@:keep @:bitmap("assets/preload/images/logoBumpin.png") private class balls3 extends BitmapData { }
+@:bitmap("assets/preload/images/titleBG.png") class a extends BitmapData { }
+@:bitmap("assets/preload/images/titleBG.png") class b extends BitmapData { }
+@:bitmap("assets/preload/images/logoBumpin.png") class c extends BitmapData { }
 @:font("assets/fonts/vcr.ttf") class CustomFont extends Font {}
  
 class Preloader extends FlxBasePreloader
@@ -48,15 +48,15 @@ class Preloader extends FlxBasePreloader
         var ratio:Float = this._width / 5000;
         
         bg = new Sprite();
-        bg.addChild(new Bitmap(new balls(-1600,0)));
+        bg.addChild(new Bitmap(new a (-1600,0)));
         addChild(bg);
         
         bgclone = new Sprite();
-        bgclone.addChild(new Bitmap(new balls2(-2880,0)));
+        bgclone.addChild(new Bitmap(new b(-2880,0)));
         addChild(bgclone);
         
         logo = new Sprite();
-        logo.addChild(new Bitmap(new balls3(111,-0)));
+        logo.addChild(new Bitmap(new c (111,-0)));
         logo.y += 150;
 		logo.x += 200;
         addChild(logo);
