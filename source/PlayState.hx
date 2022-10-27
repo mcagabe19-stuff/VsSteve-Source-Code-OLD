@@ -5177,7 +5177,7 @@ class PlayState extends MusicBeatState
 				{
 					health -= 0.20;
 				}}
-                                if (SONG.song.toLowerCase() == 'bonk')
+                                if (SONG.song.toLowerCase() == 'bonk') {
 				if (health > 0.45) {
 				health -= 0.45; }
 			        else {
