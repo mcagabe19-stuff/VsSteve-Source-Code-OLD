@@ -1,4 +1,4 @@
-package;
+package source;
  
 import flixel.util.FlxTimer;
 import flixel.util.FlxColor;
