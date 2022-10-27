@@ -39,6 +39,8 @@ class Preloader extends FlxBasePreloader
     var loadtxtBg:Bitmap;
     var text:TextField;
     var logo:Sprite;
+    var bg:Sprite;
+    var bgclone:Sprite;
     override function create():Void 
     {
         trace('loading from source/Preloader');
