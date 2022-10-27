@@ -1497,7 +1497,7 @@ class PlayState extends MusicBeatState
 
 		add(camFollow);
 
-		FlxG.camera.follow(camFollow, LOCKON, 0.04 * (30 / (cast (Lib.current.getChildAt(0), Main)).getFPS()#if mobile + 1 #else + 1.5 #end));
+		FlxG.camera.follow(camFollow, LOCKON, 0.04 * (30 / (cast (Lib.current.getChildAt(0), Main)).getFPS()#if mobile + 1 #end));
 		// FlxG.camera.setScrollBounds(0, FlxG.width, 0, FlxG.height);
 		FlxG.camera.zoom = defaultCamZoom;
 		FlxG.camera.focusOn(camFollow.getPosition());
@@ -4084,7 +4084,7 @@ class PlayState extends MusicBeatState
                 mobileControls.visible = false;
                 #end
 
-                #if desktop
+                /*
 		if (!loadRep)
 			rep.SaveReplay(saveNotes);
 		else
@@ -4093,7 +4093,7 @@ class PlayState extends MusicBeatState
 			FlxG.save.data.scrollSpeed = 1;
 			FlxG.save.data.downscroll = false;
 		}
-                #end
+                */
 
 		if (FlxG.save.data.fpsCap > 290)
 			(cast (Lib.current.getChildAt(0), Main)).setFPSCap(290);
