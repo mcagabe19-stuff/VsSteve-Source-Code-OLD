@@ -5324,7 +5324,7 @@ class PlayState extends MusicBeatState
 			new FlxTimer().start(0.5, function(tmr:FlxTimer)
 			{
 				iconP1.animation.curAnim.curFrame = 0;
-                        }
+                        });
 
                         if (pressedSpace)
 				{
@@ -5338,7 +5338,7 @@ class PlayState extends MusicBeatState
 
 					blockFail();
 					trace('Haha, bonked');
-				});
+				}
 		}
 
 	override function stepHit()
