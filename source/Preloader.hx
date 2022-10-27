@@ -95,6 +95,8 @@ class Preloader extends FlxBasePreloader
         }
         override function destroy():Void
             {
+                bg = null;
+                bgclone = null;
                 logo = null;
                 loadtxtProgress = null;
                 text = null;
