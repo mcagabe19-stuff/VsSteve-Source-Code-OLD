@@ -5166,7 +5166,8 @@ class PlayState extends MusicBeatState
 		{
 			new FlxTimer().start(0.05, function(tmr:FlxTimer)
 			{
-				boyfriend.playAnim('singDOWNmiss', true);	
+				boyfriend.playAnim('singDOWNmiss', true);
+                                if (SONG.song.toLowerCase() == 'suit up') {
 				hurtIcon = true;
 				if (health > 1)
 				{
@@ -5175,8 +5176,12 @@ class PlayState extends MusicBeatState
 				else
 				{
 					health -= 0.20;
-				}	
-				
+				}}
+                                if (SONG.song.toLowerCase() == 'bonk')
+				if (health > 0.45) {
+				health -= 0.45; }
+			        else {
+				health -= 0.2; }}
 			});
 			FlxG.camera.shake(0.05, 0.05);
 
@@ -5313,18 +5318,25 @@ class PlayState extends MusicBeatState
 
 		function bonkEvent()
 		{
-			if (health > 0.45)
-				health -= 0.45;
-			else 
-				health -= 0.2;
-			boyfriend.playAnim('singDOWNmiss', true);
 			iconP1.animation.curAnim.curFrame = 3;
 			FlxG.camera.shake(0.025, 0.025);
 			new FlxTimer().start(0.5, function(tmr:FlxTimer)
 			{
 				iconP1.animation.curAnim.curFrame = 0;
 
-			});
+                        if (pressedSpace)
+				{
+					bfBlock();
+					trace('Successful Block');
+					FlxG.camera.shake(0.02, 0.02);
+					FlxG.sound.play(Paths.soundRandom('blocking/block', 1, 5), 0.6);
+				}
+				else
+				{
+
+					blockFail();
+					trace('Haha, bonked');
+				}});
 		}
 
 	override function stepHit()
