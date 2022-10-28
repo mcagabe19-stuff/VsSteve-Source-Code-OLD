@@ -46,5 +46,5 @@ jobs:
       - name: Cache Haxe Libraries
         uses: actions/cache@main
         id: setup-haxe
-        path: ~/haxelib
+        path: /home/runner/haxelib
         key: ${{ runner.os }}-haxe
