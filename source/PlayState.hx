@@ -5093,7 +5093,7 @@ class PlayState extends MusicBeatState
 			});
 		}
 
-		var oneTimeUseRegen: Bool = false;
+		static var oneTimeUseRegen: Bool = false;
 		var healthGain:Float = 0;
 
 		function Regen():Void
@@ -5117,7 +5117,7 @@ class PlayState extends MusicBeatState
 			});
 		}
 		
-		  var oneTimeUseStrength: Bool = false;
+		        static var oneTimeUseStrength: Bool = false;
 			var strengthActive:Bool = false;
 
 			function Strength()
