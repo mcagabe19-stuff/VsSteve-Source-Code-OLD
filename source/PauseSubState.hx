@@ -198,7 +198,10 @@ class PauseSubState extends MusicBeatSubstate
 					#end
 					if (FlxG.save.data.fpsCap > 290)
 						(cast (Lib.current.getChildAt(0), Main)).setFPSCap(290);
-					
+
+                                        ExtrasState.selectedBonus = false;
+                                        ExtrasState.selectedOthers = false;
+
 					FlxG.switchState(new MainMenuState());
 				case "Exit to freeplay":
 					if(PlayState.loadRep)
@@ -217,6 +220,9 @@ class PauseSubState extends MusicBeatSubstate
 						#end
 						if (FlxG.save.data.fpsCap > 290)
 							(cast (Lib.current.getChildAt(0), Main)).setFPSCap(290);
+
+                                        ExtrasState.selectedBonus = false;
+                                        ExtrasState.selectedOthers = false;
 						
 					FlxG.switchState(new FreeplayState());
 				case "Exit to extras":
@@ -236,7 +242,10 @@ class PauseSubState extends MusicBeatSubstate
 					#end
 					if (FlxG.save.data.fpsCap > 290)
 						(cast (Lib.current.getChildAt(0), Main)).setFPSCap(290);
-						
+
+                                        ExtrasState.selectedBonus = false;
+                                        ExtrasState.selectedOthers = false;
+
 					FlxG.switchState(new ExtrasState());
 			}
 		}
