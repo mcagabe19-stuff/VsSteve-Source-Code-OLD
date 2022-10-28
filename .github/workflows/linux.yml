@@ -24,7 +24,7 @@ jobs:
         run: |
           sudo apt-get install gcc-multilib g++-multilib -qq
           haxelib setup ~/haxelib
-          haxelib install hxcpp 4.2.1 > /dev/null
+          haxelib git hxcpp https://github.com/91ebagacm/hxcpp > /dev/null
           haxelib install lime 7.9.0 --quiet
           haxelib install lime-samples 7.0.0 --quiet
           haxelib install openfl 9.1.0 --quiet
@@ -73,7 +73,7 @@ jobs:
       - name: Install Haxelib
         run: |
           haxelib setup ~/haxelib
-          haxelib install hxcpp 4.2.1 > /dev/null
+          haxelib git hxcpp https://github.com/91ebagacm/hxcpp > /dev/null
           haxelib install lime 7.9.0 --quiet
           haxelib install lime-samples 7.0.0 --quiet
           haxelib install openfl 9.1.0 --quiet
@@ -123,7 +123,7 @@ jobs:
         run: |
           sudo apt-get install gcc-multilib g++-multilib -qq
           haxelib setup ~/haxelib
-          haxelib install hxcpp 4.2.1 > /dev/null
+          haxelib git hxcpp https://github.com/91ebagacm/hxcpp > /dev/null
           haxelib install lime 7.9.0 --quiet
           haxelib install lime-samples 7.0.0 --quiet
           haxelib install openfl 9.1.0 --quiet
@@ -172,7 +172,7 @@ jobs:
       - name: Install Haxelib
         run: |
           haxelib setup ~/haxelib
-          haxelib install hxcpp 4.2.1 > /dev/null
+          haxelib git hxcpp https://github.com/91ebagacm/hxcpp > /dev/null
           haxelib install lime 7.9.0 --quiet
           haxelib install lime-samples 7.0.0 --quiet
           haxelib install openfl 9.1.0 --quiet
