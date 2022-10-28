@@ -163,7 +163,7 @@ class MainMenuState extends MusicBeatState
 		if (FlxG.save.data.dfjk)
 			controls.setKeyboardScheme(KeyboardScheme.Solo, true);
 		else
-			controls.setKeyboardScheme(KeyboardScheme.Duo(true), true)
+			controls.setKeyboardScheme(KeyboardScheme.Duo(true), true);
 
 		changeItem();
 
