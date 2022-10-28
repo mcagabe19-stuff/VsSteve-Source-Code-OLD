@@ -201,7 +201,9 @@ class ChartingState extends MusicBeatState
 		add(blackBorder);
 		add(snapText);
 
-
+                #if android
+		addVirtualPad(LEFT_FULL, A_B_C_X_Y_Z);
+		#end
 
 		super.create();
 	}
@@ -699,6 +701,11 @@ class ChartingState extends MusicBeatState
 			writingNotes = !writingNotes;
 		}
 
+                if (#if android virtualPad.buttonB.justPressed || #end controls.BACK)
+		{
+			FlxG.switchState(new MainMenuState());
+		}
+
 		/*if (FlxG.keys.pressed.CONTROL && FlxG.keys.justPressed.RIGHT)
 			snap = snap * 2;
 		if (FlxG.keys.pressed.CONTROL && FlxG.keys.justPressed.LEFT)
@@ -707,6 +714,7 @@ class ChartingState extends MusicBeatState
 			snap = 192;
 		if (snap <= 1)
 			snap = 1;*/
+
 		Conductor.songPosition = FlxG.sound.music.time;
 		_song.song = typingShit.text;
 
@@ -881,7 +889,7 @@ class ChartingState extends MusicBeatState
 				dummyArrow.y = Math.floor(FlxG.mouse.y / GRID_SIZE) * GRID_SIZE;
 		}
 
-		if (FlxG.keys.justPressed.ENTER)
+		if (#if android virtualPad.buttonA.justPressed || #end FlxG.keys.justPressed.ENTER)
 		{
 			lastSection = curSection;
 
@@ -941,7 +949,7 @@ class ChartingState extends MusicBeatState
 				if (FlxG.keys.justPressed.LEFT || FlxG.keys.justPressed.A)
 					changeSection(curSection - shiftThing);
 			}	
-			if (FlxG.keys.justPressed.SPACE)
+			if (#if android virtualPad.buttonC.justPressed || #end FlxG.keys.justPressed.SPACE)
 			{
 				if (FlxG.sound.music.playing)
 				{
@@ -1399,11 +1407,11 @@ class ChartingState extends MusicBeatState
 			var noteType = 0;
 			if (FlxG.keys.pressed.ONE)
 				noteType = 1;
-			if (FlxG.keys.pressed.ALT) // poison
+			if (#if android virtualPad.buttonX.justPressed || #end FlxG.keys.pressed.ALT) // poison
 				noteType = 2;
-			if (FlxG.keys.pressed.CONTROL) // wither 
+	        	if (#if android virtualPad.buttonY.justPressed || #end FlxG.keys.pressed.CONTROL) // wither 
 				noteType = 3;
-			if (FlxG.keys.pressed.G) // Gold Apple notes
+			if (#if android virtualPad.buttonZ.justPressed || #end FlxG.keys.pressed.G) // Gold Apple notes
 				noteType = 5;
 			if (FlxG.keys.pressed.B)
 				noteType = 10;
