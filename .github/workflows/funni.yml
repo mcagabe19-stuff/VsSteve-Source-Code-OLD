@@ -44,7 +44,7 @@ jobs:
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc.git
 
       - name: Cache Haxe Libraries
-        uses: actions/cache@main
+        uses: actions/cache@v3
         id: setup-haxe
         path: /home/runner/haxelib
         key: ${{ runner.os }}-haxe
