@@ -256,9 +256,6 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
-                Paths.clearUnusedMemory();
-                Paths.clearStoredMemory();
-
 		instance = this;
 
 		if (FlxG.save.data.fpsCap > 290)
@@ -3095,7 +3092,6 @@ class PlayState extends MusicBeatState
 
                 }
 
-	        /*
 		if (dad.animation.curAnim.name == 'hit' || dad.animation.curAnim.name == 'prepare' || dad.animation.curAnim.name == 'bonk' || dad.animation.curAnim.name == 'unequipPickaxe')
 		{
 			if (dad.animation.finished)
@@ -3103,7 +3099,6 @@ class PlayState extends MusicBeatState
 				dad.playAnim('idle');
 			}
 		}
-                */
 
 		if (boyfriend.animation.curAnim.name == 'block')
 		{
@@ -5324,7 +5319,7 @@ class PlayState extends MusicBeatState
 				iconP1.animation.curAnim.curFrame = 0;
                         });
 
-			new FlxTimer().start(0.25, function(tmr:FlxTimer)
+			new FlxTimer().start(0.15, function(tmr:FlxTimer)
                         if (pressedSpace)
 				{
 					bfBlock();
