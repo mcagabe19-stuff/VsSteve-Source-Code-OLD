@@ -49,7 +49,7 @@
 	<define name="PRELOAD_ALL" unless="web" />
 	<define name="NO_PRELOAD_ALL" unless="PRELOAD_ALL"/>
 	
-	<section if="PRELOAD_ALL">
+	<!-- <section if="PRELOAD_ALL">
 		<library name="songs"    preload="true" />
 		<library name="shared"   preload="true" />
 		<library name="week6"   preload="true" />
@@ -59,7 +59,11 @@
 		<library name="songs"    preload="false" />
 		<library name="shared"   preload="false" />
 		<library name="week6"   preload="false" />
-	</section>
+	</section> -->
+
+        <library name="songs"    preload="false" />
+	<library name="shared"   preload="false" />
+	<library name="week6"   preload="false" />
 
         <assets path="mobile" rename="assets/mobile" if="mobile" />
 	
