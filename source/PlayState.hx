@@ -5324,7 +5324,7 @@ class PlayState extends MusicBeatState
 				iconP1.animation.curAnim.curFrame = 0;
                         });
 
-			new FlxTimer().start(0.05, function(tmr:FlxTimer)
+			new FlxTimer().start(0.25, function(tmr:FlxTimer)
                         if (pressedSpace)
 				{
 					bfBlock();
@@ -5334,7 +5334,8 @@ class PlayState extends MusicBeatState
 				}
 				else
 				{
-
+					pressedSpace = false;
+					detectAttack = false;
 					blockFail();
 					trace('Haha, bonked');
 				});
@@ -5474,9 +5475,9 @@ class PlayState extends MusicBeatState
 				switch (curStep)
 				{
 					case 395 | 427 | 459 | 492 | 652 | 716 | 844 | 908 | 940 | 972 | 1004 | 1164 | 1228:
-						bonkEvent();
-					case 394 | 426 | 458 | 491 | 651 | 715 | 843 | 907 | 939 | 971 | 1003 | 1163 | 1227:
 						bonkAnim();
+					case 394 | 426 | 458 | 491 | 651 | 715 | 843 | 907 | 939 | 971 | 1003 | 1163 | 1227:
+						bonkEvent();
 	
 					//case 388 | 404 | 420 | 436 | 452 | 468 | 484 | 500 | 772 | 788 | 836 | 850 | 852 | 868 | 870 | 884 | 1170:
 					//	steveAttack();
