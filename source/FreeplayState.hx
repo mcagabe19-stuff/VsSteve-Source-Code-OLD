@@ -233,7 +233,6 @@ class FreeplayState extends MusicBeatState
 
 		if (#if android virtualPad.buttonA.justPressed || #end FlxG.keys.justPressed.ENTER)
 		{
-                        FlxG.sound.music.volume = 0;	
 			destroyFreeplayVocals();
 
 			var poop:String = Highscore.formatSong(songs[curSelected].songName.toLowerCase(), curDifficulty);
