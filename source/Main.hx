@@ -85,7 +85,7 @@ class Main extends Sprite
 
 		SUtil.check();
 
-                game = new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, startFullscreen);
+                game = new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen);
 
                 addChild(game);
 
