@@ -115,7 +115,7 @@ class StoryMenuState extends MusicBeatState
 
 		var rankText:FlxText = new FlxText(0, 10);
 		rankText.text = 'RANK: GREAT';
-		rankText.setFormat(Paths.font("MinecraftRegular-Bmg3.otf"), 32);
+		rankText.setFormat(Paths.font("MinecraftRegular-Bmg3.ttf"), 32);
 		rankText.size = scoreText.size;
 		rankText.screenCenter(X);
 		
