@@ -19,9 +19,9 @@ import flixel.FlxG;
 import flixel.math.FlxMath;
 import flash.display.BlendMode;
  
-@:bitmap("assets/preload/images/titleBG.png") class A extends BitmapData {}
-@:bitmap("assets/preload/images/titleBG.png") class B extends BitmapData {}
-@:bitmap("assets/preload/images/logoBumpin.png") class C extends BitmapData {}
+@:bitmap("assets/preload/images/titleBG.png") class Bg extends BitmapData {}
+@:bitmap("assets/preload/images/titleBG.png") class BgCopy extends BitmapData {}
+@:bitmap("assets/preload/images/logoBumpin.png") class LogoShit extends BitmapData {}
 @:font("assets/fonts/vcr.ttf") class CustomFont extends Font {}
  
 class Preloader extends FlxBasePreloader
@@ -52,23 +52,23 @@ class Preloader extends FlxBasePreloader
         var ratio:Float = this._width / 5000;
         
         bg = new Sprite();
-        bg.addChild(new Bitmap(new A (-1600,0)));
+        bg.addChild(new Bitmap(new Bg (-1600,0)));
         addChild(bg);
         
         bgclone = new Sprite();
-        bgclone.addChild(new Bitmap(new B (-2880,0)));
+        bgclone.addChild(new Bitmap(new BgCopy (-2880,0)));
         addChild(bgclone);
         
         logo = new Sprite();
-        logo.addChild(new Bitmap(new C (311,150)));
+        logo.addChild(new Bitmap(new LogoShit (711,-200)));
         addChild(logo);
          
-        loadtxtBg = new Bitmap(new BitmapData(1, -9, false, 0xFF000000));
+        loadtxtBg = new Bitmap(new BitmapData(1, 26, false, 0xFF000000));
         loadtxtBg.alpha = 0.8;
         loadtxtBg.scaleX = 1280;
         addChild(loadtxtBg);
 
-        loadtxtProgress = new Bitmap(new BitmapData(1, -9, false, 0xffffff));
+        loadtxtProgress = new Bitmap(new BitmapData(1, 26, false, 0xffffff));
         loadtxtProgress.alpha = 0.3;
 	addChild(loadtxtProgress);
 
@@ -78,7 +78,7 @@ class Preloader extends FlxBasePreloader
         text.embedFonts = true;
         text.text = "Loading...";
         text.width = 189;
-        text.y = 700;
+        text.y = 685;
         text.x = -60;
         addChild(text);
 
