@@ -22,7 +22,7 @@ import flash.display.BlendMode;
 @:bitmap("assets/preload/images/titleBG.png") class Bg extends BitmapData {}
 @:bitmap("assets/preload/images/titleBG.png") class BgCopy extends BitmapData {}
 @:bitmap("assets/preload/images/logoBumpin.png") class LogoShit extends BitmapData {}
-@:font("assets/fonts/vcr.ttf") class CustomFont extends Font {}
+@:font("assets/fonts/MinecraftRegular-Bmg3.ttf") class CustomFont extends Font {}
  
 class Preloader extends FlxBasePreloader
 {
@@ -76,7 +76,7 @@ class Preloader extends FlxBasePreloader
 
         Font.registerFont(CustomFont);
         text = new TextField();
-        text.defaultTextFormat = new TextFormat("vcr", 24, 0xffffff, false, false ,false , null, null, "right");
+        text.defaultTextFormat = new TextFormat("MinecraftRegular-Bmg3", 24, 0xffffff, false, false ,false , null, null, "right");
         text.embedFonts = true;
         text.text = "Loading...";
         text.width = 189;
