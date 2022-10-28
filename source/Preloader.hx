@@ -58,19 +58,17 @@ class Preloader extends FlxBasePreloader
         addChild(bgclone);
         
         logo = new Sprite();
-        logo.addChild(new Bitmap(new C (111,-0)));
-        logo.y += 150;
-		logo.x += 200;
+        logo.addChild(new Bitmap(new C (311,150)));
         addChild(logo);
          
-        loadtxtBg = new Bitmap(new BitmapData(1, 1, false, 0xFF000000));
+        loadtxtBg = new Bitmap(new BitmapData(1, -9, false, 0xFF000000));
         loadtxtBg.alpha = 0.8;
         loadtxtBg.scaleX = 1280;
         addChild(loadtxtBg);
 
-        loadtxtProgress = new Bitmap(new BitmapData(1, 1, false, 0xffffff));
+        loadtxtProgress = new Bitmap(new BitmapData(1, -9, false, 0xffffff));
         loadtxtProgress.alpha = 0.3;
-		addChild(loadtxtProgress);
+	addChild(loadtxtProgress);
 
         Font.registerFont(CustomFont);
         text = new TextField();
@@ -78,7 +76,7 @@ class Preloader extends FlxBasePreloader
         text.embedFonts = true;
         text.text = "Loading...";
         text.width = 189;
-        text.y = 710;
+        text.y = 700;
         text.x = -60;
         addChild(text);
 
