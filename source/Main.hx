@@ -83,9 +83,7 @@ class Main extends Sprite
 		initialState = TitleState;
 		#end
 
-                #if android
 		SUtil.check();
-                #end
 
                 game = new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, startFullscreen);
 
