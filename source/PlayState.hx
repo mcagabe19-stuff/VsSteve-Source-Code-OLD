@@ -63,6 +63,9 @@ using StringTools;
 
 class PlayState extends MusicBeatState
 {
+        public static var oneTimeUseStrength: Bool = false;
+        public static var oneTimeUseRegen: Bool = false;
+
 	public static var instance:PlayState = null;
 
 	public static var curStage:String = '';
@@ -5093,7 +5096,6 @@ class PlayState extends MusicBeatState
 			});
 		}
 
-		static var oneTimeUseRegen: Bool = false;
 		var healthGain:Float = 0;
 
 		function Regen():Void
@@ -5117,7 +5119,6 @@ class PlayState extends MusicBeatState
 			});
 		}
 		
-		        static var oneTimeUseStrength: Bool = false;
 			var strengthActive:Bool = false;
 
 			function Strength()
@@ -5319,7 +5320,7 @@ class PlayState extends MusicBeatState
 				iconP1.animation.curAnim.curFrame = 0;
                         });
 
-			new FlxTimer().start(0.15, function(tmr:FlxTimer)
+			new FlxTimer().start(0.2, function(tmr:FlxTimer)
                         if (pressedSpace)
 				{
 					bfBlock();
