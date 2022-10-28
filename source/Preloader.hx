@@ -2,7 +2,9 @@ package source;
  
 import flixel.util.FlxTimer;
 import flixel.util.FlxColor;
+#if sys
 import sys.net.Address;
+#end
 import openfl.text.TextFormat;
 import Paths;
 import openfl.text.TextField;
