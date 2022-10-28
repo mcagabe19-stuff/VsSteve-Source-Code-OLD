@@ -5309,8 +5309,6 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-
-
 		function bonkAnim()
 		{
 			dad.playAnim('bonk', true);		
@@ -5326,6 +5324,7 @@ class PlayState extends MusicBeatState
 				iconP1.animation.curAnim.curFrame = 0;
                         });
 
+			new FlxTimer().start(0.05, function(tmr:FlxTimer)
                         if (pressedSpace)
 				{
 					bfBlock();
@@ -5338,7 +5337,7 @@ class PlayState extends MusicBeatState
 
 					blockFail();
 					trace('Haha, bonked');
-				}
+				});
 		}
 
 	override function stepHit()
