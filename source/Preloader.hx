@@ -76,7 +76,7 @@ class Preloader extends FlxBasePreloader
 
         Font.registerFont(CustomFont);
         text = new TextField();
-        text.defaultTextFormat = new TextFormat("MinecraftRegular-Bmg3", 24, 0xffffff, false, false ,false , null, null, "right");
+        text.defaultTextFormat = new TextFormat("vcr", 24, 0xffffff, false, false ,false , null, null, "right");
         text.embedFonts = true;
         text.text = "Loading...";
         text.width = 189;
