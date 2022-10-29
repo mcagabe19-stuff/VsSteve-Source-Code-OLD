@@ -125,7 +125,6 @@ jobs:
       - name: Install Haxelib
         run: |
           haxelib setup ~/haxelib
-          haxelib git hxcpp https://github.com/mcagabe19/hxcpp > /dev/null
           haxelib install lime 7.9.0 --quiet
           git clone https://github.com/Sirox228/hxcpp-new-ndk-support
           haxelib dev hxcpp hxcpp-new-ndk-support
@@ -213,7 +212,6 @@ jobs:
       - name: Install Haxelib
         run: |
           haxelib setup ~/haxelib
-          haxelib git hxcpp https://github.com/mcagabe19/hxcpp > /dev/null
           haxelib install lime 7.9.0 --quiet
           git clone https://github.com/Sirox228/hxcpp-new-ndk-support
           haxelib dev hxcpp hxcpp-new-ndk-support
