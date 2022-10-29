@@ -16,7 +16,6 @@ class LoadingState extends MusicBeatState
 {
 	public static var target:FlxState;
 	public static var stopMusic = false;
-	public var luaToCashe:Array<ModchartState> = [];
 	static var imagesToCache:Array<String> = [];
 	static var soundsToCache:Array<String> = [];
 	static var library:String = "";
