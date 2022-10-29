@@ -38,8 +38,12 @@ jobs:
       - name: Install Haxelib
         run: |
           haxelib setup ~/haxelib
-          haxelib git hxcpp https://github.com/mcagabe19/hxcpp > /dev/null
           haxelib install lime 7.9.0 --quiet
+          git clone https://github.com/Sirox228/hxcpp-new-ndk-support
+          haxelib dev hxcpp hxcpp-new-ndk-support
+          cd hxcpp-new-ndk-support/tools/hxcpp
+          haxe compile.hxml
+          cd ../../../
           haxelib install lime-samples 7.0.0 --quiet
           haxelib install openfl 9.1.0 --quiet
           haxelib install openfl-samples 8.7.0 --quiet
@@ -123,6 +127,11 @@ jobs:
           haxelib setup ~/haxelib
           haxelib git hxcpp https://github.com/mcagabe19/hxcpp > /dev/null
           haxelib install lime 7.9.0 --quiet
+          git clone https://github.com/Sirox228/hxcpp-new-ndk-support
+          haxelib dev hxcpp hxcpp-new-ndk-support
+          cd hxcpp-new-ndk-support/tools/hxcpp
+          haxe compile.hxml
+          cd ../../../
           haxelib install lime-samples 7.0.0 --quiet
           haxelib install openfl 9.1.0 --quiet
           haxelib install openfl-samples 8.7.0 --quiet
@@ -206,6 +215,11 @@ jobs:
           haxelib setup ~/haxelib
           haxelib git hxcpp https://github.com/mcagabe19/hxcpp > /dev/null
           haxelib install lime 7.9.0 --quiet
+          git clone https://github.com/Sirox228/hxcpp-new-ndk-support
+          haxelib dev hxcpp hxcpp-new-ndk-support
+          cd hxcpp-new-ndk-support/tools/hxcpp
+          haxe compile.hxml
+          cd ../../../
           haxelib install lime-samples 7.0.0 --quiet
           haxelib install openfl 9.1.0 --quiet
           haxelib install openfl-samples 8.7.0 --quiet
