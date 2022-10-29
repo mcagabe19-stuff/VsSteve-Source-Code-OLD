@@ -35,6 +35,9 @@ class LoadingState extends MusicBeatState
 	function new(target:FlxState, stopMusic:Bool)
 	{
 		super();
+
+                FlxTransitionableState.skipNextTransIn = true;
+		FlxTransitionableState.skipNextTransOut = true;
 		this.target = target;
 		this.stopMusic = stopMusic;
 	}
@@ -99,11 +102,7 @@ class LoadingState extends MusicBeatState
 				if (PlayState.SONG.needsVoices)
 					checkLoadSong(getVocalPath());
 				checkLibrary("shared");
-				/*if (PlayState.storyWeek > 0)
-					checkLibrary("week" + PlayState.storyWeek);
-				else
-					checkLibrary("tutorial");*/
-				
+                                setLoadingText("Done!");
 				var fadeTime = 0.5;
 				FlxG.camera.fade(FlxG.camera.bgColor, fadeTime, true);
 				new FlxTimer().start(fadeTime + MIN_TIME, function(_) introComplete());
@@ -148,10 +147,19 @@ class LoadingState extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+                var lerpTarget:Float = 1280.0 * (progress / max);
+		loadTxtProgress.scale.x = FlxMath.lerp(loadTxtProgress.scale.x, lerpTarget, elapsed * 5);
+
 		#if debug
 		if (FlxG.keys.justPressed.SPACE)
 			trace('fired: ' + callbacks.getFired() + " unfired:" + callbacks.getUnfired());
 		#end
+	}
+
+        public function setLoadingText(text:String)
+	{
+		loadTxt.text = text;
 	}
 	
 	function onLoad()
