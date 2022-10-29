@@ -25,6 +25,9 @@ class LoadingState extends MusicBeatState
 	var pano:FlxSprite;
         var panoclone:FlxSprite;
 	var logoBl:FlxSprite;
+        var loadTxtBg:FlxSprite;
+	var loadTxtProgress:FlxSprite;
+	var loadTxt:FlxText;
 	var danceLeft = false;
 	
 	function new(target:FlxState, stopMusic:Bool)
@@ -55,6 +58,34 @@ class LoadingState extends MusicBeatState
 		logoBl.y += 150;
 		logoBl.x += 200;
 		add(logoBl);
+
+                loadTxtBg = new FlxSprite();
+		add(loadTxtBg);
+
+		loadTxtProgress = new FlxSprite();
+		add(loadTxtProgress);
+
+		loadTxt = new FlxText(0, 24, 0, "Loading...", 30);
+		loadTxt.setFormat(Paths.font("vcr.ttf"), 24, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		loadTxt.x = 5;
+		loadTxt.y = FlxG.height - loadTxt.height - 5;
+		add(loadTxt);
+
+		loadTxtBg.makeGraphic(1, 24, 0xFF000000);
+		loadTxtBg.updateHitbox();
+		loadTxtBg.origin.set();
+		loadTxtBg.scale.set(1280, loadTxt.height + 5);
+		loadTxtBg.alpha = 0.8;
+		loadTxtBg.y = loadTxt.y;
+
+		loadTxtProgress.makeGraphic(1, 24, 0xFFFFFFFF);
+		loadTxtProgress.updateHitbox();
+		loadTxtProgress.origin.set();
+		loadTxtProgress.scale.set(0, loadTxt.height + 5);
+		loadTxtProgress.alpha = 0.3;
+		loadTxtProgress.y = loadTxt.y;
+
+		loadTxt.y += 2;
 		
 		initSongsManifest().onComplete
 		(
@@ -174,6 +205,9 @@ class LoadingState extends MusicBeatState
                 pano = null;
                 panoclone = null;
                 logoBl = null;
+                loadTxtBg = null;
+	        loadTxtProgress = null;
+	        loadTxt = null;
 
 		super.destroy();
 		
