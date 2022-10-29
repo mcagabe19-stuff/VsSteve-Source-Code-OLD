@@ -84,6 +84,6 @@ class LoadingState extends MusicBeatState
 		if (stopMusic && FlxG.sound.music != null)
 			FlxG.sound.music.stop();
 
-		MusicBeatState.switchState(target);
+		FlxG.switchState(target);
 	}
 }
