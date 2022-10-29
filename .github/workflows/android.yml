@@ -15,18 +15,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@main
 
-      - name: Setup Android NDK
-        uses: nttld/setup-ndk@main
-        id: setup-ndk
-        with:
-          ndk-version: r25b
-
-      - name: Setup Java JDK
-        uses: actions/setup-java@main
-        with:
-          distribution: zulu
-          java-version: 11
-
       - name: Setup Android SDK
         uses: android-actions/setup-android@main
 
@@ -102,18 +90,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@main
 
-      - name: Setup Android NDK
-        uses: nttld/setup-ndk@main
-        id: setup-ndk
-        with:
-          ndk-version: r25b
-
-      - name: Setup Java JDK
-        uses: actions/setup-java@main
-        with:
-          distribution: zulu
-          java-version: 11
-
       - name: Setup Android SDK
         uses: android-actions/setup-android@main
 
@@ -188,18 +164,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@main
-
-      - name: Setup Android NDK
-        uses: nttld/setup-ndk@main
-        id: setup-ndk
-        with:
-          ndk-version: r25b
-
-      - name: Setup Java JDK
-        uses: actions/setup-java@main
-        with:
-          distribution: zulu
-          java-version: 11
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@main
