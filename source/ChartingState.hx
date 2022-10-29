@@ -944,9 +944,9 @@ class ChartingState extends MusicBeatState
 				shiftThing = 4;
 			if (!FlxG.keys.pressed.CONTROL)
 			{
-				if (FlxG.keys.justPressed.RIGHT || FlxG.keys.justPressed.D)
+				if (#if android virtualPad.buttonRight.justPressed || #end controls.RIGHT_P || FlxG.keys.justPressed.D)
 					changeSection(curSection + shiftThing);
-				if (FlxG.keys.justPressed.LEFT || FlxG.keys.justPressed.A)
+				if (#if android virtualPad.buttonLeft.justPressed || #end controls.LEFT_P || FlxG.keys.justPressed.A)
 					changeSection(curSection - shiftThing);
 			}	
 			if (#if android virtualPad.buttonC.justPressed || #end FlxG.keys.justPressed.SPACE)
@@ -1024,10 +1024,10 @@ class ChartingState extends MusicBeatState
 
 		_song.bpm = tempBpm;
 
-		/* if (FlxG.keys.justPressed.UP)
+		   if (#if android virtualPad.buttonUp.justPressed || #end controls.UP_P)
 				Conductor.changeBPM(Conductor.bpm + 1);
-			if (FlxG.keys.justPressed.DOWN)
-				Conductor.changeBPM(Conductor.bpm - 1); */
+			if (#if android virtualPad.buttonDown.justPressed || #end controls.DOWN_P)
+				Conductor.changeBPM(Conductor.bpm - 1);
 
 		bpmTxt.text = bpmTxt.text = Std.string(FlxMath.roundDecimal(Conductor.songPosition / 1000, 2))
 			+ " / "
