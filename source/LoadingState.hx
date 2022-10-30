@@ -7,17 +7,24 @@ import flixel.FlxState;
 import flixel.FlxSprite;
 import flixel.util.FlxColor;
 import flixel.text.FlxText;
+import flixel.graphics.FlxGraphic;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.util.FlxTimer;
 import openfl.utils.Assets;
 import lime.utils.Assets as LimeAssets;
 import lime.utils.AssetLibrary;
 import lime.utils.AssetManifest;
-
+import flixel.addons.transition.FlxTransitionableState;
+import flixel.math.FlxMath;
 import haxe.io.Path;
 
 class LoadingState extends MusicBeatState
 {
+        public var progress:Int = 0;
+        public var max:Int = 10;
+
+        static var imagesToCache:Array<String> = [];
+
 	inline static var MIN_TIME = 1.0;
 	
 	var target:FlxState;
@@ -44,6 +51,13 @@ class LoadingState extends MusicBeatState
 	
 	override function create()
 	{
+                switch (PlayState.SONG.song)
+		{
+			imagesToCache = [
+				'KickedBG',
+                        ];
+                }
+
 		pano = new FlxSprite(-1600, 0).loadGraphic(Paths.image('titleBG'));
 		pano.antialiasing = true;
 		pano.updateHitbox();
@@ -91,17 +105,26 @@ class LoadingState extends MusicBeatState
 		loadTxtProgress.y = loadTxt.y;
 
 		loadTxt.y += 2;
+
+                max = imagesToCache.length;
+
+                FlxGraphic.defaultPersist = true;
 		
 		initSongsManifest().onComplete
 		(
 			function (lib)
 			{
+                                for (image in imagesToCache) {
+				trace("Caching image " + image);
+				progress += 1;
+                                FlxG.bitmap.add(Paths.image(image)); }
 				callbacks = new MultiCallback(onLoad);
 				var introComplete = callbacks.add("introComplete");
 				checkLoadSong(getSongPath());
 				if (PlayState.SONG.needsVoices)
 					checkLoadSong(getVocalPath());
 				checkLibrary("shared");
+                                FlxGraphic.defaultPersist = false;
                                 setLoadingText("Done!");
 				var fadeTime = 0.5;
 				FlxG.camera.fade(FlxG.camera.bgColor, fadeTime, true);
