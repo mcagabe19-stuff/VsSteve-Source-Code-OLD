@@ -53,9 +53,11 @@ class LoadingState extends MusicBeatState
 	{
                 switch (PlayState.SONG.song)
 		{
-			imagesToCache = [
-				'KickedBG',
-                        ];
+			case 'bos':
+
+				imagesToCache = [
+					'KickedBG',
+				];
                 }
 
 		pano = new FlxSprite(-1600, 0).loadGraphic(Paths.image('titleBG'));
