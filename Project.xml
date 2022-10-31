@@ -155,6 +155,8 @@
 	<config:android permission="android.permission.INTERNET" />
         <config:android permission="android.permission.MANAGE_EXTERNAL_STORAGE" />
         <config:android target-sdk-version="33" />
+        <config:android gradle-version="5.6.4" />
+	<config:android gradle-plugin="3.6.4" />
 
 	<!-- _________________________________ Custom _______________________________ -->
 
