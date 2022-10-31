@@ -25,7 +25,7 @@ jobs:
         uses: actions/setup-java@main
         with:
           distribution: zulu
-          java-version: 8
+          java-version: 11
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@main
@@ -76,7 +76,7 @@ jobs:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
 
       - name: Compile
-        run: haxelib run lime build android -D no-compilation -release -D luajit_static -D macro-times -D analyzer-optimize -armv7 --app-version="4.0.0-${{ github.run_id}}"
+        run: haxelib run lime build android -D no-compilation -D luajit_static -D macro-times -D analyzer-optimize -armv7 --app-version="4.0.0-${{ github.run_id}}"
 
       - name: Publish To transfer.sh
         run: |
@@ -108,7 +108,7 @@ jobs:
         uses: actions/setup-java@main
         with:
           distribution: zulu
-          java-version: 8
+          java-version: 11
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@main
@@ -159,7 +159,7 @@ jobs:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
 
       - name: Compile
-        run: haxelib run lime build android -release -D no-compilation -D luajit_static -D macro-times -D analyzer-optimize -arm64 --app-version="4.0.0-${{ github.run_id}}"
+        run: haxelib run lime build android -D no-compilation -D luajit_static -D macro-times -D analyzer-optimize -arm64 --app-version="4.0.0-${{ github.run_id}}"
 
       - name: Publish To transfer.sh
         run: |
@@ -191,7 +191,7 @@ jobs:
         uses: actions/setup-java@main
         with:
           distribution: zulu
-          java-version: 8
+          java-version: 11
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@main
@@ -241,7 +241,7 @@ jobs:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
 
       - name: Compile
-        run: haxelib run lime build android -release -D no-compilation -D luajit_static -D macro-times -D analyzer-optimize -32 --app-version="4.0.0-${{ github.run_id}}"
+        run: haxelib run lime build android -D no-compilation -D luajit_static -D macro-times -D analyzer-optimize -32 --app-version="4.0.0-${{ github.run_id}}"
 
       - name: Publish To transfer.sh
         run: |
