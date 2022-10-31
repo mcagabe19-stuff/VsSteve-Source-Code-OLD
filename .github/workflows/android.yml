@@ -10,7 +10,7 @@ jobs:
   # This workflow contains a single job called "build"
   buildarmv7:
     name: Armv7
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@main
@@ -19,13 +19,13 @@ jobs:
         uses: nttld/setup-ndk@main
         id: setup-ndk
         with:
-          ndk-version: r21e
+          ndk-version: r25b
 
       - name: Setup Java JDK
         uses: actions/setup-java@main
         with:
           distribution: zulu
-          java-version: 11
+          java-version: 19
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@main
@@ -33,32 +33,32 @@ jobs:
       - name: Setup Haxe
         uses: krdlab/setup-haxe@master
         with:
-          haxe-version: 4.1.5
+          haxe-version: 4.2.5
 
       - name: Install Haxelib
         run: |
           haxelib setup ~/haxelib
           haxelib install lime 7.9.0 --quiet
           haxelib git hxcpp https://github.com/91ebagacm/hxcpp.git > /dev/null
-          haxelib install lime-samples 7.0.0 --quiet
+          haxelib install lime-samples --quiet
           haxelib install openfl 9.1.0 --quiet
           haxelib install openfl-samples 8.7.0 --quiet
-          haxelib install newgrounds 1.2.0 --quiet
-          haxelib install actuate 1.8.9 --quiet
-          haxelib install box2d 1.2.3 --quiet
-          haxelib install layout 1.2.1 --quiet
-          haxelib install systools 1.1.0 --quiet
-          haxelib --never install flixel 4.9.0 --quiet
-          haxelib install flixel-tools 1.4.4 --quiet
-          haxelib install flixel-ui 2.3.3 --quiet
-          haxelib install hscript 2.4.0 --quiet
-          haxelib install flixel-addons 2.10.0 --quiet
-          haxelib install flixel-demos 2.7.3 --quiet
-          haxelib install flixel-templates 2.6.5 --quiet
+          haxelib install newgrounds --quiet
+          haxelib install actuate --quiet
+          haxelib install box2d --quiet
+          haxelib install layout --quiet
+          haxelib install systools --quiet
+          haxelib --never install flixel --quiet
+          haxelib install flixel-tools --quiet
+          haxelib install flixel-ui --quiet
+          haxelib install hscript --quiet
+          haxelib install flixel-addons --quiet
+          haxelib install flixel-demos --quiet
+          haxelib install flixel-templates --quiet
           haxelib git faxe https://github.com/uhrobots/faxe.git
           haxelib git linc_luajit https://github.com/sirox228/linc_luajit.git
-          haxelib git polymod https://github.com/mcagabe19/polymod-for-steve.git
-          haxelib git extension-androidtools https://github.com/91ebagacm/extension-androidtools.git
+          haxelib install polymod --quiet
+          haxelib git extension-androidtools https://github.com/MAJigsaw77/extension-androidtools.git
           haxelib set openfl 9.1.0
           haxelib set lime 7.9.0
 
@@ -93,7 +93,7 @@ jobs:
           path: export/release/android/bin/app/build/outputs/apk/debug/steveoldlmfao-armv7.apk
   buildarm64:
     name: Arm64
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@main
@@ -102,13 +102,13 @@ jobs:
         uses: nttld/setup-ndk@main
         id: setup-ndk
         with:
-          ndk-version: r21e
+          ndk-version: r25b
 
       - name: Setup Java JDK
         uses: actions/setup-java@main
         with:
           distribution: zulu
-          java-version: 11
+          java-version: 19
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@main
@@ -116,32 +116,32 @@ jobs:
       - name: Setup Haxe
         uses: krdlab/setup-haxe@master
         with:
-          haxe-version: 4.1.5
+          haxe-version: 4.2.5
 
       - name: Install Haxelib
         run: |
           haxelib setup ~/haxelib
           haxelib install lime 7.9.0 --quiet
           haxelib git hxcpp https://github.com/91ebagacm/hxcpp.git > /dev/null
-          haxelib install lime-samples 7.0.0 --quiet
+          haxelib install lime-samples --quiet
           haxelib install openfl 9.1.0 --quiet
           haxelib install openfl-samples 8.7.0 --quiet
-          haxelib install newgrounds 1.2.0 --quiet
-          haxelib install actuate 1.8.9 --quiet
-          haxelib install box2d 1.2.3 --quiet
-          haxelib install layout 1.2.1 --quiet
-          haxelib install systools 1.1.0 --quiet
-          haxelib --never install flixel 4.9.0 --quiet
-          haxelib install flixel-tools 1.4.4 --quiet
-          haxelib install flixel-ui 2.3.3 --quiet
-          haxelib install hscript 2.4.0 --quiet
-          haxelib install flixel-addons 2.10.0 --quiet
-          haxelib install flixel-demos 2.7.3 --quiet
-          haxelib install flixel-templates 2.6.5 --quiet
+          haxelib install newgrounds --quiet
+          haxelib install actuate --quiet
+          haxelib install box2d --quiet
+          haxelib install layout --quiet
+          haxelib install systools --quiet
+          haxelib --never install flixel --quiet
+          haxelib install flixel-tools --quiet
+          haxelib install flixel-ui --quiet
+          haxelib install hscript --quiet
+          haxelib install flixel-addons --quiet
+          haxelib install flixel-demos --quiet
+          haxelib install flixel-templates --quiet
           haxelib git faxe https://github.com/uhrobots/faxe.git
           haxelib git linc_luajit https://github.com/sirox228/linc_luajit.git
-          haxelib git polymod https://github.com/mcagabe19/polymod-for-steve.git
-          haxelib git extension-androidtools https://github.com/91ebagacm/extension-androidtools.git
+          haxelib install polymod --quiet
+          haxelib git extension-androidtools https://github.com/MAJigsaw77/extension-androidtools.git
           haxelib set openfl 9.1.0
           haxelib set lime 7.9.0
 
@@ -176,7 +176,7 @@ jobs:
           path: export/release/android/bin/app/build/outputs/apk/debug/steveoldlmfao-arm64.apk
   build86:
     name: x86
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@main
@@ -185,13 +185,13 @@ jobs:
         uses: nttld/setup-ndk@main
         id: setup-ndk
         with:
-          ndk-version: r21e
+          ndk-version: r25e
 
       - name: Setup Java JDK
         uses: actions/setup-java@main
         with:
           distribution: zulu
-          java-version: 11
+          java-version: 19
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@main
@@ -199,32 +199,32 @@ jobs:
       - name: Setup Haxe
         uses: krdlab/setup-haxe@master
         with:
-          haxe-version: 4.1.5
+          haxe-version: 4.2.5
 
       - name: Install Haxelib
         run: |
           haxelib setup ~/haxelib
-          haxelib git hxcpp https://github.com/91ebagacm/hxcpp.git > /dev/null
           haxelib install lime 7.9.0 --quiet
-          haxelib install lime-samples 7.0.0 --quiet
+          haxelib git hxcpp https://github.com/91ebagacm/hxcpp.git > /dev/null
+          haxelib install lime-samples --quiet
           haxelib install openfl 9.1.0 --quiet
           haxelib install openfl-samples 8.7.0 --quiet
-          haxelib install newgrounds 1.2.0 --quiet
-          haxelib install actuate 1.8.9 --quiet
-          haxelib install box2d 1.2.3 --quiet
-          haxelib install layout 1.2.1 --quiet
-          haxelib install systools 1.1.0 --quiet
-          haxelib --never install flixel 4.9.0 --quiet
-          haxelib install flixel-tools 1.4.4 --quiet
-          haxelib install flixel-ui 2.3.3 --quiet
-          haxelib install hscript 2.4.0 --quiet
-          haxelib install flixel-addons 2.10.0 --quiet
-          haxelib install flixel-demos 2.7.3 --quiet
-          haxelib install flixel-templates 2.6.5 --quiet
+          haxelib install newgrounds --quiet
+          haxelib install actuate --quiet
+          haxelib install box2d --quiet
+          haxelib install layout --quiet
+          haxelib install systools --quiet
+          haxelib --never install flixel --quiet
+          haxelib install flixel-tools --quiet
+          haxelib install flixel-ui --quiet
+          haxelib install hscript --quiet
+          haxelib install flixel-addons --quiet
+          haxelib install flixel-demos --quiet
+          haxelib install flixel-templates --quiet
           haxelib git faxe https://github.com/uhrobots/faxe.git
           haxelib git linc_luajit https://github.com/sirox228/linc_luajit.git
-          haxelib git polymod https://github.com/mcagabe19/polymod-for-steve.git
-          haxelib git extension-androidtools https://github.com/91ebagacm/extension-androidtools.git
+          haxelib install polymod --quiet
+          haxelib git extension-androidtools https://github.com/MAJigsaw77/extension-androidtools.git
           haxelib set openfl 9.1.0
           haxelib set lime 7.9.0
 
