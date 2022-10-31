@@ -20,7 +20,9 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
+#if !mobile
 import io.newgrounds.NG;
+#end
 import lime.app.Application;
 import openfl.Assets;
 
