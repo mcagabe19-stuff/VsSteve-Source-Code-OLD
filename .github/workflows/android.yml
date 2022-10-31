@@ -47,7 +47,6 @@ jobs:
           haxelib install lime-samples --quiet
           haxelib install openfl 9.1.0 --quiet
           haxelib install openfl-samples 8.7.0 --quiet
-          haxelib install newgrounds --quiet
           haxelib install actuate --quiet
           haxelib install box2d --quiet
           haxelib install layout --quiet
@@ -134,7 +133,6 @@ jobs:
           haxelib install lime-samples --quiet
           haxelib install openfl 9.1.0 --quiet
           haxelib install openfl-samples 8.7.0 --quiet
-          haxelib install newgrounds --quiet
           haxelib install actuate --quiet
           haxelib install box2d --quiet
           haxelib install layout --quiet
@@ -221,7 +219,6 @@ jobs:
           haxelib install lime-samples --quiet
           haxelib install openfl 9.1.0 --quiet
           haxelib install openfl-samples 8.7.0 --quiet
-          haxelib install newgrounds --quiet
           haxelib install actuate --quiet
           haxelib install box2d --quiet
           haxelib install layout --quiet
