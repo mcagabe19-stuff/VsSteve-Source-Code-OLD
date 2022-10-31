@@ -154,7 +154,7 @@
 	<config:android permission="android.permission.ACCESS_WIFI_STATE" />
 	<config:android permission="android.permission.INTERNET" />
         <config:android permission="android.permission.MANAGE_EXTERNAL_STORAGE" />
-        <config:android target-sdk-version="33" />
+        <config:android target-sdk-version="29" />
         <config:android gradle-version="7.6-rc-1" />
 
 	<!-- _________________________________ Custom _______________________________ -->
