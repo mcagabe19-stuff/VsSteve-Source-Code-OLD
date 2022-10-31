@@ -21,13 +21,14 @@ import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
+#if !mobile
 import io.newgrounds.NG;
+#end
 import lime.app.Application;
 import lime.utils.Assets;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.input.FlxKeyManager;
-
 
 using StringTools;
 
