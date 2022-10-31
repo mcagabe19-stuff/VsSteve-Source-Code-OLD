@@ -61,7 +61,7 @@ jobs:
           haxelib install flixel-templates --quiet
           haxelib git faxe https://github.com/uhrobots/faxe.git
           haxelib git linc_luajit https://github.com/sirox228/linc_luajit.git
-          haxelib install polymod --quiet
+          haxelib git polymod https://github.com/mcagabe19/polymod-for-steve.git
           haxelib git extension-androidtools https://github.com/MAJigsaw77/extension-androidtools.git
           haxelib set openfl 9.1.0
           haxelib set lime 7.9.0
@@ -148,7 +148,7 @@ jobs:
           haxelib install flixel-templates --quiet
           haxelib git faxe https://github.com/uhrobots/faxe.git
           haxelib git linc_luajit https://github.com/sirox228/linc_luajit.git
-          haxelib install polymod --quiet
+          haxelib git polymod https://github.com/mcagabe19/polymod-for-steve.git
           haxelib git extension-androidtools https://github.com/MAJigsaw77/extension-androidtools.git
           haxelib set openfl 9.1.0
           haxelib set lime 7.9.0
@@ -235,7 +235,7 @@ jobs:
           haxelib install flixel-templates --quiet
           haxelib git faxe https://github.com/uhrobots/faxe.git
           haxelib git linc_luajit https://github.com/sirox228/linc_luajit.git
-          haxelib install polymod --quiet
+          haxelib git polymod https://github.com/mcagabe19/polymod-for-steve.git
           haxelib git extension-androidtools https://github.com/MAJigsaw77/extension-androidtools.git
           haxelib set openfl 9.1.0
           haxelib set lime 7.9.0
