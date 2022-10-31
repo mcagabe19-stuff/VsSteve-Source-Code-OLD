@@ -19,13 +19,13 @@ jobs:
         uses: nttld/setup-ndk@main
         id: setup-ndk
         with:
-          ndk-version: r25b
+          ndk-version: r20b
 
       - name: Setup Java JDK
         uses: actions/setup-java@main
         with:
           distribution: zulu
-          java-version: 11
+          java-version: 8
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@main
@@ -39,14 +39,10 @@ jobs:
         run: |
           haxelib setup ~/haxelib
           haxelib install lime 7.9.0 --quiet
-          git clone https://github.com/Sirox228/hxcpp-new-ndk-support
-          haxelib dev hxcpp hxcpp-new-ndk-support
-          cd hxcpp-new-ndk-support/tools/hxcpp
-          haxe compile.hxml
-          cd ../../../
+          haxelib install hxcpp > /dev/null
           haxelib install lime-samples --quiet
           haxelib install openfl 9.1.0 --quiet
-          haxelib install openfl-samples 8.7.0 --quiet
+          haxelib install openfl-samples --quiet
           haxelib install actuate --quiet
           haxelib install box2d --quiet
           haxelib install layout --quiet
@@ -105,13 +101,13 @@ jobs:
         uses: nttld/setup-ndk@main
         id: setup-ndk
         with:
-          ndk-version: r25b
+          ndk-version: r20b
 
       - name: Setup Java JDK
         uses: actions/setup-java@main
         with:
           distribution: zulu
-          java-version: 11
+          java-version: 8
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@main
@@ -125,14 +121,10 @@ jobs:
         run: |
           haxelib setup ~/haxelib
           haxelib install lime 7.9.0 --quiet
-          git clone https://github.com/Sirox228/hxcpp-new-ndk-support
-          haxelib dev hxcpp hxcpp-new-ndk-support
-          cd hxcpp-new-ndk-support/tools/hxcpp
-          haxe compile.hxml
-          cd ../../../
+          haxelib install hxcpp > /dev/null
           haxelib install lime-samples --quiet
           haxelib install openfl 9.1.0 --quiet
-          haxelib install openfl-samples 8.7.0 --quiet
+          haxelib install openfl-samples --quiet
           haxelib install actuate --quiet
           haxelib install box2d --quiet
           haxelib install layout --quiet
@@ -191,13 +183,13 @@ jobs:
         uses: nttld/setup-ndk@main
         id: setup-ndk
         with:
-          ndk-version: r25b
+          ndk-version: r20b
 
       - name: Setup Java JDK
         uses: actions/setup-java@main
         with:
           distribution: zulu
-          java-version: 11
+          java-version: 8
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@main
@@ -211,14 +203,10 @@ jobs:
         run: |
           haxelib setup ~/haxelib
           haxelib install lime 7.9.0 --quiet
-          git clone https://github.com/Sirox228/hxcpp-new-ndk-support
-          haxelib dev hxcpp hxcpp-new-ndk-support
-          cd hxcpp-new-ndk-support/tools/hxcpp
-          haxe compile.hxml
-          cd ../../../
+          haxelib install hxcpp > /dev/null
           haxelib install lime-samples --quiet
           haxelib install openfl 9.1.0 --quiet
-          haxelib install openfl-samples 8.7.0 --quiet
+          haxelib install openfl-samples --quiet
           haxelib install actuate --quiet
           haxelib install box2d --quiet
           haxelib install layout --quiet
