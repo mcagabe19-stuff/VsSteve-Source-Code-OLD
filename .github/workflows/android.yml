@@ -307,9 +307,6 @@ jobs:
           haxelib set openfl 9.1.0
           haxelib set lime 7.9.0
 
-      - name: Rebuild Lime (X86_64)
-        run: haxelib run lime rebuild android -64 -release -nocolor -verbose -nocffi
-
       - name: Create Version Tag
         run: echo "${{github.run_id}}" > VERSION
 
@@ -322,6 +319,9 @@ jobs:
           haxelib run lime config ANDROID_SETUP true
         env:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
+
+      - name: Rebuild Lime (X86_64)
+        run: haxelib run lime rebuild android -64 -release -nocolor -verbose -nocffi
 
       - name: Compile
         run: haxelib run lime build android -D no-compilation -D luajit_static -D macro-times -D analyzer-optimize -64 --app-version="4.0.0-${{ github.run_id}}"
