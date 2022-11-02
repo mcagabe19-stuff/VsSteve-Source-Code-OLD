@@ -211,9 +211,11 @@ class MainMenuState extends MusicBeatState
 				tween.cancel();
 				startscroll = true;
 			}
-		});
+	  	}
+	  	);
 			}
-		});
+		  }
+		  );
 			}
 
 		menuItems.forEach(function(spr:FlxSprite)
@@ -238,7 +240,8 @@ class MainMenuState extends MusicBeatState
 					selectSomething();
 				}
 			}
-		});
+		}
+	);
 			
 			if (!selectedSomethin)
 				{
