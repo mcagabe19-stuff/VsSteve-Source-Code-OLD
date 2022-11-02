@@ -44,7 +44,7 @@ class LoadingState extends MusicBeatState
 		super();
 
                 FlxTransitionableState.skipNextTransIn = true;
-		FlxTransitionableState.skipNextTransOut = true;
+		FlxTransitionableState.skipNextTransOut = false;
 		this.target = target;
 		this.stopMusic = stopMusic;
 	}
@@ -54,7 +54,6 @@ class LoadingState extends MusicBeatState
                 switch (PlayState.SONG.song)
 		{
 			case 'bos':
-
 				imagesToCache = [
 					'KickedBG',
 				];
