@@ -65,7 +65,7 @@ jobs:
         uses: actions/upload-artifact@main
         with:
           name: build-ubuntu${{ matrix.version }}-${{ matrix.arch }}-${{ matrix.build }}
-          path: export/${{ matrix.build }}/android/bin/app/build/outputs/apk/debug/steveolderidk-${{ matrix.arch }}.apk
+          path: 'export/${{ matrix.build }}/android/bin/app/build/outputs/apk/debug/*.apk'
   build-8664:
     name: Build X86_64
     runs-on: ubuntu-${{ matrix.version }}
@@ -127,4 +127,4 @@ jobs:
         uses: actions/upload-artifact@main
         with:
           name: build-ubuntu${{ matrix.version }}-64-${{ matrix.build }}
-          path: export/${{ matrix.build }}/android/bin/app/build/outputs/apk/debug/*.apk
+          path: 'export/${{ matrix.build }}/android/bin/app/build/outputs/apk/debug/*.apk'
