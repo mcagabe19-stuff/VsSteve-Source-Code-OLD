@@ -1,108 +1,44 @@
-# This is a basic workflow to help you get started with Actions
-
 name: Mac Build CI
 
-# Controls when the workflow will run
 on: [workflow_dispatch]
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build11-64:
-    name: Mac OS 11 (64)
-    runs-on: macos-11
+  build:
+    name: MacOS64
+    runs-on: macos-${{ matrix.version }}
+    strategy:
+      matrix:
+        build: [release, debug]
+        version: [11, 12]
     steps:
       - name: Checkout
         uses: actions/checkout@main
-
       - name: Setup Haxe
         uses: krdlab/setup-haxe@master
         with:
           haxe-version: 4.2.5
-
       - name: Install Haxelib
         run: |
           haxelib setup ~/haxelib
           haxelib install hxcpp > /dev/null
           haxelib install lime 7.9.0 --quiet
-          haxelib install lime-samples --quiet
           haxelib install openfl 9.1.0 --quiet
-          haxelib install openfl-samples --quiet
-          haxelib install newgrounds --quiet
           haxelib install actuate --quiet
-          haxelib install box2d --quiet
-          haxelib install layout --quiet
-          haxelib install systools --quiet
-          haxelib --never install flixel --quiet
-          haxelib install flixel-tools --quiet
+          haxelib --never git flixel https://github.com/mcagabe19/flixel-4.11.0.git
           haxelib install flixel-ui --quiet
           haxelib install hscript --quiet
           haxelib install flixel-addons --quiet
-          haxelib install flixel-demos --quiet
-          haxelib install flixel-templates --quiet
           haxelib git faxe https://github.com/uhrobots/faxe.git
           haxelib git linc_luajit https://github.com/sirox228/linc_luajit.git
           haxelib git polymod https://github.com/mcagabe19/polymod-for-steve.git
           haxelib set openfl 9.1.0
           haxelib set lime 7.9.0
-
       - name: Create Version Tag
         run: echo "${{github.run_id}}" > VERSION
-
       - name: Compile
-        run: haxelib run lime build mac -64 -D no-compilation -D luajit_static -D macro-times -D analyzer-optimize --app-version="4.0.0-${{ github.run_id}}"
-
+        run: haxelib run lime build mac -64 -${{ matrix.build }} -D no-compilation -D luajit_static -D macro-times -D analyzer-optimize --app-version="4.0.0-${{ github.run_id}}"
       - name: Publish Artifact
         uses: actions/upload-artifact@main
         with:
-          name: build11-64
-          path: 'export/release/macos/bin'
-  build12-64:
-    name: Mac OS 12 (64)
-    runs-on: macos-12
-    steps:
-      - name: Checkout
-        uses: actions/checkout@main
-
-      - name: Setup Haxe
-        uses: krdlab/setup-haxe@master
-        with:
-          haxe-version: 4.2.5
-
-      - name: Install Haxelib
-        run: |
-          haxelib setup ~/haxelib
-          haxelib install hxcpp > /dev/null
-          haxelib install lime 7.9.0 --quiet
-          haxelib install lime-samples --quiet
-          haxelib install openfl 9.1.0 --quiet
-          haxelib install openfl-samples --quiet
-          haxelib install newgrounds --quiet
-          haxelib install actuate --quiet
-          haxelib install box2d --quiet
-          haxelib install layout --quiet
-          haxelib install systools --quiet
-          haxelib --never install flixel --quiet
-          haxelib install flixel-tools --quiet
-          haxelib install flixel-ui --quiet
-          haxelib install hscript --quiet
-          haxelib install flixel-addons --quiet
-          haxelib install flixel-demos --quiet
-          haxelib install flixel-templates --quiet
-          haxelib git faxe https://github.com/uhrobots/faxe.git
-          haxelib git linc_luajit https://github.com/sirox228/linc_luajit.git
-          haxelib git polymod https://github.com/mcagabe19/polymod-for-steve.git
-          haxelib set openfl 9.1.0
-          haxelib set lime 7.9.0
-
-      - name: Create Version Tag
-        run: echo "${{github.run_id}}" > VERSION
-
-      - name: Compile
-        run: haxelib run lime build mac -64 -D no-compilation -D luajit_static -D macro-times -D analyzer-optimize --app-version="4.0.0-${{ github.run_id}}"
-
-      - name: Publish Artifact
-        uses: actions/upload-artifact@main
-        with:
-          name: build12-64
-          path: 'export/release/macos/bin'
+          name: build64-${{ matrix.version }}-${{ matrix.build }}
+          path: 'export/${{ matrix.build }}/macos/bin'
