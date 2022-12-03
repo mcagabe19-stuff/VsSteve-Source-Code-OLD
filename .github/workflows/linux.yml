@@ -1,208 +1,84 @@
-# This is a basic workflow to help you get started with Actions
-
 name: Linux Build CI
 
-# Controls when the workflow will run
 on: [workflow_dispatch]
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build20-32:
-    name: Ubuntu 20 (32)
-    runs-on: ubuntu-20.04
+  build32:
+    name: Ubuntu32
+    runs-on: ubuntu-${{ matrix.version }}
+    strategy:
+      matrix:
+        build: [release, debug]
+        version: [20.04, 22.04]
     steps:
       - name: Checkout
         uses: actions/checkout@main
-
       - name: Setup Haxe
         uses: krdlab/setup-haxe@master
         with:
           haxe-version: 4.2.5
-
       - name: Install Haxelib
         run: |
-          sudo apt-get install gcc-multilib g++-multilib -qq
+          sudo apt install -qq -o=Dpkg::Use-Pty=0 gcc-multilib g++-multilib
           haxelib setup ~/haxelib
           haxelib install hxcpp > /dev/null
           haxelib install lime 7.9.0 --quiet
-          haxelib install lime-samples --quiet
           haxelib install openfl 9.1.0 --quiet
-          haxelib install openfl-samples --quiet
-          haxelib install newgrounds --quiet
           haxelib install actuate --quiet
-          haxelib install box2d --quiet
-          haxelib install layout --quiet
-          haxelib install systools --quiet
-          haxelib --never install flixel --quiet
-          haxelib install flixel-tools --quiet
+          haxelib --never git flixel https://github.com/mcagabe19/flixel-4.11.0.git
           haxelib install flixel-ui --quiet
           haxelib install hscript --quiet
           haxelib install flixel-addons --quiet
-          haxelib install flixel-demos --quiet
-          haxelib install flixel-templates --quiet
           haxelib git faxe https://github.com/uhrobots/faxe.git
           haxelib git linc_luajit https://github.com/sirox228/linc_luajit.git
           haxelib git polymod https://github.com/mcagabe19/polymod-for-steve.git
           haxelib set openfl 9.1.0
           haxelib set lime 7.9.0
-
       - name: Create Version Tag
         run: echo "${{github.run_id}}" > VERSION
-
       - name: Compile
-        run: haxelib run lime build Project.xml linux -32 -D no-compilation -D luajit_static -D macro-times -D analyzer-optimize --app-version="4.0.0-${{ github.run_id}}"
-
+        run: haxelib run lime build Project.xml linux -32 -${{ matrix.build }} -D NO_PRECOMPILED_HEADERS -D no-compilation -D luajit_static -D macro-times -D analyzer-optimize --app-version="4.0.0-${{ github.run_id}}"
       - name: Publish Artifact
         uses: actions/upload-artifact@main
         with:
-          name: build20-32
-          path: 'export/release/linux/bin'
-  build20-64:
-    name: Ubuntu 20 (64)
-    runs-on: ubuntu-20.04
+          name: build-${{ matrix.version }}-32-${{ matrix.build }}
+          path: 'export/${{ matrix.build }}/linux/bin'
+  build64:
+    name: Ubuntu64
+    runs-on: ubuntu-${{ matrix.version }}
+    strategy:
+      matrix:
+        build: [release, debug]
+        version: [20.04, 22.04]
     steps:
       - name: Checkout
         uses: actions/checkout@main
-
       - name: Setup Haxe
         uses: krdlab/setup-haxe@master
         with:
           haxe-version: 4.2.5
-
       - name: Install Haxelib
         run: |
           haxelib setup ~/haxelib
           haxelib install hxcpp > /dev/null
           haxelib install lime 7.9.0 --quiet
-          haxelib install lime-samples --quiet
           haxelib install openfl 9.1.0 --quiet
-          haxelib install openfl-samples --quiet
-          haxelib install newgrounds --quiet
           haxelib install actuate --quiet
-          haxelib install box2d --quiet
-          haxelib install layout --quiet
-          haxelib install systools --quiet
-          haxelib --never install flixel --quiet
-          haxelib install flixel-tools --quiet
+          haxelib --never git flixel https://github.com/mcagabe19/flixel-4.11.0.git
           haxelib install flixel-ui --quiet
           haxelib install hscript --quiet
           haxelib install flixel-addons --quiet
-          haxelib install flixel-demos --quiet
-          haxelib install flixel-templates --quiet
           haxelib git faxe https://github.com/uhrobots/faxe.git
           haxelib git linc_luajit https://github.com/sirox228/linc_luajit.git
           haxelib git polymod https://github.com/mcagabe19/polymod-for-steve.git
           haxelib set openfl 9.1.0
           haxelib set lime 7.9.0
-
       - name: Create Version Tag
         run: echo "${{github.run_id}}" > VERSION
-
       - name: Compile
-        run: haxelib run lime build Project.xml linux -64 -D no-compilation -D luajit_static -D macro-times -D analyzer-optimize --app-version="4.0.0-${{ github.run_id}}"
-
+        run: haxelib run lime build Project.xml linux -64 -${{ matrix.build }} -D NO_PRECOMPILED_HEADERS -D no-compilation -D luajit_static -D macro-times -D analyzer-optimize --app-version="4.0.0-${{ github.run_id}}"
       - name: Publish Artifact
         uses: actions/upload-artifact@main
         with:
-          name: build20-64
-          path: 'export/release/linux/bin'
-  build22-32:
-    name: Ubuntu 22 (32)
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@main
-
-      - name: Setup Haxe
-        uses: krdlab/setup-haxe@master
-        with:
-          haxe-version: 4.2.5
-
-      - name: Install Haxelib
-        run: |
-          sudo apt-get install gcc-multilib g++-multilib -qq
-          haxelib setup ~/haxelib
-          haxelib install hxcpp > /dev/null
-          haxelib install lime 7.9.0 --quiet
-          haxelib install lime-samples --quiet
-          haxelib install openfl 9.1.0 --quiet
-          haxelib install openfl-samples --quiet
-          haxelib install newgrounds --quiet
-          haxelib install actuate --quiet
-          haxelib install box2d --quiet
-          haxelib install layout --quiet
-          haxelib install systools --quiet
-          haxelib --never install flixel --quiet
-          haxelib install flixel-tools --quiet
-          haxelib install flixel-ui --quiet
-          haxelib install hscript --quiet
-          haxelib install flixel-addons --quiet
-          haxelib install flixel-demos --quiet
-          haxelib install flixel-templates --quiet
-          haxelib git faxe https://github.com/uhrobots/faxe.git
-          haxelib git linc_luajit https://github.com/sirox228/linc_luajit.git
-          haxelib git polymod https://github.com/mcagabe19/polymod-for-steve.git
-          haxelib set openfl 9.1.0
-          haxelib set lime 7.9.0
-
-      - name: Create Version Tag
-        run: echo "${{github.run_id}}" > VERSION
-
-      - name: Compile
-        run: haxelib run lime build Project.xml linux -32 -D no-compilation -D luajit_static -D macro-times -D analyzer-optimize --app-version="4.0.0-${{ github.run_id}}"
-
-      - name: Publish Artifact
-        uses: actions/upload-artifact@main
-        with:
-          name: build22-32
-          path: 'export/release/linux/bin'
-  build22-64:
-    name: Ubuntu 22 (64)
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@main
-
-      - name: Setup Haxe
-        uses: krdlab/setup-haxe@master
-        with:
-          haxe-version: 4.2.5
-
-      - name: Install Haxelib
-        run: |
-          haxelib setup ~/haxelib
-          haxelib install hxcpp > /dev/null
-          haxelib install lime 7.9.0 --quiet
-          haxelib install lime-samples --quiet
-          haxelib install openfl 9.1.0 --quiet
-          haxelib install openfl-samples --quiet
-          haxelib install newgrounds --quiet
-          haxelib install actuate --quiet
-          haxelib install box2d --quiet
-          haxelib install layout --quiet
-          haxelib install systools --quiet
-          haxelib --never install flixel --quiet
-          haxelib install flixel-tools --quiet
-          haxelib install flixel-ui --quiet
-          haxelib install hscript --quiet
-          haxelib install flixel-addons --quiet
-          haxelib install flixel-demos --quiet
-          haxelib install flixel-templates --quiet
-          haxelib git faxe https://github.com/uhrobots/faxe.git
-          haxelib git linc_luajit https://github.com/sirox228/linc_luajit.git
-          haxelib git polymod https://github.com/mcagabe19/polymod-for-steve.git
-          haxelib set openfl 9.1.0
-          haxelib set lime 7.9.0
-
-      - name: Create Version Tag
-        run: echo "${{github.run_id}}" > VERSION
-
-      - name: Compile
-        run: haxelib run lime build Project.xml linux -64 -D no-compilation -D luajit_static -D macro-times -D analyzer-optimize --app-version="4.0.0-${{ github.run_id}}"
-
-      - name: Publish Artifact
-        uses: actions/upload-artifact@main
-        with:
-          name: build22-64
-          path: 'export/release/linux/bin'
+          name: build-${{ matrix.version }}-64-${{ matrix.build }}
+          path: 'export/${{ matrix.build }}/linux/bin'
