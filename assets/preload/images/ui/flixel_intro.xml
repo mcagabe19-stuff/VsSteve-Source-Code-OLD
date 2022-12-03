@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="flixel_funni_intro.png">
+  <SubTexture name="intro0001" x="0" y="0" width="200" height="264"/>
+  <SubTexture name="intro0010" x="200" y="0" width="200" height="264"/>
+  <SubTexture name="intro0011" x="0" y="264" width="200" height="264"/>
+  <SubTexture name="intro0012" x="200" y="264" width="200" height="264"/>
+  <SubTexture name="intro0013" x="400" y="0" width="200" height="264"/>
+  <SubTexture name="intro0014" x="400" y="264" width="200" height="264"/>
+  <SubTexture name="intro0015" x="0" y="528" width="200" height="264"/>
+  <SubTexture name="intro0016" x="200" y="528" width="200" height="264"/>
+  <SubTexture name="intro0017" x="400" y="528" width="200" height="264"/>
+  <SubTexture name="intro0018" x="600" y="0" width="200" height="264"/>
+  <SubTexture name="intro0019" x="600" y="264" width="200" height="264"/>
+  <SubTexture name="intro0002" x="600" y="528" width="200" height="264"/>
+  <SubTexture name="intro0020" x="0" y="792" width="200" height="264"/>
+  <SubTexture name="intro0021" x="200" y="792" width="200" height="264"/>
+  <SubTexture name="intro0022" x="400" y="792" width="200" height="264"/>
+  <SubTexture name="intro0023" x="600" y="792" width="200" height="264"/>
+  <SubTexture name="intro0024" x="800" y="0" width="200" height="264"/>
+  <SubTexture name="intro0025" x="800" y="264" width="200" height="264"/>
+  <SubTexture name="intro0026" x="800" y="528" width="200" height="264"/>
+  <SubTexture name="intro0027" x="800" y="792" width="200" height="264"/>
+  <SubTexture name="intro0028" x="800" y="792" width="200" height="264"/>
+  <SubTexture name="intro0029" x="800" y="792" width="200" height="264"/>
+  <SubTexture name="intro0003" x="1000" y="0" width="200" height="264"/>
+  <SubTexture name="intro0030" x="800" y="792" width="200" height="264"/>
+  <SubTexture name="intro0031" x="800" y="792" width="200" height="264"/>
+  <SubTexture name="intro0032" x="800" y="792" width="200" height="264"/>
+  <SubTexture name="intro0004" x="1000" y="264" width="200" height="264"/>
+  <SubTexture name="intro0005" x="1000" y="528" width="200" height="264"/>
+  <SubTexture name="intro0006" x="1000" y="792" width="200" height="264"/>
+  <SubTexture name="intro0007" x="0" y="1056" width="200" height="264"/>
+  <SubTexture name="intro0008" x="200" y="1056" width="200" height="264"/>
+  <SubTexture name="intro0009" x="400" y="1056" width="200" height="264"/>
+</TextureAtlas>
