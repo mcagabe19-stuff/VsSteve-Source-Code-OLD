@@ -74,7 +74,7 @@
 	<assets path="assets/week6"   library="week6"   exclude="*.mp3" unless="web"/>
 	
 	<assets path='example_mods' rename='mods' embed='false'/>
-	<assets path='LICENSE' rename='LICENSE.txt' />
+	<!--<assets path='LICENSE' rename='LICENSE.txt' />-->
 	<!-- <template path='mods' /> -->
 	
 	<!-- <assets path="CHANGELOG.md" rename='changelog.txt'/> -->
