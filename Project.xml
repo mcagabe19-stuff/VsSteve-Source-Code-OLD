@@ -49,6 +49,8 @@
 	<!-- <define name="PRELOAD_ALL" /> -->
 	<define name="PRELOAD_ALL" unless="web" />
 	<define name="NO_PRELOAD_ALL" unless="PRELOAD_ALL"/>
+        <define name="mobileCweb" if="web" unless="mobileC" />
+        <define name="mobileC" if="mobile" unless="mobileCweb" />
 	
 	<section if="PRELOAD_ALL">
 		<library name="songs"    preload="true" />
@@ -62,7 +64,7 @@
 		<library name="week6"   preload="false" />
 	</section>
 
-        <assets path="mobile" rename="assets/mobile" if="mobile" />
+        <assets path="mobile" rename="assets/mobile" if="mobileC || mobileCweb" />
 	
 	<assets path="assets/songs"    library="songs"    exclude="*.ogg" if="web"/>
 	<assets path="assets/songs"    library="songs"    exclude="*.mp3" unless="web"/>
@@ -144,7 +146,7 @@
 	<haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
 
 	<!--Make's-the-Game-use-less-ram-->
-	<haxedef name="HXCPP_GC_BIG_BLOCKS" />
+	<!--<haxedef name="HXCPP_GC_BIG_BLOCKS" />-->
 
 	<!--Always-enable-Null-Object-Reference-check-->
 	<haxedef name="HXCPP_CHECK_POINTER" if="release" />
