@@ -89,44 +89,44 @@ class DialogueBox extends FlxSpriteGroup
 			case 'Uoh':
 				hasDialog = true;
 
-				box.frames = Paths.getSparrowAtlas('portraits/dialogueBox-pixel', 'shared');
+				box.frames = Paths.getSparrowAtlas('portraits/dialogueBox-pixel');
 				box.animation.addByPrefix('normalOpen', 'Text Box Appear instance', 24, false);
 				box.animation.addByIndices('normal', 'Text Box Appear instance', [11], "", 24);
 
 			case 'Craft Away':
 				hasDialog = true;
 
-				box.frames = Paths.getSparrowAtlas('portraits/dialogueBox-pixel', 'shared');
+				box.frames = Paths.getSparrowAtlas('portraits/dialogueBox-pixel');
 				box.animation.addByPrefix('normalOpen', 'Text Box Appear instance', 24, false);
 				box.animation.addByIndices('normal', 'Text Box Appear instance', [11], "", 24);
 
 			case 'Suit Up':
 				hasDialog = true;
-				box.frames = Paths.getSparrowAtlas('portraits/dialogueBox-pixel', 'shared');
+				box.frames = Paths.getSparrowAtlas('portraits/dialogueBox-pixel');
 				box.animation.addByPrefix('normalOpen', 'Text Box Appear instance', 24, false);
 				box.animation.addByIndices('normal', 'Text Box Appear instance', [11], "", 24);
 				
 			//case 'overseen':
 			//	hasDialog = true;
-			//	box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-senpaiMad', 'shared');
+			//	box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-senpaiMad');
 			//	box.animation.addByPrefix('normalOpen', 'SENPAI ANGRY IMPACT SPEECH', 24, false);
 			//	box.animation.addByIndices('normal', 'SENPAI ANGRY IMPACT SPEECH', [11], "", 24);
 
 			//case 'iron picks':
 			//	hasDialog = true;
-			//	box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-senpaiMad', 'shared');
+			//	box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-senpaiMad');
 			//	box.animation.addByPrefix('normalOpen', 'SENPAI ANGRY IMPACT SPEECH', 24, false);
 			//	box.animation.addByIndices('normal', 'SENPAI ANGRY IMPACT SPEECH', [11], "", 24);
 			//
 			//case 'underrated':
 			//	hasDialog = true;
-			//	box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-senpaiMad', 'shared');
+			//	box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-senpaiMad');
 			//	box.animation.addByPrefix('normalOpen', 'SENPAI ANGRY IMPACT SPEECH', 24, false);
 			//	box.animation.addByIndices('normal', 'SENPAI ANGRY IMPACT SPEECH', [11], "", 24);
 		
 			//case 'tick tock':
 			//	hasDialog = true;
-			//	box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-senpaiMad', 'shared');
+			//	box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-senpaiMad');
 			//	box.animation.addByPrefix('normalOpen', 'SENPAI ANGRY IMPACT SPEECH', 24, false);
 			//	box.animation.addByIndices('normal', 'SENPAI ANGRY IMPACT SPEECH', [11], "", 24);
 
@@ -150,7 +150,7 @@ class DialogueBox extends FlxSpriteGroup
 		if (PlayState.SONG.song.toLowerCase() == 'Uoh' || PlayState.SONG.song.toLowerCase() == 'Craft Away' ||PlayState.SONG.song.toLowerCase() == 'Suit Up')
 		{
 		stevamor = new FlxSprite(-20, 40);
-		stevamor.frames = Paths.getSparrowAtlas('portraits/armorstevPortrait','shared');
+		stevamor.frames = Paths.getSparrowAtlas('portraits/armorstevPortrait');
 		stevamor.animation.addByPrefix('enter', 'armorstevPortrait instance', 24, false);
 		stevamor.setGraphicSize(Std.int(stevamor.width * PlayState.daPixelZoom * 0.9));
 		stevamor.updateHitbox();
@@ -159,7 +159,7 @@ class DialogueBox extends FlxSpriteGroup
 		stevamor.visible = false;
 
 		stevnormal = new FlxSprite(-20, 40);
-		stevnormal.frames = Paths.getSparrowAtlas('portraits/tuxstevnormal','shared');
+		stevnormal.frames = Paths.getSparrowAtlas('portraits/tuxstevnormal');
 		stevnormal.animation.addByPrefix('enter', 'tuxstev Portrait', 24, false);
 		stevnormal.setGraphicSize(Std.int(stevamor.width * PlayState.daPixelZoom * 0.9));
 		stevnormal.updateHitbox();
@@ -168,7 +168,7 @@ class DialogueBox extends FlxSpriteGroup
 		stevnormal.visible = false;
 
 		alex = new FlxSprite(-20, 40);
-		alex.frames = Paths.getSparrowAtlas('portraits/alexNormal','shared');
+		alex.frames = Paths.getSparrowAtlas('portraits/alexNormal');
 		alex.animation.addByPrefix('enter', 'alexNormal idle', 24, false);
 		alex.setGraphicSize(Std.int(alex.width * PlayState.daPixelZoom * 0.9));
 		alex.updateHitbox();

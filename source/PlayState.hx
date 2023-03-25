@@ -399,26 +399,26 @@ class PlayState extends MusicBeatState
 					//defaultCamZoom = 0.9;
 					camMovement = 0.3;
 
-					var bgSky = new FlxSprite().loadGraphic(Paths.image('weeb/weebSky','week6'));
+					var bgSky = new FlxSprite().loadGraphic(Paths.image('weeb/weebSky'));
 					bgSky.scrollFactor.set(0.1, 0.1);
 					add(bgSky);
 
 					var repositionShit = -200;
 
-					var bgSchool:FlxSprite = new FlxSprite(repositionShit, 0).loadGraphic(Paths.image('weeb/weebSchool','week6'));
+					var bgSchool:FlxSprite = new FlxSprite(repositionShit, 0).loadGraphic(Paths.image('weeb/weebSchool'));
 					bgSchool.scrollFactor.set(0.6, 0.90);
 					add(bgSchool);
 
-					var bgStreet:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('weeb/weebStreet','week6'));
+					var bgStreet:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('weeb/weebStreet'));
 					bgStreet.scrollFactor.set(0.95, 0.95);
 					add(bgStreet);
 
-					var fgTrees:FlxSprite = new FlxSprite(repositionShit + 170, 130).loadGraphic(Paths.image('weeb/weebTreesBack','week6'));
+					var fgTrees:FlxSprite = new FlxSprite(repositionShit + 170, 130).loadGraphic(Paths.image('weeb/weebTreesBack'));
 					fgTrees.scrollFactor.set(0.9, 0.9);
 					add(fgTrees);
 
 					var bgTrees:FlxSprite = new FlxSprite(repositionShit - 380, -800);
-					var treetex = Paths.getPackerAtlas('weeb/weebTrees','week6');
+					var treetex = Paths.getPackerAtlas('weeb/weebTrees');
 					bgTrees.frames = treetex;
 					bgTrees.animation.add('treeLoop', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18], 12);
 					bgTrees.animation.play('treeLoop');
@@ -426,7 +426,7 @@ class PlayState extends MusicBeatState
 					add(bgTrees);
 
 					var treeLeaves:FlxSprite = new FlxSprite(repositionShit, -40);
-					treeLeaves.frames = Paths.getSparrowAtlas('weeb/petals','week6');
+					treeLeaves.frames = Paths.getSparrowAtlas('weeb/petals');
 					treeLeaves.animation.addByPrefix('leaves', 'PETALS ALL', 24, true);
 					treeLeaves.animation.play('leaves');
 					treeLeaves.scrollFactor.set(0.85, 0.85);
@@ -475,7 +475,7 @@ class PlayState extends MusicBeatState
 					var posY = 200;
 
 					var bg:FlxSprite = new FlxSprite(posX, posY);
-					bg.frames = Paths.getSparrowAtlas('weeb/animatedEvilSchool','week6');
+					bg.frames = Paths.getSparrowAtlas('weeb/animatedEvilSchool');
 					bg.animation.addByPrefix('idle', 'background 2', 24);
 					bg.animation.play('idle');
 					bg.scrollFactor.set(0.8, 0.9);
@@ -634,7 +634,7 @@ class PlayState extends MusicBeatState
 					//lanterns.setGraphicSize(Std.int(lanterns.width * 6.5));
 
 					var caveLeaves:FlxSprite = new FlxSprite(repositionShit, -40);
-					caveLeaves.frames = Paths.getSparrowAtlas('cave/leaves','week6');
+					caveLeaves.frames = Paths.getSparrowAtlas('cave/leaves');
 					caveLeaves.animation.addByPrefix('leaves', 'leaves', 24, true);
 					caveLeaves.animation.play('leaves');
 					caveLeaves.scrollFactor.set(0.85, 0.85);
@@ -972,7 +972,7 @@ class PlayState extends MusicBeatState
 					curStage = 'awwman';
 					defaultCamZoom = 0.9;
 			    	var creeper:FlxSprite = new FlxSprite();
-					creeper.frames = Paths.getSparrowAtlas('awwman/awwman', 'shared');
+					creeper.frames = Paths.getSparrowAtlas('awwman/awwman');
 					creeper.animation.addByPrefix('idle', 'awwman stars', 24, true);
 				    creeper.animation.play('idle');
 					creeper.y -= 1000;
@@ -2601,7 +2601,7 @@ class PlayState extends MusicBeatState
 					babyArrow.scrollFactor.set();
 
 				case 'Majin':
-					babyArrow.loadGraphic(Paths.image('weeb/pixelUI/Majin_Notes','week6'), true, 17, 17);
+					babyArrow.loadGraphic(Paths.image('weeb/pixelUI/Majin_Notes'), true, 17, 17);
 					babyArrow.animation.add('green', [6]);
 					babyArrow.animation.add('red', [7]);
 					babyArrow.animation.add('blue', [5]);
@@ -5348,7 +5348,7 @@ class PlayState extends MusicBeatState
 				switch (curStep)
 				{
 					case 10:
-						FlxG.sound.play(Paths.sound('laugh1', 'shared'), 0.7);
+						FlxG.sound.play(Paths.sound('laugh1'), 0.7);
 				}
 				if (spinArray.contains(curStep))
 					{
