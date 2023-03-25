@@ -3076,15 +3076,15 @@ class PlayState extends MusicBeatState
 		{
 			cpuStrums.visible = false;
 		}
-		if(#if android virtualPad.buttonA.justPressed || #end FlxG.keys.justPressed.E || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.regenPotionBind)]) && oneTimeUseRegen == false)
+		if(#if (mobileC || mobileCweb) virtualPad.buttonA.justPressed || #end FlxG.keys.justPressed.E || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.regenPotionBind)]) && oneTimeUseRegen == false)
 		{
 		  Regen();
 		}
-		if(#if android virtualPad.buttonC.justPressed || #end FlxG.keys.justPressed.T || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.strengthPotionBind)]) && oneTimeUseStrength == false)
+		if(#if (mobileC || mobileCweb) virtualPad.buttonC.justPressed || #end FlxG.keys.justPressed.T || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.strengthPotionBind)]) && oneTimeUseStrength == false)
 		{
 		  Strength();
 		}
-		if (#if android virtualPad.buttonB.justPressed || #end FlxG.keys.justPressed.SPACE)
+		if (#if (mobileC || mobileCweb) virtualPad.buttonB.justPressed || #end FlxG.keys.justPressed.SPACE)
 		{
 		         if (boyfriend.curCharacter == 'bf-pixel') {
 		         boyfriend.playAnim('block', true); }
@@ -5191,7 +5191,7 @@ class PlayState extends MusicBeatState
 
 		function bfBlock()
 		{
-			if (#if android virtualPad.buttonB.justPressed || #end FlxG.keys.justPressed.SPACE || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.blockBind)]))
+			if (#if (mobileC || mobileCweb) virtualPad.buttonB.justPressed || #end FlxG.keys.justPressed.SPACE || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.blockBind)]))
 			{
 		         if (boyfriend.curCharacter == 'bf-pixel') {
 		         boyfriend.playAnim('block', true); }
@@ -5294,7 +5294,7 @@ class PlayState extends MusicBeatState
 
 		function detectSpace()
 		{
-			if (#if android virtualPad.buttonB.justPressed || #end FlxG.keys.justPressed.SPACE)
+			if (#if (mobileC || mobileCweb) virtualPad.buttonB.justPressed || #end FlxG.keys.justPressed.SPACE)
 			{
 				pressCounter += 1;
 				trace('tap');
