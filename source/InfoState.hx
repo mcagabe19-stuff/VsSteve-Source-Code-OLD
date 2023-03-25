@@ -42,20 +42,25 @@ class InfoState extends MusicBeatState
 		kadeLogo.alpha = 0.8;
 		add(kadeLogo);
 		
-                #if mobile
+                #if mobileC
 		var txt:FlxText = new FlxText(0, 0, FlxG.width,
 			"DISCLAIMER!"
 			+ "\n\nIf you're a Content Creator, then you should maybe skip Revenge since its Copyrighted!\nThere's a small WHITE FLASH on Suit Up but should'nt be too bad!\n\nThis Mod is still not Done!!\n\nTouch Your Screen to proceed"
 
 			);
-                #else
+                #elseif mobileCweb
                 var txt:FlxText = new FlxText(0, 0, FlxG.width,
+			"DISCLAIMER!"
+			+ "\n\nIf you're a Content Creator, then you should maybe skip Revenge since its Copyrighted!\nThere's a small WHITE FLASH on Suit Up but should'nt be too bad!\n\nThis Mod is still not Done!!\n\nTouch Your Screen, Press Space or ESCAPE or ENTER to proceed"
+
+			);
+                #elseif (!mobileC || !mobileCweb)
+		var txt:FlxText = new FlxText(0, 0, FlxG.width,
 			"DISCLAIMER!"
 			+ "\n\nIf you're a Content Creator, then you should maybe skip Revenge since its Copyrighted!\nThere's a small WHITE FLASH on Suit Up but should'nt be too bad!\n\nThis Mod is still not Done!!\n\nPress Space or ESCAPE or ENTER to proceed"
 
 			);
                 #end
-		
 		txt.setFormat("VCR OSD Mono", 32, FlxColor.fromRGB(200, 200, 200), CENTER);
 		txt.borderColor = FlxColor.BLACK;
 		txt.borderSize = 3;
@@ -88,7 +93,7 @@ class InfoState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
-                #if android
+                #if (mobileC || mobileCweb)
 		for (touch in FlxG.touches.list)
 		if (touch.justPressed)
 		{
