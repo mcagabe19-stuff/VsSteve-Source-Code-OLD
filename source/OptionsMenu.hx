@@ -210,9 +210,10 @@ class OptionsMenu extends MusicBeatState
 						FlxG.save.data.offset -= 0.1;
 			}
 		
-
+                        #if !web
 			if (controls.RESET)
 					FlxG.save.data.offset = 0;
+                        #end
 
 			if (#if android virtualPad.buttonA.justPressed || #end controls.ACCEPT)
 			{
