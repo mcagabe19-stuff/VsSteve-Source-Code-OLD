@@ -292,7 +292,7 @@ class TitleState extends MusicBeatState
 
 		var pressedEnter:Bool = FlxG.keys.justPressed.ENTER;
 
-		#if mobile
+		#if (mobileC || mobileCweb)
 		for (touch in FlxG.touches.list)
 		{
 			if (touch.justPressed)
