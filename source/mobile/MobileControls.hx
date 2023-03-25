@@ -13,6 +13,7 @@ import flixel.util.FlxDestroyUtil;
 class MobileControls extends FlxSpriteGroup
 {
 	public var virtualPad:FlxVirtualPad;
+	#if (ios || mobileCweb) public var virtualPadP:FlxVirtualPad; #end
 	public var hitbox:FlxHitbox;
 
 	public function new()
@@ -38,6 +39,10 @@ class MobileControls extends FlxSpriteGroup
 				add(hitbox);
 			case 'Keyboard': // do nothing
 		}
+		#if (ios || mobileCweb)
+		virtualPadP = new FlxVirtualPad(NONE, P);
+		add(virtualPadP);
+		#end
 	}
 
 	override public function destroy():Void
