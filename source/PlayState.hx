@@ -50,11 +50,8 @@ import lime.utils.Assets;
 import openfl.display.BlendMode;
 import openfl.display.StageQuality;
 import openfl.filters.ShaderFilter;
-
 #if windows
 import Discord.DiscordClient;
-#end
-#if windows
 import Sys;
 import sys.FileSystem;
 #end
@@ -1648,7 +1645,7 @@ class PlayState extends MusicBeatState
 		if (loadRep)
 			replayTxt.cameras = [camHUD];
 
-                #if mobile
+                #if (mobileC || mobileCweb)
                 addMobileControls();
                 #end
 
@@ -1804,7 +1801,7 @@ class PlayState extends MusicBeatState
 	{
 		inCutscene = false;
 
-                #if mobile
+                #if (mobileC || mobileCweb)
                 mobileControls.visible = true;
                 #end
 
@@ -4079,7 +4076,7 @@ class PlayState extends MusicBeatState
 
 	function endSong():Void
 	{
-                #if mobile
+                #if (mobileC || mobileCweb)
                 mobileControls.visible = false;
                 #end
 
