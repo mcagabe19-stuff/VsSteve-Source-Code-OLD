@@ -34,6 +34,10 @@ class KeyBinds
 
     public static function keyCheck():Void
     {
+        if(FlxG.save.data.blockBind == null){
+            FlxG.save.data.blockBind = "SPACE";
+            trace("No BLOCK");
+        }
         if(FlxG.save.data.upBind == null){
             FlxG.save.data.upBind = "W";
             trace("No UP");
