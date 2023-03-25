@@ -33,8 +33,6 @@ class FPS extends TextField
 	@:noCompletion private var currentTime:Float;
 	@:noCompletion private var times:Array<Float>;
 
-    public var fuckFps:Bool = false;
-
 	public function new(x:Float = 10, y:Float = 10, color:Int = 0x000000)
 	{
 		super();
@@ -77,11 +75,6 @@ class FPS extends TextField
 
 		var currentCount = times.length;
 		currentFPS = Math.round((currentCount + cacheCount) / 2);
-
-		if (currentFPS > Main.framerate)
-		{
-			currentFPS = Main.framerate;
-		}
 
 		if (currentCount != cacheCount /*&& visible*/)
 		{
