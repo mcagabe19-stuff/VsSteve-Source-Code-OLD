@@ -10,7 +10,6 @@ import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import lime.utils.Assets;
 import flixel.system.FlxSound;
-
 #if windows
 import Discord.DiscordClient;
 #end
@@ -153,7 +152,7 @@ class FreeplayState extends MusicBeatState
 		add(textBG);
 
                 #if PRELOAD_ALL
-		#if android
+		#if mobileC
 		var leText:String = "Press C to listen to the Song.";
 		var size:Int = 16;
 		#else
@@ -166,12 +165,17 @@ class FreeplayState extends MusicBeatState
 		add(text);
                 #end
 
-                #if android
+                #if mobileC
                 if (ExtrasState.selectedBonus == true) {
 		addVirtualPad(UP_DOWN, A_B_C); }
                 if (ExtrasState.selectedBonus == false) {
                 addVirtualPad(LEFT_FULL, A_B_C); }
-		#end
+		#elseif mobileCweb
+                if (ExtrasState.selectedBonus == true) {
+		addVirtualPad(UP_DOWN, A_B); }
+                if (ExtrasState.selectedBonus == false) {
+                addVirtualPad(LEFT_FULL, A_B); }
+                #end
 
 		super.create();
 	}
@@ -231,7 +235,7 @@ class FreeplayState extends MusicBeatState
 			FlxG.switchState(new MainMenuState());
 		}
 
-		if (#if android virtualPad.buttonA.justPressed || #end FlxG.keys.justPressed.ENTER)
+		if (#if (mobileC || mobileCweb) virtualPad.buttonA.justPressed || #end FlxG.keys.justPressed.ENTER)
 		{
 			destroyFreeplayVocals();
 
@@ -247,7 +251,7 @@ class FreeplayState extends MusicBeatState
 			LoadingState.loadAndSwitchState(new PlayState());
 		}
 
-                if(#if mobile virtualPad.buttonC.justPressed || #end FlxG.keys.justPressed.SPACE) {
+                if(#if mobileC virtualPad.buttonC.justPressed || #end FlxG.keys.justPressed.SPACE) {
                 if(instPlaying != curSelected) {
                 #if PRELOAD_ALL
 		destroyFreeplayVocals();
