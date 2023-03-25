@@ -39,16 +39,25 @@ class WarnCreditState extends MusicBeatState
 		kadeLogo.alpha = 0.8;
 		add(kadeLogo);
 
-		#if mobile
+		#if mobileC
                 var txt:FlxText = new FlxText(0, 0, FlxG.width,
 			"This is Credits Menu"
 			+ "Currently, this menu is uncomplete and Buggy, so please be patient."
 			+ "Everything will be complete in the Full Release Update."
 			+ "If you want to still check the current Menu then Press Enter."
 			+ "Be aware that the text might be broken. Press Enter on an Icon to Visit their Social Media:"
-			+ "Touch to Proceed"
+			+ "Touch Your Screen to Proceed"
 			);
-                #else
+                #elseif mobileCweb
+                var txt:FlxText = new FlxText(0, 0, FlxG.width,
+			"This is Credits Menu"
+			+ "Currently, this menu is uncomplete and Buggy, so please be patient."
+			+ "Everything will be complete in the Full Release Update."
+			+ "If you want to still check the current Menu then Press Enter."
+			+ "Be aware that the text might be broken. Press Enter on an Icon to Visit their Social Media:"
+			+ "Touch Your Screen or Press Enter to Proceed, Press Escape/Backspace to go Back."
+			);
+                #elseif (!mobileC || !mobileCweb)
                 var txt:FlxText = new FlxText(0, 0, FlxG.width,
 			"This is Credits Menu"
 			+ "Currently, this menu is uncomplete and Buggy, so please be patient."
@@ -58,7 +67,6 @@ class WarnCreditState extends MusicBeatState
 			+ "Press Enter to Proceed, Press Escape/Backspace to go Back."
 			);
                 #end
-		
 		txt.setFormat("VCR OSD Mono", 32, FlxColor.fromRGB(200, 200, 200), CENTER);
 		txt.borderColor = FlxColor.BLACK;
 		txt.borderSize = 3;
@@ -97,7 +105,7 @@ class WarnCreditState extends MusicBeatState
 			leftStateWarn = true;
 			FlxG.switchState(new MainMenuState());
 		}
-                #elseif android
+                #elseif (mobileC || mobileCweb)
                         for (touch in FlxG.touches.list)
 		        if (touch.justPressed)
 		        {
