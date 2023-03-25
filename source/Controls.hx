@@ -9,7 +9,7 @@ import flixel.input.actions.FlxActionInputDigital;
 import flixel.input.actions.FlxActionManager;
 import flixel.input.actions.FlxActionSet;
 import flixel.input.keyboard.FlxKey;
-#if mobile
+#if (mobileC || mobileCweb)
 import mobile.flixel.FlxButton;
 import mobile.flixel.FlxHitbox;
 import mobile.flixel.FlxVirtualPad;
@@ -274,7 +274,7 @@ class Controls extends FlxActionSet
 	}
 	#end
 
-	#if mobile
+	#if (mobileC || mobileCweb)
 	public var trackedinputsUI:Array<FlxActionInput> = [];
 	public var trackedinputsNOTES:Array<FlxActionInput> = [];
 
