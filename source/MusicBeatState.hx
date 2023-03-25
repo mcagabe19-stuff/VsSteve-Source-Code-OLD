@@ -12,7 +12,7 @@ import flixel.addons.transition.FlxTransitionableState;
 import flixel.addons.ui.FlxUIState;
 import flixel.math.FlxRect;
 import flixel.util.FlxTimer;
-#if mobile
+#if (mobileC || mobileCweb)
 import mobile.MobileControls;
 import mobile.flixel.FlxVirtualPad;
 import flixel.FlxCamera;
@@ -32,7 +32,7 @@ class MusicBeatState extends FlxUIState
 	inline function get_controls():Controls
 		return PlayerSettings.player1.controls;
 
-	#if mobile
+	#if (mobileC || mobileCweb)
 	var mobileControls:MobileControls;
 	var virtualPad:FlxVirtualPad;
 	var trackedinputsUI:Array<FlxActionInput> = [];
@@ -107,7 +107,7 @@ class MusicBeatState extends FlxUIState
 
 	override function destroy()
 	{
-		#if mobile
+		#if (mobileC || mobileCweb)
 		if (trackedinputsNOTES != [])
 			controls.removeControlsInput(trackedinputsNOTES);
 
@@ -117,7 +117,7 @@ class MusicBeatState extends FlxUIState
 
 		super.destroy();
 
-		#if mobile
+		#if (mobileC || mobileCweb)
 		if (virtualPad != null)
 		{
 			virtualPad = FlxDestroyUtil.destroy(virtualPad);
