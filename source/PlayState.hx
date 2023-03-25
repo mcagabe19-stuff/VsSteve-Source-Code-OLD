@@ -1699,6 +1699,7 @@ class PlayState extends MusicBeatState
                 #if (mobileC || mobileCweb)
                 #if (ios || mobileCweb)
                 addVirtualPad(NONE, P);
+                addPadCamera();
                 #end
                 addVirtualPad(NONE, A_B_C);
                 addPadCamera();
