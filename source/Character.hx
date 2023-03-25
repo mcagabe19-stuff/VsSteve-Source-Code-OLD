@@ -961,7 +961,7 @@ class Character extends FlxSprite
 				antialiasing = false;
 
 			case 'bfminecraft-death': // tragically and sadly:((
-				frames = Paths.getSparrowAtlas('death/bfMinecraftDies.png', 'shared');
+				frames = Paths.getSparrowAtlas('death/bfMinecraftDies.png');
 				animation.addByPrefix('firstDeath', "bfMinecraftDies.png Dies", 24, false);
 				animation.addByPrefix('deathLoop', "bfMinecraftDies.png respawnButton", 24, true);
 				animation.addByPrefix('deathConfirm', "bfMinecraftDies.png respawnConfirm", 24, false);
