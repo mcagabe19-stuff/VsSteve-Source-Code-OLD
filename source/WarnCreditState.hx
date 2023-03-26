@@ -104,6 +104,11 @@ class WarnCreditState extends MusicBeatState
 			leftStateWarn = true;
 			FlxG.switchState(new MainMenuState());
 		}
+                else if (controls.ACCEPT)
+		{
+			leftStateWarn = true;
+			FlxG.switchState(new Credits());
+		}
                 #if (mobileC || mobileCweb)
                         for (touch in FlxG.touches.list)
 		        if (touch.justPressed)
@@ -112,11 +117,6 @@ class WarnCreditState extends MusicBeatState
 		        FlxG.switchState(new Credits());
 		        }
                 #end
-		else if (controls.ACCEPT)
-		{
-			leftStateWarn = true;
-			FlxG.switchState(new Credits());
-		}
 		super.update(elapsed);
 	}
 }
