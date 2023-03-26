@@ -25,7 +25,7 @@ class WarnCreditState extends MusicBeatState
 	override function create()
 	{
 		super.create();
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('RevengeBG', 'shared'));
+		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('RevengeBG'));
 		bg.scale.x *= 5;
 		bg.scale.y *= 5;
 		bg.screenCenter();
