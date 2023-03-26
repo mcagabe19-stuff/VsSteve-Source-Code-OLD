@@ -165,6 +165,7 @@ class FreeplayState extends MusicBeatState
 		add(text);
                 #end
 
+                if(FlxG.save.data.mobileC) {
                 #if mobileC
                 if (ExtrasState.selectedBonus == true) {
 		addVirtualPad(UP_DOWN, A_B_C); }
@@ -176,6 +177,7 @@ class FreeplayState extends MusicBeatState
                 if (ExtrasState.selectedBonus == false) {
                 addVirtualPad(LEFT_FULL, A_B); }
                 #end
+                }
 
 		super.create();
 	}

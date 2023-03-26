@@ -114,6 +114,30 @@ class RenderOption extends Option
 	}
 }
 
+
+class MobileCOption extends Option
+{
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+	}
+
+	public override function press():Bool
+	{
+                FlxG.save.data.mobileC = !FlxG.save.data.mobileC;
+                FlxG.switchState(new OptionsMenu());
+		display = updateDisplay();
+		return true;
+	}
+
+	private override function updateDisplay():String
+	{
+		return "Mobile Controls " + (!FlxG.save.data.mobileC ? "off" : "on");
+	}
+}
+
+
 class DFJKOption extends Option
 {
 	private var controls:Controls;

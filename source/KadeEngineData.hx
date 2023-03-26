@@ -5,6 +5,8 @@ class KadeEngineData
 {
     public static function initSave()
     {
+                if (FlxG.save.data.mobileC == null)
+			FlxG.save.data.mobileC = true;
                 if(FlxG.save.data.render==null){FlxG.save.data.render=0;}
                 if (FlxG.save.data.newInput == null)
 			FlxG.save.data.newInput = true;

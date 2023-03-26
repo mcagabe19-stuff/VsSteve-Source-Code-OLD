@@ -1702,6 +1702,7 @@ class PlayState extends MusicBeatState
                 #elseif (android || !mobileCweb)
                 addVirtualPad(NONE, A_B_C);
                 addPadCamera();
+                if(!FlxG.save.data.mobileC){virtualPad.visible = false}
                 #end
 
 		super.create();
@@ -1805,7 +1806,8 @@ class PlayState extends MusicBeatState
 		inCutscene = false;
 
                 #if (mobileC || mobileCweb)
-                mobileControls.visible = true;
+                if(FlxG.save.data.mobileC){mobileControls.visible = true;}
+                if(!FlxG.save.data.mobileC){mobileControls.visible = false;}
                 #end
 
 		generateStaticArrows(0);
@@ -4080,7 +4082,7 @@ class PlayState extends MusicBeatState
 	function endSong():Void
 	{
                 #if (mobileC || mobileCweb)
-                mobileControls.visible = false;
+                if(FlxG.save.data.mobileC){mobileControls.visible = false;}
                 #end
 
                 /*

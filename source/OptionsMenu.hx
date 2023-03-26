@@ -47,6 +47,9 @@ class OptionsMenu extends MusicBeatState
 		]),
 		
 		new OptionCategory("Misc", [
+                        #if (mobileC || mobileCweb)
+                        new MobileCOption("Enable/Disable Mobile Controls"),
+                        #end
 			new FPSOption("Toggle the FPS Counter"),
 			new FlashingLightsOption("Toggle flashing lights that can cause epileptic seizures and strain."),
 			new WatermarkOption("Enable and disable all watermarks from the engine.")
@@ -107,7 +110,8 @@ class OptionsMenu extends MusicBeatState
 		FlxTween.tween(blackBorder,{y: FlxG.height - 18},2, {ease: FlxEase.elasticInOut});
 
                 #if (mobileC || mobileCweb)
-		addVirtualPad(LEFT_FULL, A_B_C);
+                if(FlxG.save.data.mobileC) {
+		addVirtualPad(LEFT_FULL, A_B_C); }
                 #end
 
 		super.create();
