@@ -99,13 +99,12 @@ class WarnCreditState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
-                #if desktop
 		if (controls.BACK)
 		{
 			leftStateWarn = true;
 			FlxG.switchState(new MainMenuState());
 		}
-                #elseif (mobileC || mobileCweb)
+                #if (mobileC || mobileCweb)
                         for (touch in FlxG.touches.list)
 		        if (touch.justPressed)
 		        {
@@ -113,13 +112,11 @@ class WarnCreditState extends MusicBeatState
 		        FlxG.switchState(new Credits());
 		        }
                 #end
-                #if desktop
 		else if (controls.ACCEPT)
 		{
 			leftStateWarn = true;
 			FlxG.switchState(new Credits());
 		}
-                #end
 		super.update(elapsed);
 	}
 }
