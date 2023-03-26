@@ -166,7 +166,7 @@ class KeyBindMenu extends FlxSubState
                 else if(#if android FlxG.android.justReleased.BACK || #end #if web FlxG.keys.justPressed.BACKSPACE #else FlxG.keys.justPressed.ESCAPE #end){
                     quit();
                 }
-                #îf !web
+                #if !web
                 else if (FlxG.keys.justPressed.BACKSPACE){
                     reset();
                 }
