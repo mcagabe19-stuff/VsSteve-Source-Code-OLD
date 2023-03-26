@@ -273,12 +273,12 @@ class StoryMenuState extends MusicBeatState
 		{
 			if (!selectedWeek)
 			{
-				if (#if android virtualPad.buttonRight.justPressed || #end controls.RIGHT_P)
+				if (#if android FlxG.save.data.mobileC && virtualPad.buttonRight.justPressed || #end controls.RIGHT_P)
 				{
 					changeWeek(-1);
 				}
 
-				if (#if android virtualPad.buttonLeft.justPressed || #end controls.LEFT_P)
+				if (#if android FlxG.save.data.mobileC && virtualPad.buttonLeft.justPressed || #end controls.LEFT_P)
 				{
 					changeWeek(1);
 				}
@@ -295,24 +295,24 @@ class StoryMenuState extends MusicBeatState
 				else
 					leftArrow.animation.play('idle');
 					
-				if (#if android virtualPad.buttonUp.justPressed || #end controls.UP_P)
+				if (#if android FlxG.save.data.mobileC && virtualPad.buttonUp.justPressed || #end controls.UP_P)
 					{
 					upArrow.animation.play('press'); 
 					FlxG.sound.play(Paths.sound('scrollMenu'));
 					}
-				if (#if android virtualPad.buttonDown.justPressed || #end controls.DOWN_P)
+				if (#if android FlxG.save.data.mobileC && virtualPad.buttonDown.justPressed || #end controls.DOWN_P)
 					{
 					downArrow.animation.play('press');
 					FlxG.sound.play(Paths.sound('scrollMenu'));
 					}
 					
-				if (#if android virtualPad.buttonUp.justPressed || #end controls.UP_P)
+				if (#if android FlxG.save.data.mobileC && virtualPad.buttonUp.justPressed || #end controls.UP_P)
 					changeDifficulty(1);
-				if (#if android virtualPad.buttonDown.justPressed || #end controls.DOWN_P)
+				if (#if android FlxG.save.data.mobileC && virtualPad.buttonDown.justPressed || #end controls.DOWN_P)
 					changeDifficulty(-1);
 			}
 
-			if (#if android virtualPad.buttonA.justPressed || #end controls.ACCEPT)
+			if (#if android FlxG.save.data.mobileC && virtualPad.buttonA.justPressed || #end controls.ACCEPT)
 			{
 				selectWeek();
 			}

@@ -1646,7 +1646,7 @@ class PlayState extends MusicBeatState
 			replayTxt.cameras = [camHUD];
 
                 #if (mobileC || mobileCweb)
-                addMobileControls();
+                if(FlxG.save.data.mobileC){addMobileControls();}
                 #end
 
 		// if (SONG.song == 'South')
@@ -1697,12 +1697,13 @@ class PlayState extends MusicBeatState
 			rep = new Replay("na");
 
                 #if (ios || mobileCweb)
+                if(FlxG.save.data.mobileC) {
                 addVirtualPad(NONE, P_A_B_C);
-                addPadCamera();
+                addPadCamera(); }
                 #elseif (android || !mobileCweb)
+                if(FlxG.save.data.mobileC) {
                 addVirtualPad(NONE, A_B_C);
-                addPadCamera();
-                if(!FlxG.save.data.mobileC){virtualPad.visible = false}
+                addPadCamera(); }
                 #end
 
 		super.create();
@@ -1807,7 +1808,6 @@ class PlayState extends MusicBeatState
 
                 #if (mobileC || mobileCweb)
                 if(FlxG.save.data.mobileC){mobileControls.visible = true;}
-                if(!FlxG.save.data.mobileC){mobileControls.visible = false;}
                 #end
 
 		generateStaticArrows(0);
@@ -3081,15 +3081,15 @@ class PlayState extends MusicBeatState
 		{
 			cpuStrums.visible = false;
 		}
-		if(#if (mobileC || mobileCweb) virtualPad.buttonA.justPressed || #end FlxG.keys.justPressed.E || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.regenPotionBind)]) && oneTimeUseRegen == false)
+		if(#if (mobileC || mobileCweb) FlxG.save.data.mobileC && virtualPad.buttonA.justPressed || #end FlxG.keys.justPressed.E || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.regenPotionBind)]) && oneTimeUseRegen == false)
 		{
 		  Regen();
 		}
-		if(#if (mobileC || mobileCweb) virtualPad.buttonC.justPressed || #end FlxG.keys.justPressed.T || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.strengthPotionBind)]) && oneTimeUseStrength == false)
+		if(#if (mobileC || mobileCweb) FlxG.save.data.mobileC && virtualPad.buttonC.justPressed || #end FlxG.keys.justPressed.T || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.strengthPotionBind)]) && oneTimeUseStrength == false)
 		{
 		  Strength();
 		}
-		if (#if (mobileC || mobileCweb) virtualPad.buttonB.justPressed || #end FlxG.keys.justPressed.SPACE)
+		if (#if (mobileC || mobileCweb) FlxG.save.data.mobileC && virtualPad.buttonB.justPressed || #end FlxG.keys.justPressed.SPACE)
 		{
 		         if (boyfriend.curCharacter == 'bf-pixel') {
 		         boyfriend.playAnim('block', true); }
@@ -3210,7 +3210,7 @@ class PlayState extends MusicBeatState
 
 		scoreTxt.text = Ratings.CalculateRanking(songScore,songScoreDef,nps,maxNPS,accuracy);
 
-		if (#if android FlxG.android.justReleased.BACK || #elseif (ios || mobileCweb) virtualPad.buttonP.justPressed || #end controls.PAUSE && startedCountdown && canPause)
+		if (#if android FlxG.android.justReleased.BACK || #elseif (ios || mobileCweb) FlxG.save.data.mobileC && virtualPad.buttonP.justPressed || #end controls.PAUSE && startedCountdown && canPause)
 		{
 			persistentUpdate = false;
 			persistentDraw = true;
@@ -5196,7 +5196,7 @@ class PlayState extends MusicBeatState
 
 		function bfBlock()
 		{
-			if (#if (mobileC || mobileCweb) virtualPad.buttonB.justPressed || #end FlxG.keys.justPressed.SPACE || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.blockBind)]))
+			if (#if (mobileC || mobileCweb) FlxG.save.data.mobileC && virtualPad.buttonB.justPressed || #end FlxG.keys.justPressed.SPACE || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.blockBind)]))
 			{
 		         if (boyfriend.curCharacter == 'bf-pixel') {
 		         boyfriend.playAnim('block', true); }
@@ -5299,7 +5299,7 @@ class PlayState extends MusicBeatState
 
 		function detectSpace()
 		{
-			if (#if (mobileC || mobileCweb) virtualPad.buttonB.justPressed || #end FlxG.keys.justPressed.SPACE)
+			if (#if (mobileC || mobileCweb) FlxG.save.data.mobileC && virtualPad.buttonB.justPressed || #end FlxG.keys.justPressed.SPACE)
 			{
 				pressCounter += 1;
 				trace('tap');
