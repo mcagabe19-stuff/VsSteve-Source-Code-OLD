@@ -55,7 +55,7 @@ class WarnCreditState extends MusicBeatState
 			+ "Everything will be complete in the Full Release Update."
 			+ "If you want to still check the current Menu then Press Enter."
 			+ "Be aware that the text might be broken. Press Enter on an Icon to Visit their Social Media:"
-			+ "Touch Your Screen or Press Enter to Proceed, Press Escape/Backspace to go Back."
+			+ "Touch Your Screen or Press Enter to Proceed, Press Backspace to go Back."
 			);
                 #elseif (!mobileC || !mobileCweb)
                 var txt:FlxText = new FlxText(0, 0, FlxG.width,
@@ -99,7 +99,7 @@ class WarnCreditState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
-		if (controls.BACK)
+		if (#if !web controls.BACK #else FlxG.keys.justPressed.BACKSPACE #end)
 		{
 			leftStateWarn = true;
 			FlxG.switchState(new MainMenuState());
