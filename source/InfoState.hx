@@ -28,7 +28,7 @@ class InfoState extends MusicBeatState
 	override function create()
 	{
 		super.create();
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuPNG', 'shared'));
+		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuPNG'));
 		bg.scale.x *= 1.55;
 		bg.scale.y *= 1.55;
 		bg.screenCenter();
