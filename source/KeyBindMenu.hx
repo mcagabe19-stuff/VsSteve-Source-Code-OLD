@@ -56,8 +56,11 @@ class KeyBindMenu extends FlxSubState
                               FlxG.save.data.gregenPotionBind,
                               FlxG.save.data.gstrengthPotionBind];
     var tempKey:String = "";
+    #if !web
     var blacklist:Array<String> = ["ESCAPE", "ENTER", "BACKSPACE", "TAB"];
-
+    #else
+    var blacklist:Array<String> = ["ENTER", "BACKSPACE", "TAB"];
+    #end
     var blackBox:FlxSprite;
     var infoText:FlxText;
 
@@ -93,7 +96,11 @@ class KeyBindMenu extends FlxSubState
         blackBox = new FlxSprite(0,0).makeGraphic(FlxG.width,FlxG.height,FlxColor.BLACK);
         add(blackBox);
 
+        #if !web
         infoText = new FlxText(-10, 580, 1280, 'Current Mode: ${KeyBinds.gamepad ? 'GAMEPAD' : 'KEYBOARD'}. Press TAB to switch\n(${KeyBinds.gamepad ? 'RIGHT Trigger' : 'Escape'} to save, ${KeyBinds.gamepad ? 'LEFT Trigger' : 'Backspace'} to leave without saving. ${KeyBinds.gamepad ? 'START To change a keybind' : ''})', 72);
+        #else
+        infoText = new FlxText(-10, 580, 1280, 'Current Mode: ${KeyBinds.gamepad ? 'GAMEPAD' : 'KEYBOARD'}. Press TAB to switch\n(${KeyBinds.gamepad ? 'RIGHT Trigger' : 'Backspace'} to save. ${KeyBinds.gamepad ? 'START To change a keybind' : ''})', 72);
+        #end
 		infoText.scrollFactor.set(0, 0);
 		infoText.setFormat(Paths.font("vcr.ttf"), 24, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		infoText.borderSize = 2;
@@ -144,7 +151,11 @@ class KeyBindMenu extends FlxSubState
                 if (FlxG.keys.justPressed.TAB)
                 {
                     KeyBinds.gamepad = !KeyBinds.gamepad;
+                    #if !web
                     infoText.text = 'Current Mode: ${KeyBinds.gamepad ? 'GAMEPAD' : 'KEYBOARD'}. Press TAB to switch\n(${KeyBinds.gamepad ? 'RIGHT Trigger' : 'Escape'} to save, ${KeyBinds.gamepad ? 'LEFT Trigger' : 'Backspace'} to leave without saving. ${KeyBinds.gamepad ? 'START To change a keybind' : ''})';
+                    #else
+                    infoText.text = 'Current Mode: ${KeyBinds.gamepad ? 'GAMEPAD' : 'KEYBOARD'}. Press TAB to switch\n(${KeyBinds.gamepad ? 'RIGHT Trigger' : 'Backspace'} to save. ${KeyBinds.gamepad ? 'START To change a keybind' : ''})';
+                    #end
                     textUpdate();
                 }
 
@@ -152,12 +163,14 @@ class KeyBindMenu extends FlxSubState
                     FlxG.sound.play(Paths.sound('scrollMenu'));
                     state = "input";
                 }
-                else if(#if android FlxG.android.justReleased.BACK || #end FlxG.keys.justPressed.ESCAPE){
+                else if(#if android FlxG.android.justReleased.BACK || #end #if web FlxG.keys.justPressed.BACKSPACE #else FlxG.keys.justPressed.ESCAPE #end){
                     quit();
                 }
+                #îf !web
                 else if (FlxG.keys.justPressed.BACKSPACE){
                     reset();
                 }
+                #end
                 if (gamepad != null) // GP Logic
                 {
                     if (gamepad.justPressed.DPAD_UP)
