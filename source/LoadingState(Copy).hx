@@ -1,11 +1,14 @@
 package;
 
 import flixel.addons.transition.FlxTransitionableState;
+import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.FlxG;
 import flixel.FlxState;
 import flixel.graphics.FlxGraphic;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
+import flixel.math.FlxMath;
+import flixel.text.FlxText;
 import openfl.utils.Assets;
 #if sys
 import sys.thread.Thread;
