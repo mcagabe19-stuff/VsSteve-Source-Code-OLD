@@ -100,13 +100,12 @@ class InfoState extends MusicBeatState
 			leftState = true;
 			FlxG.switchState(new MainMenuState());
 		} 
-		#else
+		#end
 		if (controls.BACK || controls.ACCEPT)
 		{
 			leftState = true;
 			FlxG.switchState(new MainMenuState());
-		}
-                #end
+                }
 		super.update(elapsed);
 	}
 }
