@@ -320,7 +320,11 @@ class MainMenuState extends MusicBeatState
 				FlxG.switchState(new OptionsMenu());
 
 			case 'quit':
+                                #if !web
 				System.exit(0);
+				#else
+				FlxG.camera.shake(0.05, 0.05);
+				#end
 
 			case 'credits':
 				FlxG.switchState(new WarnCreditState());
