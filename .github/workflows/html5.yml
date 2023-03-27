@@ -1,41 +1,38 @@
 name: HTML5 Build CI
-
 on: [workflow_dispatch]
-
 jobs:
   build:
-    name: HTML5
+    name: Build
     runs-on: ubuntu-${{ matrix.version }}
     strategy:
       matrix:
+        version: [22.04]
         build: [release, debug]
-        version: [20.04]
     steps:
       - name: Checkout
         uses: actions/checkout@main
       - name: Setup Haxe
         uses: krdlab/setup-haxe@master
         with:
-          haxe-version: 4.1.5
+          haxe-version: 4.2.5
       - name: Install Haxelib
         run: |
           haxelib setup ~/haxelib
           haxelib install lime 7.9.0 --quiet
           haxelib install openfl 9.1.0 --quiet
-          haxelib install newgrounds 1.1.4 --quiet
           haxelib install actuate 1.8.9 --quiet
-          haxelib --never git flixel https://github.com/mcagabe19/flixel-4.9.0.git --quiet
+          haxelib --never git flixel https://github.com/mcagabe19/flixel-4.11.0.git
           haxelib install flixel-ui 2.3.3 --quiet
           haxelib install hscript 2.4.0 --quiet
-          haxelib install flixel-addons 2.10.0 --quiet
+          haxelib install flixel-addons 2.11.0 --quiet
           haxelib git polymod https://github.com/mcagabe19/polymod-for-steve.git
       - name: Compile
-        run: haxelib run lime build html5 -D macro-times -D analyzer-optimize -D mobileCweb -${{ matrix.build }}
+        run: haxelib run lime build html5 -${{ matrix.build }} -D macro-times -D analyzer-optimize
       - name: Publish Artifact
         uses: actions/upload-artifact@main
         with:
           name: build-ubuntu${{ matrix.version }}-${{ matrix.build }}
-          path: 'export/${{ matrix.build }}/html5/bin'
+          path: export/${{ matrix.build }}/html5/bin
       - name: Publish Artifact (Only JS)
         uses: actions/upload-artifact@main
         with:
