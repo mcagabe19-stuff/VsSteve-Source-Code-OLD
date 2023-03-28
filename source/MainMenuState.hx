@@ -323,7 +323,10 @@ class MainMenuState extends MusicBeatState
                                 #if !web
 				System.exit(0);
 				#else
-				FlxG.camera.shake(0.05, 0.05);
+				var msg = 'Web not have quit game option lmao';
+				//haxe.Log.trace(msg, null);
+				Lib.application.window.alert(msg, 'When');
+				FlxG.switchState(new MainMenuState());
 				#end
 
 			case 'credits':
