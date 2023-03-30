@@ -30,7 +30,7 @@ class OptionsMenu extends MusicBeatState
                         new MiddleScroll("Toggle the middlescroll"),
 			new GhostTapOption("Ghost Tapping is when you tap a direction and it doesn't give you a miss."),
 			new Judgement("Customize your Hit Timings (LEFT or RIGHT)"),
-			new FPSCapOption("Cap your FPS"),
+			#if !web new FPSCapOption("Cap your FPS"), #end
 			new ScrollSpeedOption("Change your scroll speed (1 = Chart dependent)"),
 			new AccuracyDOption("Change how accuracy is calculated. (Accurate = Simple, Complex = Milisecond Based)"),
 			#if !web new ResetButtonOption("Toggle pressing R to gameover."), #end
@@ -53,11 +53,11 @@ class OptionsMenu extends MusicBeatState
 			new FPSOption("Toggle the FPS Counter"),
 			new FlashingLightsOption("Toggle flashing lights that can cause epileptic seizures and strain."),
 			new WatermarkOption("Enable and disable all watermarks from the engine.")
-		]),
+		])#if !web,
 
 		new OptionCategory("Graphic", [
                     new RenderOption("change rendering method"),
-                ])
+                ])#end
 	];
 
 	public var acceptInput:Bool = true;
